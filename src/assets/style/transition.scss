@@ -1,0 +1,15 @@
+.Page-enter {
+  opacity: 0;
+}
+
+.Page-enter-active {
+  opacity: 1;
+}
+
+.Page-exit {
+  opacity: 1;
+}
+
+.Page-exit-active {
+  opacity: 0;
+}

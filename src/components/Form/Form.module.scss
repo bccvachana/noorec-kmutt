@@ -1,0 +1,92 @@
+@import "../../var";
+
+.Form {
+  width: 100%;
+  max-width: 25rem;
+  @include flex;
+
+  &.SignUp {
+    .Title {
+      margin-bottom: 1rem;
+    }
+
+    .Input:nth-child(1),
+    .Input:nth-child(2) {
+      width: calc((100% - 1.4rem) / 2);
+    }
+
+    .Input:nth-child(1) {
+      margin-right: 1.4rem;
+    }
+  }
+
+  &.SignIn {
+    .Title {
+      margin-bottom: 0.4rem;
+    }
+  }
+}
+
+.Title {
+  @include fontH3;
+}
+
+.InputContainer {
+  width: 100%;
+  margin: 1rem 0 0.4rem;
+  @include flex(row);
+
+  .Input {
+    width: 100%;
+  }
+}
+
+.SubmitButton {
+  @include button(primary);
+  width: 70%;
+}
+
+.Profile {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  border: 0.4rem solid white;
+  border-radius: 5rem;
+  background-color: white;
+
+  >img {
+    height: 100%;
+    border-radius: 5rem;
+  }
+
+  .Edit {
+    position: absolute;
+    bottom: -0.4rem;
+    right: -0.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: $color-accent1;
+    border: 0.4rem solid white;
+    border-radius: 2rem;
+    @include flex;
+    cursor: pointer;
+
+    >img {
+      height: 55%;
+    }
+  }
+}
+
+.ForgotRegister {
+  padding-top: 1rem;
+  color: $color-accent1;
+}
+
+.Link {
+  margin-top: 1rem;
+  color: $color-accent1;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

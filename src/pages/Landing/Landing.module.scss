@@ -1,0 +1,141 @@
+@import "../../var";
+
+.HeadContainer {
+  width: 100%;
+  @include flex(column);
+
+  @include desktop {
+    @include flex(row, $align: flex-start, $wrap: nowrap);
+  }
+}
+
+.SignInRegister {
+  width: 100%;
+  @include flex;
+
+  @include desktop {
+    width: auto;
+    margin-right: 2rem;
+    min-width: 32rem;
+    @include flex($align: flex-start);
+  }
+
+  .Title {
+    font-size: min(7vw, 2.6rem);
+    font-weight: $bold;
+    line-height: 1.4;
+
+    @include tablet-desktop {
+      @include fontH1;
+    }
+
+    @include desktop {
+      text-align: left;
+    }
+  }
+
+  .Detail {
+    font-size: min(5vw, 1.8rem);
+
+    @include tablet-desktop {
+      @include fontH3($regular);
+    }
+
+    @include desktop {
+      text-align: left;
+    }
+  }
+
+  .ButtonContainer {
+    margin: 1.4rem 0 2rem 0;
+    @include flex(row, $align: flex-start);
+
+    >a {
+      width: 9rem;
+    }
+
+    .SignUpButton {
+      @include button(primary)
+    }
+
+    .SignInButton {
+      @include button(secondary);
+      margin-right: 0.7rem;
+    }
+  }
+}
+
+.Character {
+  width: 100%;
+  max-width: 30rem;
+  min-height: 20rem;
+  background-color: white;
+  border-radius: $radius;
+
+  @include desktop {
+    flex-grow: 1;
+    max-width: none;
+  }
+}
+
+.Feature {
+  width: 100%;
+
+  >.Title {
+    font-size: min(7vw, 1.8rem);
+    font-weight: $bold;
+    margin: 2.5rem 0 1.25rem;
+
+    @include tablet-desktop {
+      @include fontH3;
+    }
+  }
+
+  .Container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.6rem;
+
+    @include tablet {
+      @include flex(row);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    >div {
+      width: 100%;
+      background-color: white;
+      border-radius: $radius;
+      padding: 1rem;
+      @include shadow;
+      @include flex($justify: flex-start);
+
+      @include tablet {
+        width: calc((100% - 1.6rem) / 2);
+
+        &:nth-child(2) {
+          margin-left: 1.6rem;
+        }
+
+        &:nth-child(3) {
+          margin-top: 1.6rem;
+        }
+      }
+    }
+  }
+
+  .FeatureImg {
+    width: 7rem;
+    height: 7rem;
+    background-color: #f7f7f7;
+    border-radius: 5rem;
+  }
+
+  .FeatureTitle {
+    @include fontH4;
+    margin-top: 1rem;
+  }
+}

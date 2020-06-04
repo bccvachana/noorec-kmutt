@@ -1,0 +1,41 @@
+@import "../../../var";
+
+.Footer {
+  position: relative;
+  width: 100%;
+  height: 7.5rem;
+  margin-top: 3rem;
+  z-index: 98;
+}
+
+.Container {
+  position: absolute;
+  left: -1rem;
+  width: calc(100% + 2rem);
+  height: 100%;
+  background-color: $color-accent1;
+  @include flex($wrap: nowrap);
+  padding: 1rem;
+}
+
+.logo {
+  height: 1.3rem;
+  margin-bottom: -0.3rem;
+}
+
+.Caption {
+  line-height: 1;
+  margin-top: 0.5rem;
+
+  >* {
+    display: inline-block;
+    color: white;
+    @include fontCaption;
+  }
+}
+
+.Heart {
+  height: 0.8rem;
+  position: relative;
+  top: 0.1rem;
+}

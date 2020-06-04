@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <style>
+      .a {
+        fill: #fa5458;
+      }
+    </style>
+  </defs>
+  <title>Asset 1</title>
+  <path class="a" d="M36,32V4a4,4,0,0,0-4-4H4A4,4,0,0,0,0,4V32a4,4,0,0,0,4,4H32A4,4,0,0,0,36,32ZM11,21l5,6,7-9,9,12H4Z"/>
+</svg>

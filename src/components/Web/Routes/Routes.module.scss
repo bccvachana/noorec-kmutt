@@ -1,0 +1,11 @@
+@import "../../../var";
+
+.Page {
+  width: 100%;
+  flex-grow: 1;
+  @include flex;
+
+  @include desktop {
+    max-width: 1000px;
+  }
+}

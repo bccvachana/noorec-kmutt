@@ -1,0 +1,68 @@
+@import "../../../../var";
+
+.ModalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  z-index: 200;
+  visibility: hidden;
+  transform: scale(1.05);
+  transition: all 200ms ease-out;
+  @include flex
+}
+
+.ModalContainer-enter {
+  visibility: hidden;
+  transform: scale(1.05);
+  opacity: 0;
+}
+
+.ModalContainer-enter-active {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.ModalContainer-enter-done {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.ModalContainer-exit {
+  visibility: visible;
+  opacity: 1;
+}
+
+.ModalContainer-exit-active {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ModalContainer-exit-done {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.BackDrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #3b4251, $alpha: 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.Modal {
+  background-color: white;
+  max-width: 27rem;
+  max-height: 90%;
+  padding: 1.5rem;
+  border-radius: $radius;
+  @include shadow;
+  @include flex;
+  z-index: 201;
+}

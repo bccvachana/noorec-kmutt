@@ -1,0 +1,98 @@
+$color-primary: white;
+$color-accent1: #fa5458;
+$color-accent2: #feb562;
+$color-text: #3b4251;
+$color-detail: #b1b3b9;
+
+$radius: 1rem;
+$bold : 600;
+$regular : 400;
+
+@mixin tablet {
+  @media only screen and (min-width: 768px) and (max-width: 1023px) and (min-height: 605px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1024px) and (min-height: 605px) {
+    @content;
+  }
+}
+
+@mixin tablet-desktop {
+  @media only screen and (min-width: 768px) and (min-height: 605px) {
+    @content;
+  }
+}
+
+@mixin flex($direction: column, $justify: center, $align: center, $wrap: wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin fontCaption($weight: 400) {
+  font-size: 0.8rem;
+  font-weight: $weight;
+}
+
+@mixin fontBody($weight: $regular, $family: Prompt) {
+  font-family: $family;
+  font-size: 1rem;
+  font-weight: $weight;
+}
+
+@mixin fontH4($weight: $bold) {
+  font-size: 1.4rem;
+  font-weight: $weight;
+}
+
+@mixin fontH3($weight: $bold) {
+  font-size: 1.8rem;
+  font-weight: $weight;
+}
+
+@mixin fontH2($weight: $bold) {
+  font-size: 2.2rem;
+  font-weight: $weight;
+}
+
+@mixin fontH1($weight: $bold) {
+  font-size: 2.6rem;
+  font-weight: $weight;
+}
+
+@mixin shadow {
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.03);
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
+@mixin button($type: primary) {
+  padding: 0.4rem 0;
+  @include fontBody($bold);
+  border: 0.155rem solid $color-accent1;
+  border-radius: 2em;
+  cursor: pointer;
+
+  @if $type==primary {
+    background-color: $color-accent1;
+    color: white;
+  }
+
+  @else if $type==secondary {
+    background-color: transparent;
+    color: $color-accent1;
+  }
+
+  @else if $type==cancel {
+    background-color: #F2F2F2;
+    border-color: #F2F2F2;
+    color: rgba($color: $color-text, $alpha: 0.5);
+  }
+}

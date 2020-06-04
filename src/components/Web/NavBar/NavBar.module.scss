@@ -1,0 +1,49 @@
+@import "../../../var";
+
+.NavBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 3.5rem;
+  padding: 0 1rem;
+  z-index: 100;
+  background-color: $color-primary;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
+  @include flex(row, $justify: space-between);
+}
+
+.Logo {
+  height: 100%;
+  @include flex;
+
+  >img {
+    height: 40%;
+  }
+}
+
+.Link {
+  position: relative;
+  display: inline-block;
+  color: rgba($color: $color-text, $alpha: 0.5);
+  margin: 0 0.7rem;
+  transition: all 100ms ease-out;
+  @include fontBody($bold);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  div {
+    position: absolute;
+    top: 0;
+    left: -2.5%;
+    width: 105%;
+    transition: all 100ms ease-out;
+  }
+}
