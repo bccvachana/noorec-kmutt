@@ -37,8 +37,8 @@ const ProfileImgEditor = (props) => {
   const handleSave = () => {
     if (tempImg !== img) {
       const canvas = document.createElement("canvas");
-      canvas.width = 350;
-      canvas.height = 350;
+      canvas.width = 200;
+      canvas.height = 200;
       const ctx = canvas.getContext("2d");
       ctx.drawImage(
         editor.current.getImage(),

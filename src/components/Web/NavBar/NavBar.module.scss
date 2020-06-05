@@ -1,49 +1,314 @@
 @import "../../../var";
 
+@mixin tabletDesktopNone {
+  @include tablet-desktop {
+    display: none;
+  }
+}
+
 .NavBar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   min-width: 320px;
-  height: 3.5rem;
+  height: 3rem;
   padding: 0 1rem;
   z-index: 100;
-  background-color: $color-primary;
+  background-color: white;
   box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
-  @include flex(row, $justify: space-between);
+  @include flex;
+
+  @include tablet-desktop {
+    height: 3.5rem;
+  }
+}
+
+.Container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  @include flex(row, space-between);
+
+  * {
+    @include flex(row);
+  }
 }
 
 .Logo {
-  height: 100%;
-  @include flex;
+  height: 21px;
 
-  >img {
-    height: 40%;
+  @include tablet-desktop {
+    height: 27px;
+  }
+
+  img {
+    height: 100%;
+  }
+}
+
+.LinkContainer {
+  >* {
+    margin: 0 0.4rem;
+
+    @include tablet-desktop {
+      margin: 0 0.7rem;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
 .Link {
-  position: relative;
-  display: inline-block;
   color: rgba($color: $color-text, $alpha: 0.5);
-  margin: 0 0.7rem;
   transition: all 100ms ease-out;
   @include fontBody($bold);
+  line-height: 1.5;
+}
 
-  &:first-child {
-    margin-left: 0;
+.SignInLink {
+  color: $color-accent1;
+}
+
+.SignUpLink {
+  height: 27px;
+  color: white;
+  background-color: $color-accent1;
+  padding: 0 0.6rem;
+  border-radius: 2rem;
+
+  @include tablet-desktop {
+    height: 2rem;
   }
+}
 
-  &:last-child {
-    margin-right: 0;
-  }
+.ProfileImg {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: $color-accent2;
+  border-radius: 10rem;
+  cursor: pointer;
 
-  div {
+  >div {
     position: absolute;
-    top: 0;
-    left: -2.5%;
-    width: 105%;
-    transition: all 100ms ease-out;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    height: 34px;
+    border-radius: 2.5rem;
+  }
+}
+
+.DropDownButton {
+  height: 12px;
+}
+
+.SignIn {
+  .LinkContainer {
+    display: none;
+
+    @include tablet-desktop {
+      @include flex(row);
+    }
+
+    >*:hover {
+      color: $color-text;
+    }
+  }
+}
+
+.DropDownMobile {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  z-index: 99;
+  @include flex($align: flex-start);
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: all ease-in-out 250ms;
+  @include tabletDesktopNone;
+
+  * {
+    @include flex(row);
+    text-align: left;
+  }
+
+  >* {
+    margin: 0.6rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+  &.Active {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .ProfileContainer {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .ProfileImg {
+    width: 70px;
+    height: 70px;
+    cursor: auto;
+    flex-shrink: 0;
+
+    img {
+      height: 62px;
+    }
+  }
+
+  .Link {
+    @include fontH4
+  }
+
+  .NameEdit {
+    flex-grow: 1;
+    margin-left: 1rem;
+    @include flex($align: flex-start);
+    overflow: hidden;
+
+    >div {
+      display: block;
+      width: 100%;
+      height: 1.8rem;
+      @include fontH3;
+      line-height: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      justify-content: flex-start;
+      transition: all ease-in-out 200ms;
+    }
+  }
+
+  .EditLink {
+    margin-top: 0.2rem;
+
+    img {
+      height: 0.8rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  .Line {
+    width: 100%;
+    height: 3.5px;
+    border-radius: 1rem;
+    background-color: #F1F2F3;
+  }
+}
+
+.NavRef {
+  z-index: 99;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.DropDownDesktop {
+  position: absolute;
+  top: 1.75rem;
+  right: 0;
+  width: 15rem;
+  padding: 1rem;
+  border-radius: $radius;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: white;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
+  @include flex;
+  transform: translateY(calc(-100% - 0.65rem));
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out 250ms;
+
+  &.Active {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  * {
+    @include flex(row)
+  }
+
+  >* {
+    margin: 0.5rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ProfileImg {
+    width: 85px;
+    height: 85px;
+    cursor: auto;
+    flex-shrink: 0;
+
+    img {
+      height: 77px;
+    }
+  }
+
+  .NameEdit {
+    width: 100%;
+    overflow: hidden;
+
+    >div {
+      display: block;
+      width: 100%;
+      height: 1.4rem;
+      @include fontH4;
+      line-height: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      justify-content: flex-start;
+      transition: all ease-in-out 200ms;
+    }
+  }
+
+  .EditLink {
+    margin-top: 0.2rem;
+    @include fontCaption;
+
+    img {
+      height: 0.8rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  .SignOut {
+    &:hover {
+      color: $color-text;
+    }
   }
 }

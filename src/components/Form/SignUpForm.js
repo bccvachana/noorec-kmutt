@@ -3,7 +3,7 @@ import classes from "./Form.module.scss";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
-import profileJpg from "../../assets/profile.jpg";
+import profileSvg from "../../assets/profile.svg";
 import edit from "../../assets/edit.svg";
 
 import FormInput from "./FormInput/FormInput";
@@ -76,13 +76,13 @@ const SignUpForm = (props) => {
       <div className={classes.Title}>สมัครสมาชิก</div>
 
       <div className={classes.Profile}>
-        <img src={profileImg ? profileImg : profileJpg} alt="profile" />
+        <img src={profileImg ? profileImg : profileSvg} alt="profile" />
         <div
           className={classes.Edit}
           onClick={() =>
             openModal(
               <ProfileImgEditor
-                img={profileImg ? profileImg : profileJpg}
+                img={profileImg ? profileImg : profileSvg}
                 setImg={setProfileImg}
               />,
               false

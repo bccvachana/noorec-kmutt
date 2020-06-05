@@ -1,0 +1,64 @@
+@import "../../../var";
+
+.Hamburger {
+  position: relative;
+  width: 1.5rem;
+  height: 1.3rem;
+  cursor: pointer;
+  @include flex;
+
+  @include tablet-desktop {
+    display: none;
+  }
+
+  * {
+    transition: all ease-in-out 250ms;
+  }
+}
+
+.Bar {
+  width: 100%;
+  height: 0.25rem;
+  border-radius: 2rem;
+  background-color: $color-text;
+
+  &:nth-child(2),
+  &:nth-child(3) {
+    position: absolute;
+    left: 0;
+    transform-origin: center center;
+    z-index: 100;
+  }
+
+  &:nth-child(2) {
+    top: 0;
+  }
+
+  &:nth-child(3) {
+    bottom: 0;
+  }
+}
+
+
+.ButtonActive {
+
+  .Bar {
+    width: 1.8rem;
+    background-color: $color-accent1;
+    left: -0.15rem;
+
+    &:nth-child(2) {
+      transform: rotate(45deg);
+      top: 0.55rem;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+      bottom: 0.5rem;
+    }
+
+    &:nth-child(1) {
+      opacity: 0;
+    }
+  }
+}

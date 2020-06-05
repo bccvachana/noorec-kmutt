@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Footer.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import logo from "../../../assets/web/Footer/logo.svg";
 import heart from "../../../assets/web/Footer/heart.svg";
 
 const Footer = (props) => {
-  return (
+  const [isFooter, setIsFooter] = useState(true);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname === "/result") setIsFooter(false);
+    else setIsFooter(true);
+  }, [pathname]);
+
+  return isFooter ? (
     <div className={classes.Footer}>
       <div className={classes.Container}>
         <NavLink exact to={"/"}>
@@ -31,7 +38,7 @@ const Footer = (props) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Footer;

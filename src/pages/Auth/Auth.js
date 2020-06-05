@@ -84,7 +84,7 @@ const Auth = (props) => {
           break;
         }
         default: {
-          //delayPush("/");
+          delayPush("/");
           break;
         }
       }

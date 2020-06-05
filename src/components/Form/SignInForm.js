@@ -75,14 +75,6 @@ const SignInForm = (props) => {
           สมัครสมาชิก
         </Link>
       </div>
-      <div
-        onClick={() => {
-          push("/auth?mode=signOut");
-        }}
-        style={{ marginTop: "5rem" }}
-      >
-        logOut
-      </div>
     </form>
   );
 };

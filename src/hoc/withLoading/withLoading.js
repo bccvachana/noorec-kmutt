@@ -4,7 +4,7 @@ import LoadingDot from "../../components/UI/LoadingDot/LoadingDot";
 
 const withLoading = (WrappedComponent, withLoadingOption) => {
   const { time, auto } = withLoadingOption ? withLoadingOption : {};
-  const loadingTime = time ? time : 350;
+  const loadingTime = time ? time : 400;
   const loadingAuto = auto !== undefined ? auto : true;
 
   return (props) => {
@@ -28,7 +28,7 @@ const withLoading = (WrappedComponent, withLoadingOption) => {
         >
           <LoadingDot width="8rem" color="#fa5458" />
         </div>
-        <WrappedComponent {...props} />
+        <WrappedComponent {...props} isLoading={isLoading} />
       </React.Fragment>
     );
   };

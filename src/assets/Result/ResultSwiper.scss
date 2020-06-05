@@ -1,0 +1,20 @@
+@import "../../var";
+
+#ResultSwiper {
+
+  .swiper-container,
+  .swiper-wrapper,
+  .swiper-slide {
+    height: 100%;
+  }
+
+  .swiper-pagination-progressbar {
+    background-color: #dedede;
+    height: 0.3rem;
+
+    .swiper-pagination-progressbar-fill {
+      background-color: $color-accent1;
+      height: 0.3rem;
+    }
+  }
+}
