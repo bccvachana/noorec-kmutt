@@ -1,0 +1,46 @@
+@import "../../var";
+
+.InfoTitle {
+  @include fontCaption($bold);
+}
+
+.InfoUnit {
+  @include fontCaption(500);
+  color: $color-detail;
+}
+
+.InfoCriteria {
+  min-width: 3.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  @include fontCaption($bold);
+  background-color: $color-accent2;
+  color: white;
+  line-height: 1;
+}
+
+
+
+
+
+
+.InfoValue {
+  font-size: 33px;
+  font-weight: 300;
+  line-height: 1.1;
+
+  @include tablet-desktop {
+    font-size: 37px;
+  }
+}
+
+
+
+
+.InfoTime {
+  margin: 10px 0 15px;
+
+  @include tablet-desktop {
+    margin: 15px 0 25px;
+  }
+}

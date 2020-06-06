@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import classes from "./Hamburger.module.scss";
 
 const Hamburger = (props) => {

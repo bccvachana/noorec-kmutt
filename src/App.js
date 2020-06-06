@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 
 import { checkUser } from "./utils/firebase/auth";
 import { readUserData } from "./utils/firebase//firestore";
+import { getRecentRecordAll } from "./utils/result/filter";
 
 import { ModalContainer } from "./components/Web/ModalContainer/ModalContainer";
 import NavBar from "./components/Web/NavBar/NavBar";
 import Routes from "./components/Web/Routes/Routes";
 import Footer from "./components/Web/Footer/Footer";
 
-import profileSvg from "./assets/profile.svg";
+import { mockData1, mockData2, mockData3 } from "./mockData";
 
 export const Context = React.createContext();
 
@@ -24,6 +25,7 @@ const App = (props) => {
   );
   const [userData, setUserData] = useState(null);
   const [profileImg, setProfileImg] = useState(null);
+  const [recordData, setRecordData] = useState(null);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -40,22 +42,8 @@ const App = (props) => {
 
   useEffect(() => {
     if (user) {
-      readUserData(user.uid, setUserData);
-      // setUserData({
-      //   record: [],
-      //   updatedAt: {
-      //     seconds: 1591253922,
-      //     nanoseconds: 290000000,
-      //   },
-      //   profileImgUrl:
-      //     "https://firebasestorage.googleapis.com/v0/b/noorec-kmutt.appspot.com/o/profileImg%2F1b8b7c32-3c48-495a-9e2b-b711c3826ffa?alt=media&token=b64fefe7-0275-42d3-87f7-68797ee4ebc7",
-      //   lastName: "Bbb",
-      //   firstName: "Bbb",
-      //   createdAt: {
-      //     seconds: 1591253922,
-      //     nanoseconds: 290000000,
-      //   },
-      // });
+      //readUserData(user.uid, setUserData);
+      setUserData(mockData1);
     } else {
       setUserData(null);
     }
@@ -63,10 +51,12 @@ const App = (props) => {
 
   useEffect(() => {
     if (userData) {
-      const { profileImgUrl } = userData;
-      setProfileImg(profileImgUrl ? profileImgUrl : profileSvg);
+      const { profileImgUrl, record } = userData;
+      setProfileImg(profileImgUrl ? profileImgUrl : null);
+      setRecordData(getRecentRecordAll(record));
     } else {
       setProfileImg(null);
+      setRecordData(null);
     }
   }, [userData]);
 
@@ -81,6 +71,7 @@ const App = (props) => {
           isVerified: isVerified,
           userData: userData,
           profileImg: profileImg,
+          recordData: recordData,
         }}
       >
         <NavBar />

@@ -13,7 +13,11 @@ import AuthSuccess from "../../../pages/Auth/AuthSuccess";
 import AuthError from "../../../pages/Auth/AuthError";
 import ForgotPassword from "../../../components/Form/ForgotPassword";
 import ResetPassword from "../../../components/Form/ResetPassword";
+
+import Main from "../../../pages/Main/Main";
+import Record from "../../../pages/Record/Record";
 import Result from "../../../pages/Result/Result";
+import Article from "../../../pages/Article/Article";
 
 import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
@@ -31,8 +35,10 @@ const notSignInRoutes = [
 const notVerifiedRoutes = [{ path: "/", component: AuthVerifyEmail }];
 
 const verifiedRoutes = [
-  { path: "/", component: Landing },
-  { path: "/signIn", component: SignInForm },
+  { path: "/", component: Main },
+  { path: "/record", component: Record },
+  { path: "/result", component: Result, withLoadingProps: { auto: false } },
+  { path: "/article", component: Article },
 ];
 
 const authRoute = [

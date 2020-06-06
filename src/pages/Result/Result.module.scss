@@ -4,42 +4,26 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 3rem 0;
   width: 100%;
+  min-width: 320px;
   height: 100%;
+  padding-top: 3rem;
 
   @include tablet-desktop {
     padding-top: 3.5rem;
   }
 }
 
-.FooterMenu {
-  position: fixed;
-  top: 3rem;
-  left: 0;
+.ResultSlide {
+  padding: 1.3rem 1rem 1rem;
+  @include flex;
+}
+
+.ResultSlideContainer {
+  @include flex($wrap: nowrap);
   width: 100%;
-  min-width: 320px;
-  height: 2rem;
-  padding: 0 1rem;
-  background-color: white;
-  @include flex(row);
-
-  >div {
-    @include flex;
-    font-size: 0.9rem;
-    font-weight: $bold;
-    color: rgba($color: $color-text, $alpha: 0.5);
-    border-bottom: 0.2rem solid transparent;
-    width: 25%;
-
-    &:nth-child(2) {
-      color: $color-text;
-      border-bottom: 0.2rem solid $color-accent1;
-    }
-
-    >img {
-      height: 1.3rem;
-      margin-bottom: 0.4rem;
-    }
-  }
+  height: 100%;
+  max-width: 640px;
+  max-height: 540px;
+  position: relative;
 }

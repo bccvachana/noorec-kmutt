@@ -1,11 +1,5 @@
 @import "../../../var";
 
-@mixin tabletDesktopNone {
-  @include tablet-desktop {
-    display: none;
-  }
-}
-
 .NavBar {
   position: fixed;
   top: 0;
@@ -69,7 +63,6 @@
   color: rgba($color: $color-text, $alpha: 0.5);
   transition: all 100ms ease-out;
   @include fontBody($bold);
-  line-height: 1.5;
 }
 
 .SignInLink {
@@ -126,28 +119,24 @@
   }
 }
 
-.DropDownMobile {
-  position: fixed;
-  top: 3rem;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem 1rem;
+.DropDown {
   background-color: white;
-  z-index: 99;
-  @include flex($align: flex-start);
   box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
-  transform: translateY(-100%);
+  @include flex;
   visibility: hidden;
   transition: all ease-in-out 250ms;
-  @include tabletDesktopNone;
+
+  &.Active {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
 
   * {
     @include flex(row);
-    text-align: left;
   }
 
   >* {
-    margin: 0.6rem 0;
 
     &:first-child {
       margin-top: 0;
@@ -158,23 +147,65 @@
     }
   }
 
+  .DropDownImg {
+    position: relative;
+    background-color: $color-accent2;
+    border-radius: 10rem;
+    flex-shrink: 0;
 
-  &.Active {
-    transform: translateY(0);
-    visibility: visible;
+    >div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      border-radius: 10rem;
+    }
   }
 
-  .ProfileContainer {
+  .DropDownName {
+    overflow: hidden;
+
+    >div {
+      display: block;
+      width: 100%;
+      line-height: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      justify-content: flex-start;
+      transition: all ease-in-out 200ms;
+    }
+  }
+}
+
+.DropDownMobile {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  z-index: 99;
+  transform: translateY(-100%);
+  align-items: flex-start;
+
+  * {
+    text-align: left;
+  }
+
+  >* {
+    margin: 0.6rem 0;
+  }
+
+  .DropDownImgContainer {
     width: 100%;
-    justify-content: flex-start;
     flex-wrap: nowrap;
   }
 
-  .ProfileImg {
+  .DropDownImg {
     width: 70px;
     height: 70px;
-    cursor: auto;
-    flex-shrink: 0;
 
     img {
       height: 62px;
@@ -185,28 +216,19 @@
     @include fontH4
   }
 
-  .NameEdit {
+  .DropDownName {
     flex-grow: 1;
     margin-left: 1rem;
     @include flex($align: flex-start);
-    overflow: hidden;
 
     >div {
-      display: block;
-      width: 100%;
       height: 1.8rem;
       @include fontH3;
-      line-height: 1;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      justify-content: flex-start;
-      transition: all ease-in-out 200ms;
     }
   }
 
   .EditLink {
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
 
     img {
       height: 0.8rem;
@@ -237,62 +259,29 @@
   border-radius: $radius;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  background-color: white;
-  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
-  @include flex;
   transform: translateY(calc(-100% - 0.65rem));
   opacity: 0;
-  visibility: hidden;
-  transition: all ease-in-out 250ms;
-
-  &.Active {
-    transform: translateY(0);
-    visibility: visible;
-    opacity: 1;
-  }
-
-  * {
-    @include flex(row)
-  }
 
   >* {
     margin: 0.5rem 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 
-  .ProfileImg {
+  .DropDownImg {
     width: 85px;
     height: 85px;
-    cursor: auto;
-    flex-shrink: 0;
 
     img {
       height: 77px;
     }
   }
 
-  .NameEdit {
+  .DropDownName {
     width: 100%;
     overflow: hidden;
 
     >div {
-      display: block;
-      width: 100%;
       height: 1.4rem;
       @include fontH4;
-      line-height: 1;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      justify-content: flex-start;
-      transition: all ease-in-out 200ms;
     }
   }
 

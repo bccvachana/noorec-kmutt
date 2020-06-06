@@ -1,27 +1,40 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import classes from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
+
+import Hamburger from "../Hamburger/Hamburger";
+import withDeviceDetect from "../../../hoc/withDeviceDetect";
+
 import logo from "../../../assets/logo.svg";
 import profileSvg from "../../../assets/profile.svg";
 import edit from "../../../assets/web/NavBar/edit.svg";
-import Hamburger from "../Hamburger/Hamburger";
 
 import { Context } from "../../../App";
 
 const signInNav = [
   { path: "/", title: "หน้าหลัก" },
-  { path: "/signIn", title: "ตรวจสุขภาพ" },
-  { path: "/signIn1", title: "บันทึกข้อมูลสุขภาพ" },
-  { path: "/signIn2", title: "บทความ" },
+  { path: "/record", title: "ตรวจสุขภาพ" },
+  { path: "/result", title: "บันทึกข้อมูลสุขภาพ" },
+  { path: "/article", title: "บทความ" },
 ];
 
 const NavBar = (props) => {
-  const { isSignIn, isSignUp, profileImg, userData } = useContext(Context);
+  const { device } = props;
+  const { isSignIn, isSignUp, profileImg } = useContext(Context);
   const [isDropDown, setIsDropDown] = useState(false);
+  const dropDownMobileRef = useRef();
+  const dropDownDesktopRef = useRef();
 
   window.onclick = (event) => {
-    if (!event.target.matches(".NavDropdown")) {
-      setIsDropDown(false);
+    if (dropDownMobileRef.current || dropDownDesktopRef.current) {
+      const ref = device === "Mobile" ? dropDownMobileRef : dropDownDesktopRef;
+      if (
+        (!event.target.matches(".NavDropdown") &&
+          !ref.current.contains(event.target)) ||
+        event.target.tagName === "A"
+      ) {
+        setIsDropDown(false);
+      }
     }
   };
 
@@ -62,61 +75,38 @@ const NavBar = (props) => {
               </div>
             ) : null}
           </div>
-          {isSignIn && !isSignUp ? (
+          {isSignIn && !isSignUp && device === "Mobile" ? (
             <Hamburger isDropDown={isDropDown} setIsDropDown={setIsDropDown} />
           ) : null}
         </div>
       </div>
 
-      {isSignIn && !isSignUp ? (
+      {isSignIn && !isSignUp && device === "Mobile" ? (
+        <DropDownMobile
+          isDropDown={isDropDown}
+          dropDownMobileRef={dropDownMobileRef}
+        />
+      ) : null}
+
+      {isSignIn && !isSignUp && device !== "Mobile" ? (
         <div
           className={`${classes.NavBar} ${classes.NavRef} ${
             isSignIn && !isSignUp ? classes.SignIn : ""
           }`}
         >
           <div className={classes.Container}>
-            <DropDownDesktop isDropDown={isDropDown} />
+            <DropDownDesktop
+              isDropDown={isDropDown}
+              dropDownDesktopRef={dropDownDesktopRef}
+            />
           </div>
         </div>
       ) : null}
-
-      <div
-        className={`NavDropdown ${classes.DropDownMobile} ${
-          isDropDown ? classes.Active : ""
-        }`}
-      >
-        <div className={classes.ProfileContainer}>
-          <div className={classes.ProfileImg}>
-            <img src={profileSvg} alt="profileSvg" />
-            {profileImg ? (
-              <div>
-                <img src={profileImg} alt="profileSvg" />
-              </div>
-            ) : null}
-          </div>
-          <div className={classes.NameEdit}>
-            <div
-              style={{ backgroundColor: userData ? "transparent" : "#F1F2F3" }}
-            >
-              {userData ? `${userData.firstName} ${userData.lastName}` : ""}
-            </div>
-            <NavLink to="/" className={`Link ${classes.EditLink}`}>
-              <img src={edit} alt="edit" />
-              แก้ไขข้อมูล
-            </NavLink>
-          </div>
-        </div>
-        <div className={classes.Line} />
-        <Nav />
-        <NavLink to="/auth?mode=signOut" className={classes.Link}>
-          ออกจากระบบ
-        </NavLink>
-      </div>
     </React.Fragment>
   );
 };
 
-export default NavBar;
+export default withDeviceDetect(NavBar);
 
 const Nav = (props) => {
   const { isSignIn, isSignUp } = useContext(Context);
@@ -155,17 +145,57 @@ const Nav = (props) => {
   );
 };
 
-const DropDownDesktop = (props) => {
-  const { isDropDown } = props;
+const DropDownMobile = (props) => {
+  const { isDropDown, dropDownMobileRef } = props;
   const { profileImg, userData } = useContext(Context);
-  console.log(isDropDown);
   return (
     <div
-      className={`NavDropdown ${classes.DropDownDesktop} ${
+      className={`NavDropdown ${classes.DropDown} ${classes.DropDownMobile} ${
         isDropDown ? classes.Active : ""
       }`}
+      ref={dropDownMobileRef}
     >
-      <div className={classes.ProfileImg}>
+      <div className={classes.DropDownImgContainer}>
+        <div className={classes.DropDownImg}>
+          <img src={profileSvg} alt="profileSvg" />
+          {profileImg ? (
+            <div>
+              <img src={profileImg} alt="profileSvg" />
+            </div>
+          ) : null}
+        </div>
+        <div className={classes.DropDownName}>
+          <div
+            style={{ backgroundColor: userData ? "transparent" : "#F1F2F3" }}
+          >
+            {userData ? `${userData.firstName} ${userData.lastName}` : ""}
+          </div>
+          <NavLink to="/" className={`Link ${classes.EditLink}`}>
+            <img src={edit} alt="edit" />
+            แก้ไขข้อมูล
+          </NavLink>
+        </div>
+      </div>
+      <div className={classes.Line} />
+      <Nav />
+      <NavLink to="/auth?mode=signOut" className={classes.Link}>
+        ออกจากระบบ
+      </NavLink>
+    </div>
+  );
+};
+
+const DropDownDesktop = (props) => {
+  const { isDropDown, dropDownDesktopRef } = props;
+  const { profileImg, userData } = useContext(Context);
+  return (
+    <div
+      className={`NavDropdown ${classes.DropDown} ${classes.DropDownDesktop} ${
+        isDropDown ? classes.Active : ""
+      }`}
+      ref={dropDownDesktopRef}
+    >
+      <div className={classes.DropDownImg}>
         <img src={profileSvg} alt="profileSvg" />
         {profileImg ? (
           <div>
@@ -173,7 +203,7 @@ const DropDownDesktop = (props) => {
           </div>
         ) : null}
       </div>
-      <div className={classes.NameEdit}>
+      <div className={classes.DropDownName}>
         <div style={{ backgroundColor: userData ? "transparent" : "#F1F2F3" }}>
           {userData ? `${userData.firstName} ${userData.lastName}` : ""}
         </div>

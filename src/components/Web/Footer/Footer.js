@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import classes from "./Footer.module.scss";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import logo from "../../../assets/web/Footer/logo.svg";
 import heart from "../../../assets/web/Footer/heart.svg";
 
-const Footer = (props) => {
-  const [isFooter, setIsFooter] = useState(true);
-  const { pathname } = useLocation();
-  useEffect(() => {
-    if (pathname === "/result") setIsFooter(false);
-    else setIsFooter(true);
-  }, [pathname]);
+import { Context } from "../../../App";
 
-  return isFooter ? (
+const Footer = (props) => {
+  const { isSignIn } = useContext(Context);
+
+  return !isSignIn ? (
     <div className={classes.Footer}>
       <div className={classes.Container}>
         <NavLink exact to={"/"}>

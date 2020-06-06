@@ -1,67 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import classes from "./Result.module.scss";
-import Swiper from "react-id-swiper";
-import "../../assets/Result/swiper.scss";
-import "../../assets/Result/ResultSwiper.scss";
-import icon from "../../assets/image.svg";
+import ResultSwiper from "./ResultSwiper";
+import "../../assets/Result/info.scss";
+
+import { Context } from "../../App";
+
+import Overview from "./Overview/Overview";
+import ResultSlide from "./ResultSlide/ResultSlide";
+
+export const ResultContext = React.createContext();
 
 const Result = (props) => {
-  const { isLoading } = props;
+  const { setIsLoading } = props;
   const [swiper, setSwiper] = useState(null);
   const [index, setIndex] = useState(0);
   const [isFromTop, setIsFromTop] = useState(true);
 
-  const swiperParams = {
-    direction: "vertical",
-    speed: 450,
-    followFinger: false,
-    mousewheel: true,
-    simulateTouch: false,
-    pagination: {
-      el: ".swiper-pagination",
-      type: "progressbar",
-      progressbarOpposite: true,
-    },
-    keyboard: {
-      enabled: true,
-      onlyInViewport: false,
-    },
-    getSwiper: (swiper) => {
-      setSwiper(swiper);
-    },
-    on: {
-      slideChange: () => {
-        if (swiper) {
-          const index = swiper.activeIndex;
-          setIndex((prevIndex) => {
-            setIsFromTop(index > prevIndex ? true : false);
-            return index;
-          });
-          window.sessionStorage.setItem("noorecResultIndex", index);
-        }
-      },
-    },
-  };
+  const { recordData } = useContext(Context);
 
-  return (
-    <React.Fragment>
-      <div id="ResultSwiper" className={classes.Container}>
-        {!isLoading ? (
-          <Swiper {...swiperParams}>
-            <div>uuuuu</div>
-            <div>uuuuu</div>
-            <div>uuuuu</div>
-          </Swiper>
-        ) : null}
-      </div>
-      <div className={classes.FooterMenu}>
-        <div>หน้าหลัก</div>
-        <div>ตรวจสุขภาพ</div>
-        <div>บันทึกสุขภาพ</div>
-        <div>บทความ</div>
-      </div>
-    </React.Fragment>
-  );
+  useEffect(() => {
+    let timer;
+    if (recordData) {
+      timer = setTimeout(() => {
+        // document.getElementById("OverviewImg").onload = () => {
+        //   setIsLoading(false);
+        // };
+        setIsLoading(false);
+      }, 200);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [recordData]);
+
+  return recordData ? (
+    <ResultContext.Provider
+      value={{
+        index: index,
+        isFromTop: isFromTop,
+      }}
+    >
+      <ResultSwiper
+        swiper={swiper}
+        setSwiper={setSwiper}
+        setIndex={setIndex}
+        setIsFromTop={setIsFromTop}
+      >
+        <Overview />
+        <ResultSlide type="weightHeight" />
+      </ResultSwiper>
+    </ResultContext.Provider>
+  ) : null;
 };
 
 export default Result;

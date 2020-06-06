@@ -1,0 +1,114 @@
+@import "../../../var";
+
+@mixin maxWidth {
+  max-width: 350px;
+
+  @include tablet-desktop {
+    max-width: 480px;
+  }
+}
+
+.Profile {
+  width: 100%;
+  @include maxWidth;
+  @include flex(row, flex-start);
+  margin-bottom: 0.8rem;
+
+  * {
+    @include flex
+  }
+}
+
+.Img {
+  position: relative;
+  width: 4.3rem;
+  height: 4.3rem;
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+  background-color: $color-accent2;
+  border-radius: 10rem;
+  cursor: pointer;
+
+  >div {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    height: 3.8rem;
+    border-radius: 2.5rem;
+  }
+}
+
+.Text {
+  align-items: flex-start;
+  flex-grow: 1;
+  line-height: 1;
+  @include fontH3;
+
+  .Detail {
+    font-size: 0.75em;
+    font-weight: $regular;
+    margin-top: 0.3rem;
+  }
+}
+
+.Row {
+  width: 100%;
+  @include maxWidth;
+  margin-bottom: 0.8rem;
+  @include flex(row);
+
+  &:nth-child(5) {
+    margin-bottom: 0;
+  }
+
+  .Space {
+    width: 0.8rem;
+  }
+}
+
+.Info {
+  width: calc(50% - 0.5rem);
+  padding: 0.7rem 0.3rem;
+  background-color: white;
+  border-radius: $radius;
+  @include shadow;
+  @include flex;
+
+  * {
+    line-height: 1;
+  }
+
+  &.WeightHeight {
+    padding-bottom: 0.3rem;
+  }
+
+  &.BloodPressure {
+    width: 100%;
+  }
+
+  .InfoTitle {
+    @include fontBody($bold);
+    margin-bottom: 0.5rem;
+  }
+
+  .ValueContainer {
+    @include flex;
+
+    .Value {
+      font-size: 2.4rem;
+      font-weight: 300;
+      margin-bottom: 0.1rem;
+
+      >.BloodPressureLine {
+        position: relative;
+        top: -0.13rem;
+        @include fontH2(200);
+        color: $color-detail;
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../../var";
+
+.TitleBar {
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 0.7rem;
+  @include flex(row, $justify: space-between);
+}
+
+.Title {
+  height: 100%;
+  @include fontH4;
+
+  img {
+    position: relative;
+    top: 0.05rem;
+    height: 1rem;
+    opacity: 0.2;
+    margin-left: 0.6rem;
+    cursor: pointer;
+  }
+}
+
+.Container {
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border-radius: $radius;
+  flex-grow: 1;
+  @include flex;
+  @include shadow;
+}
+
+.ResultCriteria {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  @include flex(column);
+  background-color: red;
+}
+
+.ResultChart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 200ms ease-in-out;
+  @include flex;
+
+  // >div {
+  //   background-color: $color-primary;
+  //   width: 100%;
+  //   height: 100%;
+  //   @include flex(column);
+  // }
+}
+
+.Chart {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #fafafa;
+  border-radius: $radius;
+  flex-grow: 1;
+  @include flex;
+}

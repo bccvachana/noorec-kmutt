@@ -1,0 +1,63 @@
+@import "../../../var";
+
+.SwitchContainer {
+  height: 28px;
+  display: grid;
+  position: relative;
+  border: 4px solid white;
+  border-radius: 2rem;
+  background-color: white;
+  @include shadow;
+
+  @include tablet-desktop {
+    height: 32px;
+  }
+}
+
+.Switch {
+  @include fontCaption($bold);
+  @include flex;
+  cursor: pointer;
+}
+
+.SwitchTypeActive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 2rem;
+  transition: all 200ms ease-in-out;
+}
+
+.IconContainer {
+  position: relative;
+  height: 100%;
+  @include flex;
+
+  img {
+    transition: all 200ms ease-in-out;
+  }
+
+  img:nth-child(2) {
+    position: absolute;
+  }
+}
+
+.ChartSwitch {
+
+  .IconContainer img {
+    height: 1em;
+  }
+}
+
+.ResultSwitch {
+  width: 75px;
+
+  @include tablet-desktop {
+    width: 100px;
+  }
+
+  .IconContainer img {
+    height: 1.1em;
+  }
+}
