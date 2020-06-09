@@ -4,8 +4,17 @@
   width: 100%;
   flex-grow: 1;
   @include flex;
+  padding-top: 2.5rem;
 
   @include desktop {
     max-width: 1000px;
+  }
+
+  @include tablet-desktop {
+    padding-top: 3rem;
+  }
+
+  &.PageSignIn {
+    padding: 0;
   }
 }

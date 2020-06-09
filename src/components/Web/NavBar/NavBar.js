@@ -20,10 +20,12 @@ const signInNav = [
 
 const NavBar = (props) => {
   const { device } = props;
-  const { isSignIn, isSignUp, profileImg } = useContext(Context);
+  const { userState, isSignUp, profileImg } = useContext(Context);
   const [isDropDown, setIsDropDown] = useState(false);
   const dropDownMobileRef = useRef();
   const dropDownDesktopRef = useRef();
+
+  const isSignInNav = userState !== "notSignIn" && !isSignUp ? true : false;
 
   window.onclick = (event) => {
     if (dropDownMobileRef.current || dropDownDesktopRef.current) {
@@ -40,18 +42,14 @@ const NavBar = (props) => {
 
   return (
     <React.Fragment>
-      <div
-        className={`${classes.NavBar} ${
-          isSignIn && !isSignUp ? classes.SignIn : ""
-        }`}
-      >
+      <div className={`${classes.NavBar} ${isSignInNav ? classes.SignIn : ""}`}>
         <div className={classes.Container}>
           <NavLink className={classes.Logo} exact to={"/"}>
             <img src={logo} alt="logo" />
           </NavLink>
           <div className={classes.LinkContainer}>
             <Nav />
-            {isSignIn && !isSignUp ? (
+            {isSignInNav ? (
               <div
                 className={`NavDropdown ${classes.ProfileImg}`}
                 onClick={() => {
@@ -75,23 +73,23 @@ const NavBar = (props) => {
               </div>
             ) : null}
           </div>
-          {isSignIn && !isSignUp && device === "Mobile" ? (
+          {isSignInNav && device === "Mobile" ? (
             <Hamburger isDropDown={isDropDown} setIsDropDown={setIsDropDown} />
           ) : null}
         </div>
       </div>
 
-      {isSignIn && !isSignUp && device === "Mobile" ? (
+      {isSignInNav && device === "Mobile" ? (
         <DropDownMobile
           isDropDown={isDropDown}
           dropDownMobileRef={dropDownMobileRef}
         />
       ) : null}
 
-      {isSignIn && !isSignUp && device !== "Mobile" ? (
+      {isSignInNav && device !== "Mobile" ? (
         <div
           className={`${classes.NavBar} ${classes.NavRef} ${
-            isSignIn && !isSignUp ? classes.SignIn : ""
+            isSignInNav ? classes.SignIn : ""
           }`}
         >
           <div className={classes.Container}>
@@ -109,9 +107,9 @@ const NavBar = (props) => {
 export default withDeviceDetect(NavBar);
 
 const Nav = (props) => {
-  const { isSignIn, isSignUp } = useContext(Context);
+  const { userState, isSignUp } = useContext(Context);
 
-  return !(isSignIn && !isSignUp) ? (
+  return !(userState !== "notSignIn" && !isSignUp) ? (
     <React.Fragment>
       <NavLink
         exact

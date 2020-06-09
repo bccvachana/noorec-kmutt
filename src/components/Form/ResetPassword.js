@@ -28,6 +28,7 @@ const ResetPassword = (props) => {
           className={`${classes.Form} ${classes.SignIn}`}
           onSubmit={handleSubmit(onSubmit)}
           autoComplete="off"
+          noValidate
         >
           <div className={classes.Title}>รีเซ็ตรหัสผ่าน</div>
           กรอกรหัสผ่านใหม่ของคุณ

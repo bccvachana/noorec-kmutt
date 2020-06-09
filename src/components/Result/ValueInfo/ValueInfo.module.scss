@@ -1,0 +1,69 @@
+@import "../../../var";
+
+.ValueInfo {
+  @include flex;
+}
+
+.Container {
+  >div {
+    display: inline-block;
+  }
+}
+
+.ValueChart {
+  text-align: right;
+  width: 3.7rem;
+
+  &.weight {
+    width: 5.6rem;
+  }
+
+  &.height {
+    width: 4.2rem;
+  }
+
+  &.temperature {
+    width: 4.7rem
+  }
+}
+
+.Space {
+  width: 0.5rem;
+}
+
+.DetailContainerChart {
+
+  * {
+    @include fontCaption(500);
+    text-align: left;
+    line-height: 1rem;
+  }
+
+  width: 2.1rem;
+
+  &.weight {
+    width: 2.5rem;
+  }
+
+  &.temperature {
+    width: 2.3rem
+  }
+
+  &.bloodPressureHigh,
+  &.bloodPressureLow {
+    width: 2.6rem
+  }
+
+  .Detail {
+    color: $color-accent1;
+
+    img {
+      height: 0.5rem;
+    }
+  }
+}
+
+.Unit {
+  @include fontCaption(500);
+  color: $color-detail;
+}

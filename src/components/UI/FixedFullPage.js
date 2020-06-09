@@ -23,18 +23,18 @@ const FixedFullPage = (props) => {
     };
   }, [isShow]);
 
-  const { pathname } = useLocation();
-  useEffect(() => {
-    let scrollTimer;
-    if (device === "Mobile") {
-      scrollTimer = setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 250);
-    }
-    return () => {
-      clearTimeout(scrollTimer);
-    };
-  }, [pathname]);
+  // const { pathname } = useLocation();
+  // useEffect(() => {
+  //   let scrollTimer;
+  //   if (device === "Mobile") {
+  //     scrollTimer = setTimeout(() => {
+  //       window.scrollTo(0, 0);
+  //     }, 250);
+  //   }
+  //   return () => {
+  //     clearTimeout(scrollTimer);
+  //   };
+  // }, [pathname]);
 
   window.addEventListener("scroll", () => {
     if (document.body.style.position !== "fixed") {

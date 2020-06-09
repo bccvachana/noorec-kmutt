@@ -1,0 +1,32 @@
+@import "../../../../var";
+
+.Row {
+  width: 100%;
+  @include flex(row);
+
+  .RowSpace {
+    flex-grow: 1;
+    max-width: 1.2rem;
+  }
+
+  .RowSpaceCriteria {
+    width: 0.5rem;
+  }
+}
+
+.Time {
+  margin: 0.5rem 0 1rem;
+}
+
+.CriteriaRow {
+  margin-top: 0.5rem;
+
+  >div:nth-child(2) {
+    width: 6.2rem;
+    margin: 0 1rem;
+  }
+}
+
+.Criteria {
+  min-width: 3.5rem;
+}

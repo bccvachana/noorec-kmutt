@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="483" height="161" viewBox="0 0 483 161">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 13px;
+      }
+    </style>
+  </defs>
+  <title>Asset 72</title>
+  <path class="a" d="M6.5 85.5 182.5 85.5 205.5 6.5 245.5 154.5 289.5 47.5 304.5 85.5 476.5 85.5"/>
+</svg>

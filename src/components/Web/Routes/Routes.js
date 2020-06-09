@@ -23,21 +23,24 @@ import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
 import { Context } from "../../../App";
 
+const defaultRoute = [
+  { path: "/", component: Landing, withLoadingProps: { auto: false } },
+];
+
 const notSignInRoutes = [
   { path: "/", component: Landing },
   { path: "/signIn", component: SignInForm },
   { path: "/signUp", component: SignUpForm },
   { path: "/forgotPassword", component: ForgotPassword },
   { path: "/resetPassword", component: ResetPassword },
-  { path: "/Result", component: Result },
 ];
 
 const notVerifiedRoutes = [{ path: "/", component: AuthVerifyEmail }];
 
 const verifiedRoutes = [
-  { path: "/", component: Main },
-  { path: "/record", component: Record },
-  { path: "/result", component: Result, withLoadingProps: { auto: false } },
+  { path: "/", component: Main, withLoadingProps: { time: 700 } },
+  { path: "/record", component: Record, withLoadingProps: { time: 700 } },
+  { path: "/result", component: Result, withLoadingProps: { time: 1500 } },
   { path: "/article", component: Article },
 ];
 
@@ -57,15 +60,29 @@ const authRoute = [
 ];
 
 const Routes = (props) => {
-  const { isSignIn, isVerified } = useContext(Context);
+  const { userState } = useContext(Context);
   const [routes, setRoutes] = useState(null);
 
   useEffect(() => {
-    let checkRoutes = isSignIn
-      ? isVerified
-        ? verifiedRoutes
-        : notVerifiedRoutes
-      : notSignInRoutes;
+    let checkRoutes;
+    switch (userState) {
+      case "notVerified": {
+        checkRoutes = notVerifiedRoutes;
+        break;
+      }
+      case "verified": {
+        checkRoutes = verifiedRoutes;
+        break;
+      }
+      case "notSignIn": {
+        checkRoutes = notSignInRoutes;
+        break;
+      }
+      default: {
+        checkRoutes = defaultRoute;
+        break;
+      }
+    }
     setRoutes(
       checkRoutes.map(({ path, component, withLoadingProps }) => {
         return {
@@ -77,10 +94,14 @@ const Routes = (props) => {
     return () => {
       checkRoutes = false;
     };
-  }, [isSignIn, isVerified]);
+  }, [userState]);
 
   return (
-    <div className={classes.Page}>
+    <div
+      className={`${classes.Page} ${
+        userState !== "notSignIn" ? classes.PageSignIn : ""
+      }`}
+    >
       {routes ? (
         <Switch>
           {routes.map(({ path, component }) => (

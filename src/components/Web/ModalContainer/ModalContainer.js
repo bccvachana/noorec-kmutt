@@ -9,6 +9,7 @@ export const ModalContainer = (props) => {
   const [isModal, setIsModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [backdropClose, setBackdropClose] = useState(false);
+  const [modalType, setModalType] = useState(null);
 
   return (
     <React.Fragment>
@@ -19,10 +20,12 @@ export const ModalContainer = (props) => {
         }}
         modalContent={modalContent}
         backdropClose={backdropClose}
+        modalType={modalType}
       />
       <ModalContext.Provider
         value={{
-          openModal: (modalContent, backdropClose) => {
+          openModal: (modalContent, backdropClose, modalType) => {
+            setModalType(modalType);
             setModalContent(modalContent);
             setBackdropClose(backdropClose);
             setIsModal(true);

@@ -17,7 +17,7 @@ const inputStatic = {
     },
   },
   email: {
-    inputType: "text",
+    inputType: "email",
     placeholder: "อีเมล",
     ref: {
       required: "โปรดระบุอีเมล",

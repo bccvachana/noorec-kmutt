@@ -1,0 +1,42 @@
+@import "../../../var";
+
+.ChartContainer {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  @include flex;
+}
+
+.BarContainer {
+  flex-grow: 1;
+  position: relative;
+}
+
+.LineContainerOutside {
+  background-color: #fafafa;
+  position: absolute;
+  height: 100%;
+  @include flex;
+  transition: all 250ms ease-in-out;
+  opacity: 0;
+  transform: scale(1.03);
+  visibility: hidden;
+
+  &.LineChartActive {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+}
+
+.LineContainerInside {
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+}
+
+.ChartControl {
+  width: 100%;
+  @include flex(row);
+}

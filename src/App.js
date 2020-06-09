@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { checkUser } from "./utils/firebase/auth";
 import { readUserData } from "./utils/firebase//firestore";
-import { getRecentRecordAll } from "./utils/result/filter";
+import { getRecentRecord, getRecord } from "./utils/result/filter";
 
 import { ModalContainer } from "./components/Web/ModalContainer/ModalContainer";
 import NavBar from "./components/Web/NavBar/NavBar";
@@ -12,20 +12,24 @@ import Footer from "./components/Web/Footer/Footer";
 
 import { mockData1, mockData2, mockData3 } from "./mockData";
 
+import { defaults } from "react-chartjs-2";
+import "chartjs-plugin-datalabels";
+
+defaults.global.defaultFontFamily = "Prompt";
+defaults.global.defaultFontColor = "white";
+
 export const Context = React.createContext();
 
 const App = (props) => {
   const [user, setUser] = useState(null);
   const [isSignUp, setIsSignUp] = useState(false);
-  const [isSignIn, setIsSignIn] = useState(
-    window.sessionStorage.getItem("norecIsSignIn") === "true" ? true : false
-  );
-  const [isVerified, setIsVerified] = useState(
-    window.sessionStorage.getItem("norecIsVerified") === "true" ? true : false
+  const [userState, setUserState] = useState(
+    window.sessionStorage.getItem("norecUserState")
   );
   const [userData, setUserData] = useState(null);
   const [profileImg, setProfileImg] = useState(null);
-  const [recordData, setRecordData] = useState(null);
+  const [recentRecord, setRecentRecord] = useState(null);
+  const [record, setRecord] = useState(null);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -37,15 +41,18 @@ const App = (props) => {
   });
 
   useEffect(() => {
-    checkUser(setUser, setIsSignIn, setIsVerified);
+    checkUser(setUser, setUserState);
   }, []);
 
   useEffect(() => {
     if (user) {
-      //readUserData(user.uid, setUserData);
-      setUserData(mockData1);
+      readUserData(user.uid, setUserData);
+      //setUserData(mockData3);
     } else {
       setUserData(null);
+      setProfileImg(null);
+      setRecentRecord(null);
+      setRecord(null);
     }
   }, [user]);
 
@@ -53,10 +60,8 @@ const App = (props) => {
     if (userData) {
       const { profileImgUrl, record } = userData;
       setProfileImg(profileImgUrl ? profileImgUrl : null);
-      setRecordData(getRecentRecordAll(record));
-    } else {
-      setProfileImg(null);
-      setRecordData(null);
+      setRecentRecord(record.length !== 0 ? getRecentRecord(record) : {});
+      setRecord(record.length !== 0 ? getRecord(record) : {});
     }
   }, [userData]);
 
@@ -67,11 +72,11 @@ const App = (props) => {
           user: user,
           isSignUp: isSignUp,
           setIsSignUp: setIsSignUp,
-          isSignIn: isSignIn,
-          isVerified: isVerified,
+          userState: userState,
           userData: userData,
           profileImg: profileImg,
-          recordData: recordData,
+          recentRecord: recentRecord,
+          record: record,
         }}
       >
         <NavBar />

@@ -72,6 +72,7 @@ const SignUpForm = (props) => {
       className={`${classes.Form} ${classes.SignUp}`}
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
+      noValidate
     >
       <div className={classes.Title}>สมัครสมาชิก</div>
 
@@ -85,7 +86,8 @@ const SignUpForm = (props) => {
                 img={profileImg ? profileImg : profileSvg}
                 setImg={setProfileImg}
               />,
-              false
+              false,
+              "SignUp"
             )
           }
         >

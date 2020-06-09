@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import classes from "./Overview.module.scss";
 
 import { Context } from "../../../App";
@@ -8,6 +8,7 @@ import criteriaStatic from "../static/criteriaStatic";
 import profileSvg from "../../../assets/profile.svg";
 
 const Overview = (props) => {
+  const { setIsLoading } = props;
   const { profileImg, userData } = useContext(Context);
 
   return (
@@ -52,7 +53,7 @@ export default Overview;
 
 const OverviewInfo = (props) => {
   const { type } = props;
-  const { recordData } = useContext(Context);
+  const { recentRecord } = useContext(Context);
   const { title, unit } = infoStatic[type];
 
   return (
@@ -65,7 +66,7 @@ const OverviewInfo = (props) => {
       <div className={classes.ValueContainer}>
         {type !== "bloodPressure" ? (
           <div className={classes.Value}>
-            {recordData[type] ? recordData[type] : "--"}
+            {recentRecord[type] ? recentRecord[type] : "--"}
             {unit ? (
               <span className="InfoUnit">
                 &nbsp;&nbsp;
@@ -75,20 +76,20 @@ const OverviewInfo = (props) => {
           </div>
         ) : (
           <div className={classes.Value}>
-            {recordData["bloodPressureHigh"]
-              ? recordData["bloodPressureHigh"]
+            {recentRecord["bloodPressureHigh"]
+              ? recentRecord["bloodPressureHigh"]
               : "--"}
             <span className={classes.BloodPressureLine}> | </span>
-            {recordData["bloodPressureLow"]
-              ? recordData["bloodPressureLow"]
+            {recentRecord["bloodPressureLow"]
+              ? recentRecord["bloodPressureLow"]
               : "--"}
             <span className="InfoUnit">&nbsp;&nbsp;{unit}</span>
           </div>
         )}
-        {recordData[`${type}Criteria`] ? (
+        {recentRecord[`${type}Criteria`] ? (
           type !== "weight" && type !== "height" ? (
             <div className="InfoCriteria">
-              {criteriaStatic[type][recordData[`${type}Criteria`]].title}
+              {criteriaStatic[type][recentRecord[`${type}Criteria`]].title}
             </div>
           ) : null
         ) : null}

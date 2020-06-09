@@ -2,7 +2,7 @@
 
 .HeadContainer {
   width: 100%;
-  @include flex(column);
+  @include flex;
 
   @include desktop {
     @include flex(row, $align: flex-start, $wrap: nowrap);

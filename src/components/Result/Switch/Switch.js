@@ -3,12 +3,11 @@ import classes from "./Switch.module.scss";
 
 const Switch = (props) => {
   const { switches, switchIndex, setSwitchIndex, activeColor, type } = props;
-
   return (
     <div
       className={`${classes.SwitchContainer} ${
-        type === "result" ? classes.ResultSwitch : null
-      } ${type === "chart" ? classes.ChartSwitch : null}`}
+        type === "result" ? classes.ResultSwitch : ""
+      } ${type === "chart" ? classes.ChartSwitch : ""}`}
       style={{
         gridTemplateColumns: `repeat(${switches.length}, 1fr)`,
       }}
@@ -27,6 +26,7 @@ const Switch = (props) => {
           className={classes.Switch}
           style={{
             color: index === switchIndex ? "white" : "#3b4251",
+            top: switchEl.icon ? 0 : "1px",
           }}
           onClick={() => {
             setSwitchIndex(index);

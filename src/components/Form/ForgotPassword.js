@@ -20,6 +20,7 @@ const ForgotPassword = (props) => {
       className={`${classes.Form} ${classes.SignIn}`}
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
+      noValidate
     >
       <div className={classes.Title}>ลืมรหัสผ่าน</div>
       กรอกอีเมลของคุณเพื่อรับลิงค์รีเซ็ตรหัสผ่าน

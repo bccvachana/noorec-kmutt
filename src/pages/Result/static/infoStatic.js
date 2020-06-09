@@ -24,12 +24,12 @@ export default {
     unit: "mmHg",
     toFixed: 0,
   },
-  systolic: {
+  bloodPressureHigh: {
     title: "ค่าบน",
     unit: "mmHg",
     toFixed: 0,
   },
-  diastolic: {
+  bloodPressureLow: {
     title: "ค่าล่าง",
     unit: "mmHg",
     toFixed: 0,

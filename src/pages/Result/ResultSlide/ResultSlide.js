@@ -3,6 +3,7 @@ import classes from "./ResultSlide.module.scss";
 
 import resultSlideStatic from "../static/resultSlideStatic";
 import ResultChart from "./ResultChart";
+import ResultCriteria from "./ResultCriteria";
 
 import infoModalButton from "../../../assets/Result/infoModalButton.svg";
 import Switch from "../../../components/Result/Switch/Switch";
@@ -16,12 +17,12 @@ import { ModalContext } from "../../../components/Web/ModalContainer/ModalContai
 export const ResultSlideContext = React.createContext();
 
 const ResultSlide = (props) => {
-  const { type } = props;
+  const { type, pageIndex } = props;
   const { index } = useContext(ResultContext);
   const { openModal } = useContext(ModalContext);
-  const { title, Criteria, Chart, pageIndex } = resultSlideStatic[type];
+  const { title, Criteria, detail } = resultSlideStatic[type];
 
-  const [slideType, setSlideType] = useState(1);
+  const [slideType, setSlideType] = useState(0);
   const [isSlideShow, setIsSlideShow] = useState(false);
 
   useEffect(() => {
@@ -29,14 +30,20 @@ const ResultSlide = (props) => {
   }, [index]);
 
   useEffect(() => {
+    let timer;
     if (!isSlideShow) {
-      setSlideType(1);
+      timer = setTimeout(() => {
+        setSlideType(0);
+      }, 200);
     }
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isSlideShow]);
 
   return (
     <ResultSlideContext.Provider
-      value={{ type: type, isSlideShow: isSlideShow }}
+      value={{ type: type, isSlideShow: isSlideShow, slideType: slideType }}
     >
       <div className={classes.TitleBar}>
         <div className={classes.Title}>
@@ -44,7 +51,7 @@ const ResultSlide = (props) => {
           <img
             src={infoModalButton}
             alt="infoModalButton"
-            onClick={() => openModal(null, true)}
+            onClick={() => openModal(detail, true, "Result")}
           />
         </div>
         <Switch
@@ -64,13 +71,9 @@ const ResultSlide = (props) => {
           type="result"
         />
       </div>
-      <div className={`${classes.Container} ContainerRef`}>
+      <div className={classes.Container}>
         <div className={classes.ResultCriteria}>
-          {/* {React.cloneElement(Criteria, {
-            ...props,
-            pageIndex: pageIndex,
-            data: data,
-          })} */}
+          <ResultCriteria Component={Criteria} />
           <div
             className={classes.ResultChart}
             style={
@@ -82,13 +85,7 @@ const ResultSlide = (props) => {
                 : { opacity: 0, visibility: "hidden" }
             }
           >
-            <ResultChart></ResultChart>
-            {/* {React.cloneElement(Chart, {
-            ...props,
-            pageIndex: pageIndex,
-            data: data,
-            isChartScroll: isChartScroll,
-          })} */}
+            <ResultChart />
           </div>
         </div>
       </div>

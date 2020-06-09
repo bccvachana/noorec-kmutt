@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38.24" height="30" viewBox="0 0 38.24 30">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 4.12px;
+      }
+
+      .b {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>Asset 49</title>
+  <g>
+    <polyline class="a" points="4.39 25.59 12.99 11.45 26.76 18.52 33.69 4.8"/>
+    <ellipse class="b" cx="33.84" cy="4.41" rx="4.39" ry="4.41"/>
+    <ellipse class="b" cx="13.62" cy="12.06" rx="4.39" ry="4.41"/>
+    <ellipse class="b" cx="4.39" cy="25.59" rx="4.39" ry="4.41"/>
+    <ellipse class="b" cx="26.52" cy="17.06" rx="4.39" ry="4.41"/>
+  </g>
+</svg>

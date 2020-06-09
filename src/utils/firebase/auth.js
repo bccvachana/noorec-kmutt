@@ -35,21 +35,18 @@ export const signOut = () => {
   auth.signOut();
 };
 
-export const checkUser = (setUser, setIsSignIn, setIsVerified) => {
+export const checkUser = (setUser, setUserState) => {
   auth.onAuthStateChanged((user) => {
+    let userState;
     if (user) {
       setUser(user);
-      setIsSignIn(true);
-      setIsVerified(user.emailVerified);
-      window.sessionStorage.setItem("norecIsSignIn", true);
-      window.sessionStorage.setItem("norecIsVerified", user.emailVerified);
+      userState = user.emailVerified ? "verified" : "notVerified";
     } else {
       setUser(null);
-      setIsSignIn(null);
-      setIsVerified(null);
-      window.sessionStorage.removeItem("norecIsSignIn");
-      window.sessionStorage.removeItem("norecIsVerified");
+      userState = "notSignIn";
     }
+    setUserState(userState);
+    window.sessionStorage.setItem("norecUserState", userState);
   });
 };
 

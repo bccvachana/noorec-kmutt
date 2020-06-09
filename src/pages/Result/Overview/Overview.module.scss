@@ -99,8 +99,7 @@
     @include flex;
 
     .Value {
-      font-size: 2.4rem;
-      font-weight: 300;
+      @include fontH2(300);
       margin-bottom: 0.1rem;
 
       >.BloodPressureLine {

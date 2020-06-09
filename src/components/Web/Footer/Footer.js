@@ -8,9 +8,9 @@ import heart from "../../../assets/web/Footer/heart.svg";
 import { Context } from "../../../App";
 
 const Footer = (props) => {
-  const { isSignIn } = useContext(Context);
+  const { userState } = useContext(Context);
 
-  return !isSignIn ? (
+  return userState === "notSignIn" ? (
     <div className={classes.Footer}>
       <div className={classes.Container}>
         <NavLink exact to={"/"}>

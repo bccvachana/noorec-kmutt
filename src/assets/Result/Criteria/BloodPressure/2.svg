@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="295.24" height="210" viewBox="0 0 295.24 210">
+  <defs>
+    <style>
+      .a {
+        fill: #febb6b;
+      }
+
+      .a, .b {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 15px;
+      }
+
+      .b {
+        fill: #fa5458;
+      }
+    </style>
+  </defs>
+  <title>Asset 90</title>
+  <g>
+    <rect class="a" x="7.5" y="33.64" width="280.24" height="168.86" rx="26.5"/>
+    <rect class="b" x="57.5" y="7.5" width="180" height="53" rx="26.5"/>
+  </g>
+</svg>

@@ -6,6 +6,7 @@
   left: 0;
   width: 100%;
   min-width: 320px;
+  min-height: 518px;
   height: 100%;
   padding-top: 3rem;
 
@@ -26,4 +27,35 @@
   max-width: 640px;
   max-height: 540px;
   position: relative;
+}
+
+//ResultNotFound
+
+.ResultTitle {
+  @include fontH3;
+  margin-top: 1rem
+}
+
+.ResultDetail {
+  >div {
+    display: inline-block;
+  }
+}
+
+.Img {
+  height: 11rem;
+  margin-bottom: 0.7rem;
+  animation: imgScale 400ms ease-out 1500ms 1 forwards;
+}
+
+@keyframes imgScale {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

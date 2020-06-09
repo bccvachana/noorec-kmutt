@@ -15,9 +15,14 @@
 }
 
 .Switch {
+  position: relative;
+  height: 100%;
+  padding: 0 6px;
   @include fontCaption($bold);
   @include flex;
   cursor: pointer;
+  z-index: 5;
+  transition: all 250ms ease-in-out;
 }
 
 .SwitchTypeActive {
@@ -26,7 +31,7 @@
   left: 0;
   height: 100%;
   border-radius: 2rem;
-  transition: all 200ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .IconContainer {
@@ -35,7 +40,7 @@
   @include flex;
 
   img {
-    transition: all 200ms ease-in-out;
+    transition: all 250ms ease-in-out;
   }
 
   img:nth-child(2) {
@@ -46,7 +51,7 @@
 .ChartSwitch {
 
   .IconContainer img {
-    height: 1em;
+    height: 0.8rem;
   }
 }
 
@@ -58,6 +63,6 @@
   }
 
   .IconContainer img {
-    height: 1.1em;
+    height: 1.1rem;
   }
 }

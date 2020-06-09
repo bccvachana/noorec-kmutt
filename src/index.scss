@@ -1,11 +1,11 @@
 @import "./var";
 @import "./assets/style/font/font.css";
 
-
 html,
 body {
   width: 100%;
   min-width: 320px;
+  min-height: 518px;
   height: 100%;
 }
 
@@ -16,13 +16,13 @@ body {
 
 #root {
   min-height: 100%;
-  padding: 5.5rem 1rem 0;
+  padding: 3rem 1rem 0;
   @include flex;
   background-color: #f7f7f7;
   transition: all 100ms ease-out;
 
   @include tablet-desktop {
-    padding: 6.5rem 1rem 0;
+    padding: 3.5rem 1rem 0;
   }
 }
 
@@ -62,4 +62,8 @@ body {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.PageTitle {
+  @include fontH3;
 }

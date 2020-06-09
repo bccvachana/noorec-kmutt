@@ -60,9 +60,51 @@
   background-color: white;
   max-width: 27rem;
   max-height: 90%;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
   border-radius: $radius;
   @include shadow;
-  @include flex;
+  @include flex($wrap: nowrap);
   z-index: 201;
+}
+
+.ModalResult {
+  position: relative;
+  align-items: flex-start;
+
+  * {
+    text-align: left;
+  }
+}
+
+.ModalTitle {
+  @include fontH4;
+  line-height: 1.2;
+  margin: 1rem 0 0.3rem;
+
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+}
+
+.ModalDetail {
+  >div {
+    display: inline-block;
+  }
+}
+
+.ModalCloseButton {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  background-color: $color-accent1;
+  width: 26px;
+  height: 26px;
+  border-radius: 20px;
+  border: 2.5px solid white;
+  cursor: pointer;
+  @include flex;
+
+  img {
+    height: 50%;
+  }
 }

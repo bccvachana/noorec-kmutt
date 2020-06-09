@@ -1,0 +1,73 @@
+@import "../../../../../var";
+
+.ContainerRelative {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  margin-top: 0.5rem;
+  max-height: 280px;
+}
+
+.ContainerAbsolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 100%;
+  grid-gap: 0.5rem;
+  justify-content: center;
+}
+
+.TemperatureContainer {
+  position: relative;
+  height: 100%;
+
+  >img {
+    height: 100%;
+  }
+}
+
+.BarContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include flex;
+  justify-content: flex-end;
+
+  .Bar {
+    position: relative;
+    bottom: 10%;
+    width: 10%;
+    height: 40%;
+    background-color: $color-accent1;
+    border-radius: 50px;
+    animation: TempBar 4s ease-in-out infinite;
+  }
+}
+
+@keyframes TempBar {
+  0% {
+    height: 40%;
+  }
+
+  50% {
+    height: 70%;
+  }
+
+  100% {
+    height: 40%;
+  }
+}
+
+.ValueContainer {
+  height: 100%;
+  @include flex;
+}

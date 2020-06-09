@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.29" height="30" viewBox="0 0 35.29 30">
+  <defs>
+    <style>
+      .a {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>Asset 50</title>
+  <g>
+    <rect class="a" y="18.85" width="8.82" height="11.15" rx="2.21"/>
+    <rect class="a" x="13.24" y="9.62" width="8.82" height="20.38" rx="2.21"/>
+    <rect class="a" x="26.47" width="8.82" height="30" rx="2.21"/>
+  </g>
+</svg>

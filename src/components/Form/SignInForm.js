@@ -42,6 +42,7 @@ const SignInForm = (props) => {
     <form
       className={`${classes.Form} ${classes.SignIn}`}
       onSubmit={handleSubmit(onSubmit)}
+      noValidate
     >
       <div className={classes.Title}>เข้าสู่ระบบ</div>
       {signInError ? (

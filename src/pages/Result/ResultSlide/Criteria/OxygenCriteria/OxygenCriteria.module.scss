@@ -1,0 +1,78 @@
+@import "../../../../../var";
+
+.ContainerRelative {
+  position: relative;
+  width: 90%;
+  flex-grow: 0.85;
+}
+
+.ContainerAbsolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  @include flex;
+}
+
+.ImgRef {
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+}
+
+.Container {
+  position: relative;
+
+  * {
+    position: absolute;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .Svg2 {
+    height: 23%;
+    left: 28%;
+    top: 0;
+  }
+
+  .Svg3 {
+    height: 34%;
+    right: 13.5%;
+    top: 9%;
+  }
+
+  .Svg4 {
+    height: 61%;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.Animate:nth-child(1) {
+  animation: ScaleOpacity 300ms ease-in-out 200ms 1 forwards;
+}
+
+.Animate:nth-child(2) {
+  animation: ScaleOpacity 300ms ease-in-out 500ms 1 forwards;
+}
+
+.Animate:nth-child(3) {
+  animation: ScaleOpacity 300ms ease-in-out 800ms 1 forwards;
+}
+
+@keyframes ScaleOpacity {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ValueContainer {
+  width: 100%;
+  margin-top: 1rem;
+  @include flex;
+}

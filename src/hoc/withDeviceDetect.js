@@ -1,18 +1,20 @@
-import React from "react";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import React, { useState, useEffect } from "react";
+
+const checkDevice = () => {
+  const windowWidth = window.innerWidth;
+  if (windowWidth > 1024) return "Desktop";
+  else if (windowWidth > 768) return "Tablet";
+  else return "Mobile";
+};
 
 const withDeviceDetect = (WrappedComponent) => {
   return (props) => {
-    const matchTablet = useMediaQuery(
-      "(min-width: 768px) and (max-width: 1023px)"
-    );
-    const matchDesktop = useMediaQuery("(min-width: 1024px)");
-    const device =
-      matchTablet || matchDesktop
-        ? matchTablet
-          ? "Tablet"
-          : "Desktop"
-        : "Mobile";
+    const [device, setDevice] = useState(checkDevice());
+
+    window.addEventListener("resize", () => {
+      setDevice(checkDevice());
+    });
+
     return <WrappedComponent {...props} device={device} />;
   };
 };

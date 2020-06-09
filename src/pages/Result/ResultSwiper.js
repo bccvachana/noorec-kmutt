@@ -42,13 +42,20 @@ class ResultSwiper extends Component {
     return (
       <div id="ResultSwiper" className={classes.Container}>
         <Swiper {...this.swiperParams}>
-          {this.props.children.map((child, i) => {
-            return (
-              <div key={i} className={classes.ResultSlide}>
-                <div className={classes.ResultSlideContainer}>{child}</div>
-              </div>
-            );
-          })}
+          <div className={classes.ResultSlide}>
+            <div className={classes.ResultSlideContainer}>
+              {this.props.children[0]}
+            </div>
+          </div>
+          {this.props.children[1]
+            .filter((child) => child)
+            .map((child, i) => {
+              return (
+                <div key={i} className={classes.ResultSlide}>
+                  <div className={classes.ResultSlideContainer}>{child}</div>
+                </div>
+              );
+            })}
         </Swiper>
       </div>
     );
