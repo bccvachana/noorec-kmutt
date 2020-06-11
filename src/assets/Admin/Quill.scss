@@ -1,0 +1,113 @@
+@import "../../var";
+
+#QuillToolBar {
+  align-self: start;
+  height: 2.5rem;
+  border: none;
+  margin-bottom: 0.75rem;
+  padding: 0 1.2rem;
+  background-color: white;
+  border-radius: $radius;
+  @include shadow;
+  @include flex(row, flex-start);
+
+  .ql-stroke {
+    stroke: $color-text;
+  }
+
+  .ql-fill {
+    fill: $color-text;
+  }
+
+  .ql-active {
+    .ql-stroke {
+      stroke: $color-accent1;
+    }
+
+    .ql-fill {
+      fill: $color-accent1;
+    }
+  }
+
+  .QuillToolBarSpace {
+    width: 1.5rem;
+  }
+}
+
+#Quill {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: $radius;
+  @include shadow;
+
+  .ql-container {
+    border: none;
+  }
+
+  .ql-editor.ql-blank::before {
+    left: 0;
+    font-style: normal;
+    color: $color-detail;
+  }
+
+  .ql-editor {
+    padding: 0;
+
+    * {
+      font-size: 1rem;
+      font-family: TATSANA-SUKSA;
+      line-height: 1.6;
+      font-weight: 400;
+      color: $color-text !important;
+
+      >* {
+        font-family: inherit;
+        line-height: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+    }
+
+    h1 {
+      font-family: Prompt;
+      @include fontH4;
+    }
+
+    a {
+      color: $color-accent1 !important;
+    }
+  }
+
+  img {
+    height: 20rem;
+    width: auto;
+    border-radius: $radius;
+  }
+
+  .ql-tooltip {
+    @include shadow;
+    border: none;
+    border-radius: $radius;
+
+    a {
+      color: $color-accent1 !important;
+    }
+  }
+
+  &.Viewer {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+
+    .ql-editor {
+      overflow: hidden;
+    }
+
+    img {
+      @include shadow;
+    }
+  }
+}

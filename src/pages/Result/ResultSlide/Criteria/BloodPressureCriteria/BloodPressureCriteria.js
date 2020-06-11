@@ -17,15 +17,18 @@ const BloodPressureCriteria = (props) => {
   const [containerHeightRef, setContainerHeightRef] = useState(0);
 
   useEffect(() => {
+    let timer;
     const bloodPressureRef = document.getElementById("BloodPressureRef");
     const bloodPressureContainerRef = document.getElementById(
       "BloodPressureContainerRef"
     );
-    const timer = setTimeout(() => {
-      setWidthRef(bloodPressureRef.clientWidth);
-      setHeightRef(bloodPressureRef.clientHeight);
-      setContainerHeightRef(bloodPressureContainerRef.clientHeight);
-    }, 300);
+    bloodPressureRef.onload = () => {
+      timer = setTimeout(() => {
+        setWidthRef(bloodPressureRef.clientWidth);
+        setHeightRef(bloodPressureRef.clientHeight);
+        setContainerHeightRef(bloodPressureContainerRef.clientHeight);
+      }, 200);
+    };
     window.addEventListener("resize", () => {
       setWidthRef(bloodPressureRef.clientWidth);
       setHeightRef(bloodPressureRef.clientHeight);

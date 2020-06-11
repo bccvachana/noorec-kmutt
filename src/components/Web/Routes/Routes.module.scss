@@ -17,4 +17,21 @@
   &.PageSignIn {
     padding: 0;
   }
+
+  &.PageAdmin {
+    padding-bottom: 3rem;
+    max-width: calc(1000px + 16rem);
+    //align-self: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include tablet-desktop {
+      padding-left: 14rem;
+      padding-right: 2rem;
+    }
+  }
+
+  &.PageUser {
+    text-align: center;
+  }
 }

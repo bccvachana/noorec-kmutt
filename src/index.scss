@@ -1,5 +1,7 @@
 @import "./var";
 @import "./assets/style/font/font.css";
+@import "./assets/Admin/Admin.scss";
+@import "./assets/Admin/Quill.scss";
 
 html,
 body {
@@ -31,7 +33,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Prompt;
-  text-align: center;
+  //text-align: center;
   text-decoration: none;
   color: $color-text;
   border: none;
@@ -66,4 +68,9 @@ body {
 
 .PageTitle {
   @include fontH3;
+}
+
+.AdminLinkActive {
+  background-color: $color-accent1;
+  color: white !important;
 }

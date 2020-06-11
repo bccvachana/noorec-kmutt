@@ -11,6 +11,18 @@ const Overview = (props) => {
   const { setIsLoading } = props;
   const { profileImg, userData } = useContext(Context);
 
+  useEffect(() => {
+    let timer;
+    document.getElementById("OverviewImg").onload = () => {
+      timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    };
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <React.Fragment>
       <div className={classes.Profile}>

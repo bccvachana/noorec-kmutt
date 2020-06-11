@@ -12,10 +12,11 @@ const Record = (props) => {
   const [widthRef, setWidthRef] = useState(0);
 
   useEffect(() => {
+    let timer;
     const recordRef = document.getElementById("RecordRef");
-    const timer = setTimeout(() => {
+    recordRef.onload = () => {
       setWidthRef(recordRef.clientWidth);
-    }, 200);
+    };
     window.addEventListener("resize", () => {
       setWidthRef(recordRef.clientWidth);
     });

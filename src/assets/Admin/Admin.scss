@@ -1,0 +1,48 @@
+.AdminTopBar {
+  width: 100%;
+  margin-bottom: 2.2rem;
+
+  @include flex(row, space-between, $wrap: nowrap);
+
+  a {
+    @include flex;
+
+    img {
+      height: 1rem;
+    }
+  }
+
+  >* {
+    @include flex(row, $wrap: nowrap);
+  }
+}
+
+.AdminTitle {
+  @include fontH3;
+  line-height: 1;
+}
+
+.AdminTopBarContainer {
+  flex-shrink: 0;
+
+  .Primary {
+    padding: 0.1rem 1rem;
+    border-radius: 3rem;
+    @include fontBody($bold);
+    color: white;
+    background-color: $color-accent1;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .Secondary {
+    color: $color-detail;
+    @include fontBody($bold);
+  }
+
+  >* {
+    &:last-child {
+      margin-left: 1.5rem;
+    }
+  }
+}

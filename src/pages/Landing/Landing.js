@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./Landing.module.scss";
 import { Link } from "react-router-dom";
 
+import feature1 from "../../assets/web/Landing/feature1.svg";
+
 const Landing = (props) => {
   return (
     <React.Fragment>
@@ -26,7 +28,9 @@ const Landing = (props) => {
         <div className={classes.Title}>หนูเรคทำอะไรได้บ้าง ?</div>
         <div className={classes.Container}>
           <div>
-            <div className={classes.FeatureImg}></div>
+            <div className={classes.FeatureImg}>
+              <img src={feature1} alt="feature1" />
+            </div>
             <div className={classes.FeatureTitle}>บันทึก</div>
             บันทึกข้อมูลสุขภาพเบื้องต้นของคุณ
             <br />

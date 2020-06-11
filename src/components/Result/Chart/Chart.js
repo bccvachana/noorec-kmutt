@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import classes from "./Chart.module.scss";
 import withDeviceDetect from "../../../hoc/withDeviceDetect";
 import Switch from "../Switch/Switch";
+import { useLocation } from "react-router-dom";
 
 import BarChart from "./BarChart/BarChart";
 import LineChart from "./LineChart/LineChart";
@@ -20,6 +21,7 @@ export const ChartContext = React.createContext();
 const Chart = (props) => {
   const { data, device } = props;
   const { valueIndex, isBloodPressure } = useContext(ResultChartContext);
+  const { pathname } = useLocation();
 
   const [dataIndex, setDataIndex] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -46,15 +48,14 @@ const Chart = (props) => {
   });
 
   useEffect(() => {
+    const chartContainerRef = document.getElementById("ChartContainerRef");
     setDataIndex(0);
-    setContainerWidth(
-      document.getElementById("ChartContainerRef").clientWidth - 2 * rem
-    );
+    setContainerWidth(chartContainerRef.clientWidth - 2 * rem);
     window.addEventListener("resize", () => {
-      setContainerWidth(
-        document.getElementById("ChartContainerRef").clientWidth - 2 * rem
-      );
-      setScroll(0);
+      if (chartContainerRef) {
+        setContainerWidth(chartContainerRef.clientWidth - 2 * rem);
+        setScroll(0);
+      }
     });
   }, []);
 

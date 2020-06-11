@@ -11,9 +11,16 @@
   background-color: #f7f7f7;
   @include flex;
   z-index: 98;
-  transition: all ease-out 200ms;
+  transition: ease-out 200ms;
+  transition-property: opacity, visibility;
 
   @include tablet-desktop {
     padding-top: 3.5rem;
+  }
+
+  &.AdminLoading {
+    padding-top: 0;
+    padding-left: 13rem;
+    padding-right: 1rem;
   }
 }

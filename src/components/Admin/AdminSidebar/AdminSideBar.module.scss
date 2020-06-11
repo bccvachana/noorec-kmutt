@@ -1,0 +1,47 @@
+@import "../../../var";
+
+.SideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12rem;
+  height: 100%;
+  padding: 3.5rem 1.5rem;
+  background-color: white;
+  @include shadow;
+  @include flex($justify: flex-start);
+  z-index: 100;
+}
+
+.Logo {
+  width: 100%;
+  text-align: center;
+  @include fontH4(400);
+  @include flex;
+  margin-bottom: 2rem;
+
+  img {
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+}
+
+.LinkContainer {
+  width: 100%;
+  @include flex($align: flex-start);
+}
+
+.Link {
+  width: 100%;
+  @include fontBody($bold);
+  margin: 0.4rem 0;
+  padding: 0.5rem 1rem;
+  color: rgba($color: $color-text, $alpha: 0.5);
+  border-radius: 3rem;
+  transition: all ease-out 100ms;
+}
+
+.SignOut {
+  margin-top: 10rem;
+  color: rgba($color: $color-text, $alpha: 0.1);
+}

@@ -21,6 +21,13 @@ import Article from "../../../pages/Article/Article";
 
 import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
+import AdminMain from "../../../pages/Admin/AdminMain/AdminMain";
+import AdminUsers from "../../../pages/Admin/AdminUsers/AdminUsers";
+import AdminArticles from "../../../pages/Admin/AdminArticles/AdminArticles";
+import AdminArticlesEdit from "../../../pages/Admin/AdminArticles/AdminArticlesEdit";
+import Admin from "../../../pages/Admin/Admin";
+import AdminArticle from "../../../pages/Admin/AdminArticle/AdminArticle";
+
 import { Context } from "../../../App";
 
 const defaultRoute = [
@@ -40,8 +47,26 @@ const notVerifiedRoutes = [{ path: "/", component: AuthVerifyEmail }];
 const verifiedRoutes = [
   { path: "/", component: Main, withLoadingProps: { time: 700 } },
   { path: "/record", component: Record, withLoadingProps: { time: 700 } },
-  { path: "/result", component: Result, withLoadingProps: { time: 1500 } },
+  { path: "/result", component: Result, withLoadingProps: { auto: false } },
   { path: "/article", component: Article },
+];
+
+const adminRoutes = [
+  { path: "/admin/main", component: AdminMain },
+  { path: "/admin/users", component: AdminUsers },
+  {
+    path: "/admin/articles",
+    component: AdminArticles,
+    withLoadingProps: { auto: false },
+  },
+  { path: "/admin/articles/add", component: AdminArticlesEdit },
+  { path: "/admin/articles/edit/:articleId", component: AdminArticlesEdit },
+  { path: "/admin/articles/:articleId", component: AdminArticle },
+  {
+    path: "/admin",
+    component: Admin,
+    withLoadingProps: { auto: false },
+  },
 ];
 
 const authRoute = [
@@ -78,6 +103,10 @@ const Routes = (props) => {
         checkRoutes = notSignInRoutes;
         break;
       }
+      case "admin": {
+        checkRoutes = adminRoutes;
+        break;
+      }
       default: {
         checkRoutes = defaultRoute;
         break;
@@ -100,7 +129,7 @@ const Routes = (props) => {
     <div
       className={`${classes.Page} ${
         userState !== "notSignIn" ? classes.PageSignIn : ""
-      }`}
+      } ${userState === "admin" ? classes.PageAdmin : classes.PageUser}`}
     >
       {routes ? (
         <Switch>
@@ -110,7 +139,7 @@ const Routes = (props) => {
           {authRoute.map(({ path, component }) => (
             <Route key={path} exact path={path} component={component} />
           ))}
-          <Redirect to="/" />
+          <Redirect to={userState === "admin" ? "/admin/main" : "/"} />
         </Switch>
       ) : null}
     </div>

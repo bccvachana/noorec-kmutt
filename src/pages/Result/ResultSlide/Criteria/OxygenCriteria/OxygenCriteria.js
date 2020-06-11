@@ -23,11 +23,14 @@ const OxygenCriteria = (props) => {
   const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
+    let timer;
     const oxygenRef = document.getElementById("OxygenRef");
-    const timer = setTimeout(() => {
-      setWidthRef(oxygenRef.clientWidth);
-      setHeightRef(oxygenRef.clientHeight);
-    }, 300);
+    oxygenRef.onload = () => {
+      timer = setTimeout(() => {
+        setWidthRef(oxygenRef.clientWidth);
+        setHeightRef(oxygenRef.clientHeight);
+      }, 200);
+    };
     window.addEventListener("resize", () => {
       setWidthRef(oxygenRef.clientWidth);
       setHeightRef(oxygenRef.clientHeight);

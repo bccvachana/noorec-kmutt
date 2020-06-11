@@ -42,16 +42,20 @@ const WeightHeightCriteria = (props) => {
   const keyArray = reOrder(criteria);
 
   useEffect(() => {
+    let timer;
     const weightHeightSwiperRef = document.getElementById(
       "WeightHeightSwiperRef"
     );
-    const timer = setTimeout(() => {
-      setSwiperWidth(weightHeightSwiperRef.clientWidth);
-    }, 300);
+    weightHeightSwiperRef.onload = () => {
+      timer = setTimeout(() => {
+        setSwiperWidth(weightHeightSwiperRef.clientWidth);
+      }, 200);
+    };
     window.addEventListener("resize", () => {
-      setSwiperWidth(weightHeightSwiperRef.clientWidth);
+      if (weightHeightSwiperRef) {
+        setSwiperWidth(weightHeightSwiperRef.clientWidth);
+      }
     });
-
     return () => {
       clearTimeout(timer);
     };
@@ -60,8 +64,10 @@ const WeightHeightCriteria = (props) => {
   useEffect(() => {
     let timer;
     if (isSlideShow && isFromTop) {
-      for (let slide = 2; slide <= 10; slide++) {
-        swiper.slideTo(slide, 175 * slide);
+      if (swiper) {
+        for (let slide = 2; slide <= 10; slide++) {
+          swiper.slideTo(slide, 175 * slide);
+        }
       }
     } else if (!isSlideShow && !isFromTop) {
       if (swiper) {

@@ -1,0 +1,46 @@
+@import "../../../var";
+
+.Article {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background-color: white;
+  border-radius: $radius;
+  @include shadow;
+
+  .TitleBar {
+    @include flex(row, space-between, $wrap: nowrap);
+  }
+
+  .Title {
+    @include fontBody($bold);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .LinkContainer {
+    width: 4rem;
+    margin-left: 1.5rem;
+    flex-shrink: 0;
+    @include flex(row, space-between);
+
+    img {
+      height: 0.7rem;
+    }
+
+  }
+
+  .Detail {
+    margin-top: 0.2rem;
+    @include fontCaption;
+    color: $color-detail;
+    @include flex(row, flex-start);
+
+
+    img {
+      height: 0.6rem;
+      margin-right: 0.4rem
+    }
+  }
+}

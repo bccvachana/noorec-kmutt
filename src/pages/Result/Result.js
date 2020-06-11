@@ -25,6 +25,7 @@ const Result = (props) => {
   const [swiper, setSwiper] = useState(null);
   const [index, setIndex] = useState(0);
   const [isFromTop, setIsFromTop] = useState(true);
+  const [isRecord, setIsRecord] = useState(false);
 
   let pageIndex;
   if (record) {
@@ -33,8 +34,18 @@ const Result = (props) => {
     });
   }
 
-  return Object.keys(recentRecord).length !== 0 &&
-    Object.keys(recentRecord).length !== 0 ? (
+  useEffect(() => {
+    if (recentRecord && record) {
+      if (
+        Object.keys(recentRecord).length !== 0 &&
+        Object.keys(record).length
+      ) {
+        setIsRecord(true);
+      }
+    } else setIsRecord(false);
+  }, [recentRecord, record]);
+
+  return isRecord ? (
     <ResultContext.Provider
       value={{
         index: index,
@@ -60,7 +71,7 @@ const Result = (props) => {
       </ResultSwiper>
     </ResultContext.Provider>
   ) : (
-    <ResultNotFound />
+    <ResultNotFound setIsLoading={setIsLoading} />
   );
 };
 

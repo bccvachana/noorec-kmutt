@@ -1,0 +1,131 @@
+@import "../../../var";
+
+.Container {
+  width: 100%;
+  @include flex;
+}
+
+.QuillForm {
+  width: 100%;
+}
+
+.TitleInput {
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: $radius;
+  @include shadow;
+  -webkit-appearance: none;
+  transition: all ease-out 200ms;
+  @include fontH4;
+
+  &::placeholder {
+    color: $color-detail;
+    font-weight: 400;
+  }
+}
+
+.TypeContainer {
+  width: 100%;
+  margin: 1.5rem 0 1.25rem;
+  padding: 0 1.5rem;
+
+  >div {
+    width: 100%;
+    @include flex(row, flex-start);
+  }
+
+  .TypeContainerTitle {
+    @include fontBody(600);
+    margin-bottom: 0.25rem;
+
+    .Error {
+      width: auto;
+      margin-left: -0.5rem;
+      padding-left: 0;
+    }
+  }
+
+  .TypeTitle {
+    @include fontCaption;
+    flex-shrink: 0;
+    margin-right: 1rem;
+  }
+
+  .Types {
+    flex-grow: 1;
+    @include flex(row, flex-start);
+    margin: 0 -0.5rem;
+  }
+
+  .Type {
+    width: 5rem;
+    height: 1.8rem;
+    margin: 0.25rem 0.5rem;
+    @include fontCaption;
+    text-align: center;
+    background-color: white;
+    color: $color-detail;
+    border-radius: 5rem;
+    @include shadow;
+    @include flex;
+    cursor: pointer;
+    user-select: none;
+    transition: all ease-out 100ms;
+  }
+
+  .TypeSelected {
+    background-color: $color-accent2;
+    color: white;
+  }
+
+  .TypeAll {
+    margin-left: 0.5rem;
+    @include fontCaption;
+    color: $color-detail;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .TypeAllSelected {
+    color: $color-accent2;
+  }
+}
+
+.QuillEditor {
+  position: relative;
+  width: 100%;
+  height: 25rem;
+}
+
+.QuillLoading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  transition: all ease-in-out 200ms;
+
+  >div {
+    width: 100%;
+    height: 100%;
+    @include flex;
+  }
+
+  >div:first-child {
+    background-color: white;
+    opacity: 0.5;
+  }
+
+  >div:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.Error {
+  width: 100%;
+  margin-bottom: -0.2rem;
+  padding-left: 0.5rem;
+}

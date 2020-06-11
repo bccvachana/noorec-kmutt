@@ -15,7 +15,6 @@ export const signUp = async (data, profileImg) => {
   }
   await addUserData(user.uid, data, profileImgUrl);
   await user.sendEmailVerification();
-  console.log("sent verification email");
   auth.signOut();
 };
 
@@ -40,7 +39,9 @@ export const checkUser = (setUser, setUserState) => {
     let userState;
     if (user) {
       setUser(user);
-      userState = user.emailVerified ? "verified" : "notVerified";
+      if (user.uid === "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
+        userState = "admin";
+      } else userState = user.emailVerified ? "verified" : "notVerified";
     } else {
       setUser(null);
       userState = "notSignIn";

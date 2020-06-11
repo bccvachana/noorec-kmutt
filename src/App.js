@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { checkUser } from "./utils/firebase/auth";
-import { readUserData } from "./utils/firebase//firestore";
+import { readUserData, snapshotArticle } from "./utils/firebase/firestore";
 import { getRecentRecord, getRecord } from "./utils/result/filter";
 
 import { ModalContainer } from "./components/Web/ModalContainer/ModalContainer";
 import NavBar from "./components/Web/NavBar/NavBar";
 import Routes from "./components/Web/Routes/Routes";
 import Footer from "./components/Web/Footer/Footer";
+import AdminSideBar from "./components/Admin/AdminSidebar/AdminSideBar";
 
 import { mockData1, mockData2, mockData3 } from "./mockData";
 
@@ -30,6 +31,7 @@ const App = (props) => {
   const [profileImg, setProfileImg] = useState(null);
   const [recentRecord, setRecentRecord] = useState(null);
   const [record, setRecord] = useState(null);
+  const [article, setArticle] = useState(null);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -46,8 +48,11 @@ const App = (props) => {
 
   useEffect(() => {
     if (user) {
-      readUserData(user.uid, setUserData);
-      //setUserData(mockData3);
+      if (user.uid !== "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
+        readUserData(user.uid, setUserData);
+        //setUserData(mockData3);
+      }
+      snapshotArticle(setArticle);
     } else {
       setUserData(null);
       setProfileImg(null);
@@ -77,9 +82,10 @@ const App = (props) => {
           profileImg: profileImg,
           recentRecord: recentRecord,
           record: record,
+          article: article,
         }}
       >
-        <NavBar />
+        {userState !== "admin" ? <NavBar /> : <AdminSideBar />}
         <ModalContainer>
           <Routes />
         </ModalContainer>

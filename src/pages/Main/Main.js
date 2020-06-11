@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./Main.module.scss";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,18 @@ const resultStatic = [
 ];
 
 const Main = (props) => {
-  const { userData, recentRecord } = useContext(Context);
+  const { userData, recentRecord, article } = useContext(Context);
+  const [mainArticle, setMainArticle] = useState(null);
+
+  useEffect(() => {
+    setMainArticle(
+      article
+        ? Object.keys(article).map((key) => {
+            return article[key];
+          })
+        : null
+    );
+  }, [article]);
 
   return userData && recentRecord ? (
     <div className={classes.Page}>
@@ -62,10 +73,13 @@ const Main = (props) => {
       </div>
       <div className={classes.ArticleTitle}>บทความแนะนำสำหรับคุณ</div>
       <div className={classes.Article}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        {mainArticle
+          ? mainArticle.map(({ title, image }) => (
+              <div key={title} style={{ backgroundImage: `url("${image}")` }}>
+                {title}
+              </div>
+            ))
+          : null}
       </div>
     </div>
   ) : null;

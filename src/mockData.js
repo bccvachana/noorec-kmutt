@@ -249,3 +249,643 @@ export const mockData3 = {
     },
   ],
 };
+
+export const articles1 = [
+  {
+    normalBloodPressure: true,
+    content: {
+      ops: [
+        {
+          insert: "สวัสดีครับ อันนี้ทดลองการเลือกรูป",
+        },
+        {
+          attributes: {
+            list: "ordered",
+          },
+          insert: "\n",
+        },
+        {
+          insert: "ฟกฟหกฟก",
+        },
+        {
+          attributes: {
+            list: "ordered",
+          },
+          insert: "\n",
+        },
+        {
+          insert: "กฟหกฟหกฟห",
+        },
+        {
+          attributes: {
+            list: "ordered",
+          },
+          insert: "\n",
+        },
+        {
+          insert: "\n",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/VHJFzMq/d27a855ce6e0.jpg",
+          },
+        },
+        {
+          insert: "\n",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/qshb4vb/c53d72eca8d3.jpg",
+          },
+        },
+        {
+          insert: "\n",
+        },
+      ],
+    },
+    overWeightBmi: true,
+    createdAt: {
+      seconds: 1591823259,
+      nanoseconds: 7000000,
+    },
+    title: "สวัสดีครับ อันนี้ทดลองการเลือกรูป",
+    lowBloodPressure: true,
+    normalBmi: true,
+    obaseBmi: true,
+    overBloodPressure: true,
+    updatedAt: {
+      seconds: 1591823259,
+      nanoseconds: 7000000,
+    },
+    extremeObaseBmi: true,
+    image: "https://i.ibb.co/VHJFzMq/d27a855ce6e0.jpg",
+  },
+  {
+    allBmi: true,
+    updatedAt: {
+      seconds: 1591821594,
+      nanoseconds: 245000000,
+    },
+    allBloodPressure: true,
+    content: {
+      ops: [
+        {
+          insert: {
+            image:
+              "https://sites.google.com/site/primarycarecluster2017/_/rsrc/1515468639556/content-pcc/1/26230361_10156107223772028_5082792694783410370_n.jpg",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert: "อาหารกับมะเร็ง",
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "อาหารมีส่วนเกี่ยวข้องกับโรคมะเร็ง อาหารที่ไม่ดีหรือไม่เหมาะสมอาจเพิ่มความเสี่ยงต่อการเกิดโรคมะเร็ง ในทางตรงกันข้าม อาหารที่ดีจะสามารถป้องกันการเกิดโรคมะเร็งได้ อาหารที่ดีคืออาหารที่ถูกสุขลักษณะ มีคุณภาพ และปริมาณที่เหมาะสม รวมทั้งชะลอการดำเนินของโรคมะเร็งได้ และเสริมสร้างร่างกายให้ฟื้นตัวได้อย่างรวดเร็ว",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "เคล็ดลับการป้องกันมะเร็ง",
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert: "1.รักษาสุขภาพให้แข็งแรง ดูแลน้ำหนักให้อยู่ในเกณฑ์เหมาะสม",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "2.กินผัก ผลไม้ให้ได้ครึ่งของอาหารแต่ละมื้อ โดยเลือกกินผัก ผลไม้หลากสี",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "3.จำกัดประเภทเนื้อสัตว์ที่มีสีแดง",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "4.เลือกกินอาหารที่มีประโยชน์ เน้นอาหารอ่อนเค็ม หวานน้อย และไขมันต่ำ",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "5.หลีกเลี่ยงอาหารที่ไหม้เกรียม",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "6.เน้นกินอาหารที่เตรียมและเก็บรักษาอย่างถูกสุขลักษณะ",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            background: "transparent",
+          },
+          insert: "7.งดเครื่องดื่มที่มีแอลกอฮอล์ งดการสูบบุหรี่",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            background: "transparent",
+          },
+          insert:
+            "เรื่องของสุขภาพ ทุกคนจะต้องดูแลตนเองเป็นหลัก และปฏิบัติตัวเพื่อป้องกันโรคภัยไข้เจ็บอย่างสม่ำเสมอ ",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            background: "transparent",
+            color: "#073763",
+            bold: true,
+          },
+          insert: "[ที่มาบทความ : facebook fanpageคลินิกหมอชาวบ้าน]",
+        },
+        {
+          attributes: {
+            blockquote: true,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "\n",
+        },
+      ],
+    },
+    createdAt: {
+      seconds: 1591821594,
+      nanoseconds: 245000000,
+    },
+    title: "อาหารกับมะเร็ง",
+    image:
+      "https://sites.google.com/site/primarycarecluster2017/_/rsrc/1515468639556/content-pcc/1/26230361_10156107223772028_5082792694783410370_n.jpg",
+  },
+  {
+    normalBmi: true,
+    overBloodPressure: true,
+    underWeightBmi: true,
+    updatedAt: {
+      seconds: 1591820643,
+      nanoseconds: 402000000,
+    },
+    extremeObaseBmi: true,
+    normalBloodPressure: true,
+    content: {
+      ops: [
+        {
+          attributes: {
+            alt: "กกกกกกกกา - YouTube",
+          },
+          insert: {
+            image: "https://i.ytimg.com/vi/MgPKYpHp8qw/hqdefault.jpg",
+          },
+        },
+        {
+          insert: "\n",
+        },
+      ],
+    },
+    overWeightBmi: true,
+    createdAt: {
+      seconds: 1591820643,
+      nanoseconds: 402000000,
+    },
+    title: "ไม่รู้เมื่อไหร่เธอจะได้ตอบมันสักที",
+    lowBloodPressure: true,
+    image: "https://i.ytimg.com/vi/MgPKYpHp8qw/hqdefault.jpg",
+  },
+  {
+    allBmi: true,
+    updatedAt: {
+      seconds: 1591820256,
+      nanoseconds: 826000000,
+    },
+    allBloodPressure: true,
+    content: {
+      ops: [
+        {
+          insert: "สวัสดีครับวันนี้เราจะมานำเสนอวิธีดูแลสุขภาพ",
+        },
+        {
+          attributes: {
+            align: "center",
+            header: 2,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "ขอหปแอปแอปแอปแอปแอปแอปแอปแอปแอปอปแ",
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/DR38ZDn/ec340d040c78.png",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    createdAt: {
+      seconds: 1591820256,
+      nanoseconds: 826000000,
+    },
+    title: "สวัสดีครับวันนี้",
+    image: "https://i.ibb.co/DR38ZDn/ec340d040c78.png",
+  },
+  {
+    updatedAt: {
+      seconds: 1591819926,
+      nanoseconds: 194000000,
+    },
+    normalBloodPressure: true,
+    content: {
+      ops: [
+        {
+          insert: "เหนื่อยมากเลยยยยยย",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "\n",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/kcgFWcj/1b2057d86dc2.png",
+          },
+        },
+        {
+          insert: "\n",
+        },
+      ],
+    },
+    createdAt: {
+      seconds: 1591819926,
+      nanoseconds: 194000000,
+    },
+    title: "บทความแรก",
+    allBmi: true,
+    overBloodPressure: true,
+    image: "https://i.ibb.co/kcgFWcj/1b2057d86dc2.png",
+  },
+];
+
+export const articles2 = [
+  {
+    content: {
+      ops: [
+        {
+          insert: "BP ALL\n",
+        },
+      ],
+    },
+    updatedAt: {
+      seconds: 1591824274,
+      nanoseconds: 959000000,
+    },
+    createdAt: {
+      seconds: 1591824274,
+      nanoseconds: 959000000,
+    },
+    title: "BP ALL",
+    allBloodPressure: true,
+    image: null,
+  },
+  {
+    allBmi: true,
+    content: {
+      ops: [
+        {
+          insert: "BMI ALL\n",
+        },
+      ],
+    },
+    updatedAt: {
+      seconds: 1591824260,
+      nanoseconds: 962000000,
+    },
+    createdAt: {
+      seconds: 1591824260,
+      nanoseconds: 962000000,
+    },
+    title: "BMI All",
+    image: null,
+  },
+  {
+    content: {
+      ops: [
+        {
+          insert: "BloodPressure : LOW",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    updatedAt: {
+      seconds: 1591824229,
+      nanoseconds: 478000000,
+    },
+    createdAt: {
+      seconds: 1591824229,
+      nanoseconds: 478000000,
+    },
+    title: "LOW",
+    lowBloodPressure: true,
+    image: null,
+  },
+  {
+    updatedAt: {
+      seconds: 1591824209,
+      nanoseconds: 308000000,
+    },
+    normalBloodPressure: true,
+    content: {
+      ops: [
+        {
+          insert: "BMI : normal",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "BP : normal",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    createdAt: {
+      seconds: 1591824209,
+      nanoseconds: 308000000,
+    },
+    title: "normal normal",
+    normalBmi: true,
+    image: null,
+  },
+  {
+    obaseBmi: true,
+    updatedAt: {
+      seconds: 1591824168,
+      nanoseconds: 169000000,
+    },
+    content: {
+      ops: [
+        {
+          insert: "BMI : Obase",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+        {
+          insert: "BloodPressure : High",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n\n",
+        },
+        {
+          insert: "\n",
+        },
+      ],
+    },
+    createdAt: {
+      seconds: 1591824168,
+      nanoseconds: 169000000,
+    },
+    title: "obase & high",
+    highBloodPressure: true,
+    image: null,
+  },
+  {
+    content: {
+      ops: [
+        {
+          insert: "BMI : underWeight",
+        },
+        {
+          attributes: {
+            header: 1,
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    underWeightBmi: true,
+    updatedAt: {
+      seconds: 1591824102,
+      nanoseconds: 644000000,
+    },
+    createdAt: {
+      seconds: 1591824102,
+      nanoseconds: 644000000,
+    },
+    title: "underWeight",
+    image: null,
+  },
+];
+
+export const mockArticle = {
+  VYNbCTdKbDeD2WuNAG39: {
+    content: {
+      ops: [
+        {
+          insert: {
+            image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+          },
+        },
+        {
+          insert: "   ",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/wdBC42r/84d41d24e64b.jpg",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "“ไข่” มักมีความสัมพันธ์กับอาหารเช้าและให้โปรตีนแก่ร่างกาย ไข่ขนาดใหญ่หนึ่งฟอง มีวิตามินและแร่ธาตุที่จำเป็น 13 ชนิดและโปรตีนคุณภาพสูงทั้งหมด 70 แคลอรี่ นอกจากนี้การวิจัยทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "ชี้ให้เห็นว่า “ไข่” มีบทบาทในการควบคุมน้ำหนัก ความแข็งแรงของกล้ามเนื้อ การตั้งครรภ์ที่มีคุณภาพ การทำงานของสมอง ",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/",
+          },
+          insert: "สุขภาพ",
+        },
+        {
+          insert:
+            "ของดวงตาและอื่น ๆ อีกมากมาย ทั้งไข่ลวก ไข่คน ไข่ตุ๋น รวมไปถึงไข่ที่ต้มสุก ทั้งหมดล้วนแล้วแต่ส่งผลดีต่อร่างกาย แต่ก็ควรกินให้ถูกจึงจะได้ประโยชน์จากไข่อย่างเต็มที่",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ทำความเข้าใจเกี่ยวกับไข่",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "พญ. กัญจณี ธนะแพสย์ แพทย์ผู้เชี่ยวชาญด้าน อายุรศาสตร์ รพ. สมิติเวช สุขุมวิท ระบุว่า “ไข่” นั้นมีสารอาหาร 2 ชนิดที่สำคัญสำหรับสุขภาพสมอง ประกอบไปด้วย โคลีน และ ลูทีน โคลีนมีบทบาทในการพัฒนาสมองของทารกในช่วงแรกของการตั้งครรภ์ โดยเฉพาะอย่างยิ่งพื้นที่ในสมองที่ใช้สำหรับเป็นหน่วยความจำและสำหรับเรียนรู้ ในขณะเดียวกัน ลูทีนก็มีส่วนที่เกี่ยวข้องกับสุขภาพของดวงตาและมีบทบาทต่อการรับรู้ด้วยเช่นกัน อ้างอิงจากนักวิจัยของ University of Illinois แสดงให้เห็นว่าความสัมพันธ์ระหว่างลูทีนในสมองโดยวัดจากการทดสอบสายตาที่ เรียกว่า Macular Pigment Optical Density (MPOD) และการรับรู้ในเด็ก นักวิจัยพบว่า MPOD มีความสัมพันธ์เชิงบวกกับผลการเรียน",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ประโยชน์ของไข่ คนเรากินไข่ได้วันละกี่ฟอง",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "ไข่อาจมีปริมาณคลอเรสเตอรอลค่อนข้างสูง แต่ไม่มีผลกระทบต่อระดับคอเลสเตอรอลในร่างกาย ไข่เป็นแหล่งโปรตีนที่มีคุณค่าทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "สูง มีวิตามินและแร่ธาตุต่าง ๆ มากมายรวมไปถึง วิตามินเอ วิตามิน B และ B-12 วิตามินดี ไอโอดีน โฟเลต โอเมก้า – 3  อีกทั้ง “ไข่” ยังมีราคาไม่แพง หาซื้อง่าย และวิธีที่ดีที่สุดในการกินไข่คือการต้ม การรับประทานไข่วันละหนึ่งถึงสามฟอง มีประโยชน์ต่อสุขภาพหลายอย่าง แต่จะแตกต่างกันไปในแต่ละบุคคล",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    typeBloodPressure: ["low", "normal", "over", "high"],
+    createdAt: 1591908871,
+    title: "TestTest",
+    typeBmi: ["normal", "extremeObase"],
+    updatedAt: 1591908871,
+    image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+  },
+};

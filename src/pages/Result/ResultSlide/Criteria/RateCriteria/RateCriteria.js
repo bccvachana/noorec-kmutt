@@ -16,11 +16,14 @@ const RateCriteria = (props) => {
   const [heightRef, setHeightRef] = useState(0);
 
   useEffect(() => {
+    let timer;
     const rateRef = document.getElementById("RateRef");
-    const timer = setTimeout(() => {
-      setWidthRef(rateRef.clientWidth);
-      setHeightRef(rateRef.clientHeight);
-    }, 300);
+    rateRef.onload = () => {
+      timer = setTimeout(() => {
+        setWidthRef(rateRef.clientWidth);
+        setHeightRef(rateRef.clientHeight);
+      }, 200);
+    };
     window.addEventListener("resize", () => {
       setWidthRef(rateRef.clientWidth);
       setHeightRef(rateRef.clientHeight);

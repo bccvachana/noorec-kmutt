@@ -1,0 +1,24 @@
+@import "../../../var";
+
+.Container {
+  width: 100%;
+}
+
+.Title {
+  @include fontH3;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.Time {
+  @include fontCaption;
+  color: $color-detail;
+  margin-bottom: 2rem;
+  @include flex(row, flex-start);
+
+
+  img {
+    height: 0.75rem;
+    margin-right: 0.4rem
+  }
+}

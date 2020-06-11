@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Result.module.scss";
 import { Link } from "react-router-dom";
 import error from "../../assets/web/Auth/error.svg";
 
 const ResultNotFound = (props) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      props.setIsLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <React.Fragment>
       <img className={classes.Img} src={error} alt="error" />

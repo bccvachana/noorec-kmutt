@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import classes from "./withLoading.module.scss";
 import LoadingDot from "../../components/UI/LoadingDot/LoadingDot";
+
+import { Context } from "../../App";
 
 const withLoading = (WrappedComponent, withLoadingOption) => {
   const { time, auto } = withLoadingOption ? withLoadingOption : {};
@@ -8,6 +10,7 @@ const withLoading = (WrappedComponent, withLoadingOption) => {
   const loadingAuto = auto !== undefined ? auto : true;
 
   return (props) => {
+    const { userState } = useContext(Context);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
       if (loadingAuto) {
@@ -20,7 +23,9 @@ const withLoading = (WrappedComponent, withLoadingOption) => {
     return (
       <React.Fragment>
         <div
-          className={classes.Container}
+          className={`${classes.Container} ${
+            userState === "admin" ? classes.AdminLoading : ""
+          }`}
           style={{
             visibility: isLoading ? "visible" : "hidden",
             opacity: isLoading ? 1 : 0,
@@ -28,7 +33,16 @@ const withLoading = (WrappedComponent, withLoadingOption) => {
         >
           <LoadingDot width="8rem" color="#fa5458" />
         </div>
-        <WrappedComponent {...props} setIsLoading={setIsLoading} />
+        <WrappedComponent
+          {...props}
+          setIsLoading={setIsLoading}
+          delaySetIsLoadingFalse={() => {
+            const timer = setTimeout(() => {
+              clearTimeout(timer);
+              setIsLoading(false);
+            }, 350);
+          }}
+        />
       </React.Fragment>
     );
   };
