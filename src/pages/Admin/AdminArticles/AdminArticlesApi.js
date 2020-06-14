@@ -6,12 +6,12 @@ import {
   addArticle,
   updateArticle,
   deleteArticle,
-} from "../../utils/firebase/firestore";
+} from "../../../utils/firebase/firestore";
 
-const Admin = (props) => {
+const AdminArticlesApi = (props) => {
   const { search, state } = useLocation();
   const { mode, articleId } = queryString.parse(search);
-  const { push, go } = useHistory();
+  const { push } = useHistory();
 
   const delayPush = (url) => {
     const timer = setTimeout(() => {
@@ -39,7 +39,7 @@ const Admin = (props) => {
           break;
         }
         default: {
-          delayPush("/admin/main");
+          delayPush("/admin");
           break;
         }
       }
@@ -56,4 +56,4 @@ const Admin = (props) => {
   return null;
 };
 
-export default Admin;
+export default AdminArticlesApi;

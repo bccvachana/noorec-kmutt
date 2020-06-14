@@ -7,7 +7,8 @@ const Switch = (props) => {
     <div
       className={`${classes.SwitchContainer} ${
         type === "result" ? classes.ResultSwitch : ""
-      } ${type === "chart" ? classes.ChartSwitch : ""}`}
+      } ${type === "chart" ? classes.ChartSwitch : ""}
+      ${type ? classes[`${type}Switch`] : ""}`}
       style={{
         gridTemplateColumns: `repeat(${switches.length}, 1fr)`,
       }}

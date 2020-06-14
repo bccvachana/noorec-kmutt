@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import classes from "./Main.module.scss";
 import { Link } from "react-router-dom";
 
-import recordSvg from "../../assets/web/Main/record.svg";
 import heartSvg from "../../assets/web/Main/heart.svg";
 import infoStatic from "../Result/static/infoStatic";
 

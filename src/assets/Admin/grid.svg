@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.73" height="23.73" viewBox="0 0 23.73 23.73">
+  <defs>
+    <style>
+      .a {
+        fill: #3b4251;
+      }
+    </style>
+  </defs>
+  <title>Asset 4</title>
+  <g>
+    <rect class="a" width="10.48" height="10.48" rx="2"/>
+    <rect class="a" x="13.25" width="10.48" height="10.48" rx="2"/>
+    <rect class="a" y="13.25" width="10.48" height="10.48" rx="2"/>
+    <rect class="a" x="13.25" y="13.25" width="10.48" height="10.48" rx="2"/>
+  </g>
+</svg>

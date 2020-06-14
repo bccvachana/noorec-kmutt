@@ -1,0 +1,12 @@
+@import "../../../var";
+
+.Box {
+  width: 100%;
+  flex-grow: 1;
+  background-color: white;
+  padding: 1rem;
+  border-radius: $radius;
+  @include shadow;
+  text-align: center;
+  @include flex;
+}

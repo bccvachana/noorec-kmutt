@@ -3,7 +3,7 @@
 .Page {
   width: 100%;
   flex-grow: 1;
-  @include flex;
+  @include flex($wrap: nowrap);
   padding-top: 2.5rem;
 
   @include desktop {
@@ -15,17 +15,16 @@
   }
 
   &.PageSignIn {
-    padding: 0;
+    padding-bottom: 3rem;
   }
 
   &.PageAdmin {
-    padding-bottom: 3rem;
-    max-width: calc(1000px + 16rem);
-    //align-self: flex-start;
     justify-content: flex-start;
     align-items: flex-start;
 
-    @include tablet-desktop {
+    @include desktop {
+      max-width: calc(1000px + 16rem);
+      padding-top: 0;
       padding-left: 14rem;
       padding-right: 2rem;
     }
@@ -33,5 +32,9 @@
 
   &.PageUser {
     text-align: center;
+  }
+
+  * {
+    text-align: inherit;
   }
 }

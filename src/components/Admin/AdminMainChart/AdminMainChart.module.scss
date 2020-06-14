@@ -1,0 +1,65 @@
+@import "../../../var";
+
+.Container {
+  width: 100%;
+}
+
+.HorizontalBar {
+  height: 2.2rem;
+  @include flex(row, flex-start, $wrap: nowrap)
+}
+
+.Label {
+  flex-shrink: 0;
+  width: 4.5rem;
+  @include fontCaption;
+  @include flex(row, flex-end);
+  margin-right: 0.5rem;
+}
+
+.BarContainer {
+  height: 1.5rem;
+  flex-grow: 1;
+  @include flex(row, flex-start);
+}
+
+.Bar {
+  height: 100%;
+  background-color: #FE9DA0;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: barScale 450ms ease-out 400ms 1 forwards;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+@keyframes barScale {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.ValueLabel {
+  @include fontBody($bold);
+  background-color: rgba(254, 181, 98, 0.85);
+  color: white;
+  width: 2.5rem;
+  height: 100%;
+  border-radius: 3rem;
+  opacity: 0;
+  animation: label 300ms ease-out 900ms 1 forwards;
+}
+
+@keyframes label {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

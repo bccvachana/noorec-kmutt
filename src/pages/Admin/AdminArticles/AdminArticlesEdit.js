@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 
 import AdminArticlesForm from "../../../components/Admin/AdminArticlesForm/AdminArticlesForm";
 import { Context } from "../../../App";
-import { extract } from "query-string";
-import { useEffect } from "react";
 
 const checkFalseType = (object) => {
   const result = Object.keys(object)
@@ -59,7 +57,7 @@ const AdminArticlesEdit = (props) => {
   const [newArticle, setNewArticle] = useState(null);
   const [titleError, setTitleError] = useState(false);
   const [typeError, setTypeError] = useState(false);
-  const { push } = useHistory();
+  const { push, goBack } = useHistory();
 
   useEffect(() => {
     if (article && articleId) {
@@ -68,10 +66,6 @@ const AdminArticlesEdit = (props) => {
     }
   }, [article]);
 
-  useEffect(() => {
-    console.log(newArticle);
-  }, [newArticle]);
-
   return (
     <React.Fragment>
       <div className="AdminTopBar" style={{ marginBottom: "0.5rem" }}>
@@ -79,9 +73,14 @@ const AdminArticlesEdit = (props) => {
           {articleId ? "แก้ไขบทความ" : "บทความใหม่"}
         </div>
         <div className="AdminTopBarContainer">
-          <Link to="/admin/articles" className="Secondary">
+          <div
+            className="Secondary"
+            onClick={() => {
+              goBack();
+            }}
+          >
             ละทิ้ง
-          </Link>
+          </div>
           <div
             className="Primary"
             onClick={() => {
@@ -98,7 +97,7 @@ const AdminArticlesEdit = (props) => {
                 }
               } else {
                 push({
-                  pathname: "/admin",
+                  pathname: "/admin/articles/api",
                   search: !articleId
                     ? "?mode=addArticle"
                     : `?mode=updateArticle&articleId=${articleId}`,

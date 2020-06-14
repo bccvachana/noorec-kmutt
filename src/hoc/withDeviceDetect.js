@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const checkDevice = () => {
   const windowWidth = window.innerWidth;
-  if (windowWidth > 1024) return "Desktop";
-  else if (windowWidth > 768) return "Tablet";
+  if (windowWidth > 1023) return "Desktop";
+  else if (windowWidth > 767) return "Tablet";
   else return "Mobile";
 };
 

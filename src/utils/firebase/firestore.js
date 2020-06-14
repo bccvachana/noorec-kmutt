@@ -41,18 +41,39 @@ export const updateArticle = async (articleId, article) => {
     });
 };
 
-export const readArticle = async (setArticles) => {
-  const doc = await db
-    .collection("articles")
-    .orderBy("createdAt", "desc")
-    .get();
-  const array = doc.docs.map((doc) => doc.data());
-  console.log(array);
-  setArticles(array);
+// export const readArticle = async (setArticles) => {
+//   const doc = await db
+//     .collection("articles")
+//     .orderBy("createdAt", "desc")
+//     .get();
+//   const array = doc.docs.map((doc) => doc.data());
+//   console.log(array);
+//   setArticles(array);
+// };
+
+export const readUsers = async (setUsers) => {
+  let users;
+  const doc = await db.collection("users").get();
+  doc.docs.map((doc) => {
+    const data = doc.data();
+    const { createdAt, updatedAt } = data;
+    const userId = doc.id;
+    users = {
+      ...users,
+      [userId]: {
+        ...data,
+        createdAt: createdAt.seconds,
+        updatedAt: updatedAt.seconds,
+      },
+    };
+    return null;
+  });
+
+  console.log(users);
 };
 
 export const snapshotArticle = async (setArticle) => {
-  // let article;
+  let article;
   // db.collection("articles").onSnapshot((doc) => {
   //   doc.docs.map((doc) => {
   //     const data = doc.data();

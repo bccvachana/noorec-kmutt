@@ -120,13 +120,12 @@ const AdminArticlesForm = (props) => {
     }
   }, [typeBloodPressure]);
 
-  console.log(typeBmi);
   return (
     <div className={classes.Container}>
       <Prompt
         when={isBlocking}
         message={(location) => {
-          return location.pathname === "/admin"
+          return location.pathname === "/admin/articles/api"
             ? true
             : "คุณยังไม่ได้ทำการบันทึกบทความนี้ ดำเนินการต่อหรือไม่ ?";
         }}

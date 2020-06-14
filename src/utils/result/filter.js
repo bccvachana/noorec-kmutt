@@ -101,5 +101,5 @@ export const getRecord = (record) => {
     return null;
   });
 
-  return Object.keys(result).length !== 0 ? result : null;
+  return result && Object.keys(result).length !== 0 ? result : null;
 };

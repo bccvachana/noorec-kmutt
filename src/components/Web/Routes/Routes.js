@@ -22,10 +22,11 @@ import Article from "../../../pages/Article/Article";
 import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
 import AdminMain from "../../../pages/Admin/AdminMain/AdminMain";
+import AdminUser from "../../../pages/Admin/AdminUser/AdminUser";
 import AdminUsers from "../../../pages/Admin/AdminUsers/AdminUsers";
 import AdminArticles from "../../../pages/Admin/AdminArticles/AdminArticles";
 import AdminArticlesEdit from "../../../pages/Admin/AdminArticles/AdminArticlesEdit";
-import Admin from "../../../pages/Admin/Admin";
+import AdminArticlesApi from "../../../pages/Admin/AdminArticles/AdminArticlesApi";
 import AdminArticle from "../../../pages/Admin/AdminArticle/AdminArticle";
 
 import { Context } from "../../../App";
@@ -52,8 +53,21 @@ const verifiedRoutes = [
 ];
 
 const adminRoutes = [
-  { path: "/admin/main", component: AdminMain },
-  { path: "/admin/users", component: AdminUsers },
+  {
+    path: "/admin",
+    component: AdminMain,
+    withLoadingProps: { auto: false },
+  },
+  {
+    path: "/admin/users",
+    component: AdminUsers,
+    withLoadingProps: { auto: false },
+  },
+  {
+    path: "/admin/users/:userId",
+    component: AdminUser,
+    withLoadingProps: { auto: false },
+  },
   {
     path: "/admin/articles",
     component: AdminArticles,
@@ -61,12 +75,12 @@ const adminRoutes = [
   },
   { path: "/admin/articles/add", component: AdminArticlesEdit },
   { path: "/admin/articles/edit/:articleId", component: AdminArticlesEdit },
-  { path: "/admin/articles/:articleId", component: AdminArticle },
   {
-    path: "/admin",
-    component: Admin,
+    path: "/admin/articles/api",
+    component: AdminArticlesApi,
     withLoadingProps: { auto: false },
   },
+  { path: "/admin/articles/:articleId", component: AdminArticle },
 ];
 
 const authRoute = [
@@ -139,7 +153,7 @@ const Routes = (props) => {
           {authRoute.map(({ path, component }) => (
             <Route key={path} exact path={path} component={component} />
           ))}
-          <Redirect to={userState === "admin" ? "/admin/main" : "/"} />
+          <Redirect to={userState === "admin" ? "/admin" : "/"} />
         </Switch>
       ) : null}
     </div>

@@ -3,7 +3,7 @@ import classes from "./Auth.module.scss";
 import { useLocation, Link } from "react-router-dom";
 import queryString from "query-string";
 
-import error from "../../assets/web/Auth/error.svg";
+import error from "../../assets/error.svg";
 
 const AuthError = (props) => {
   const { search } = useLocation();

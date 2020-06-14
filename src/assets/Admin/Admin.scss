@@ -2,7 +2,7 @@
   width: 100%;
   margin-bottom: 2.2rem;
 
-  @include flex(row, space-between, $wrap: nowrap);
+  @include flex(row, space-between, flex-start, $wrap: nowrap);
 
   a {
     @include flex;
@@ -38,11 +38,36 @@
   .Secondary {
     color: $color-detail;
     @include fontBody($bold);
+    cursor: pointer;
   }
 
   >* {
     &:last-child {
       margin-left: 1.5rem;
     }
+  }
+}
+
+.ContentTitle {
+  position: relative;
+  top: -0.6rem;
+  margin: 0 1.5rem;
+  @include fontH3;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+  @include flex($align: flex-start);
+  min-width: 0;
+}
+
+.Time {
+  margin-top: 0.5rem;
+  @include fontCaption;
+  color: $color-detail;
+  @include flex(row, flex-start);
+
+  img {
+    height: 10px;
+    margin-right: 0.4rem
   }
 }

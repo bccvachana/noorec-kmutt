@@ -7,10 +7,6 @@
   cursor: pointer;
   @include flex;
 
-  @include tablet-desktop {
-    display: none;
-  }
-
   * {
     transition: all ease-in-out 250ms;
   }

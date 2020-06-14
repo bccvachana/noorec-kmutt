@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Context } from "../../../App";
 import { fromNow } from "../../../utils/moment";
 
-import timeIcon from "../../../assets/time.svg";
+import update from "../../../assets/update.svg";
 
 const ViewerQuill = (props) => {
   const { articleId } = props;
@@ -26,11 +26,11 @@ const ViewerQuill = (props) => {
 
   return (
     <div className={classes.Container}>
-      <div className={classes.Title}>{title}</div>
+      {/* <div className={classes.Title}>{title}</div>
       <div className={classes.Time}>
-        <img src={timeIcon} alt="timeIcon" />
+        <img src={update} alt="update" />
         {fromNow(updatedAt)}
-      </div>
+      </div> */}
       <ReactQuill
         id="Quill"
         className="Viewer"

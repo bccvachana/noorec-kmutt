@@ -74,3 +74,12 @@ body {
   background-color: $color-accent1;
   color: white !important;
 }
+
+.Back {
+  @include flex;
+  cursor: pointer;
+
+  img {
+    height: 1rem;
+  }
+}

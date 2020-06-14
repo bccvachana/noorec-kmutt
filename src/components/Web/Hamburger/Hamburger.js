@@ -5,7 +5,7 @@ const Hamburger = (props) => {
   const { isDropDown, setIsDropDown } = props;
   return (
     <div
-      className={`NavDropdown ${classes.Hamburger} ${
+      className={`AdminSideBar NavDropdown ${classes.Hamburger} ${
         isDropDown ? classes.ButtonActive : ""
       }`}
       onClick={() => {
@@ -13,7 +13,7 @@ const Hamburger = (props) => {
       }}
     >
       {[...Array(3)].map((_, i) => (
-        <div key={i} className={`NavDropdown ${classes.Bar}`} />
+        <div key={i} className={`AdminSideBar NavDropdown ${classes.Bar}`} />
       ))}
     </div>
   );

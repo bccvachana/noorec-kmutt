@@ -19,8 +19,10 @@
   }
 
   &.AdminLoading {
-    padding-top: 0;
-    padding-left: 13rem;
-    padding-right: 1rem;
+    @include desktop {
+      padding-top: 0;
+      padding-left: 13rem;
+      padding-right: 1rem;
+    }
   }
 }

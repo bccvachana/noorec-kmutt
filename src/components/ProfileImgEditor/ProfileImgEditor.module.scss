@@ -32,8 +32,6 @@
   }
 }
 
-
-
 .ZoomDrag {
   width: 100%;
   height: 1.4rem;
@@ -103,6 +101,7 @@
 }
 
 .ButtonContainer {
+  text-align: center;
   @include flex(row);
   width: 100%;
 

@@ -3,10 +3,7 @@
 .Article {
   width: 100%;
   margin: 0.5rem 0;
-  padding: 1rem;
-  background-color: white;
-  border-radius: $radius;
-  @include shadow;
+  @include box;
 
   .TitleBar {
     @include flex(row, space-between, $wrap: nowrap);
@@ -39,8 +36,24 @@
 
 
     img {
-      height: 0.6rem;
+      height: 10px;
       margin-right: 0.4rem
     }
+  }
+}
+
+.NoArticle {
+  width: 100%;
+  flex-grow: 1;
+  @include flex;
+
+  img {
+    height: 9rem;
+    opacity: 0.1;
+  }
+
+  .Title {
+    @include fontH3;
+    margin: 1rem 0;
   }
 }

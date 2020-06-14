@@ -1,1 +1,178 @@
 @import "../../../var";
+
+.Table {
+  width: 100%;
+  @include box;
+  @include flex(row, $align: flex-start, $wrap: nowrap);
+}
+
+.TableProfile {
+  width: 13rem;
+  flex-shrink: 0.5;
+
+  >* {
+    @include fontCaption($bold);
+    @include flex(row, flex-start, $wrap: nowrap);
+    padding: 0 0.5rem;
+    height: 3.5rem;
+    border-bottom: 2px solid #f7f7f7;
+  }
+
+  >a {
+    &:hover {
+      background-color: #F9F9F9;
+    }
+  }
+}
+
+.Img {
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+
+    &:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.Name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include fontCaption($bold);
+  line-height: 1.4;
+}
+
+.TableValue {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow-x: auto;
+
+  >* {
+    display: grid;
+    grid-template-columns: repeat(7, 4rem);
+    grid-template-rows: 3.5rem;
+
+    @include tablet-desktop {
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    >* {
+      @include flex(row, flex-start);
+      padding-left: 0.5rem;
+      border-bottom: 2px solid #f7f7f7;
+    }
+  }
+
+  .Header {
+    >* {
+      @include fontCaption($bold);
+    }
+  }
+
+  .Value {
+    >* {
+      @include fontCaption;
+    }
+  }
+}
+
+.Grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-gap: 1.5rem;
+
+  @include tablet-desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .Card {
+    @include box;
+    @include flex;
+
+    &:hover {
+      background-color: #F9F9F9;
+    }
+
+    >div {
+      width: 100%;
+      max-width: 20rem;
+    }
+  }
+
+  .Img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .Title {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .Name {
+    @include fontBody($bold);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .Profile {
+    @include flex(row, flex-start, $wrap:nowrap);
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .Value {
+    * {
+      @include fontCaption;
+    }
+
+    >div {
+      @include flex(row, space-between)
+    }
+  }
+}
+
+.Time {
+  font-size: 0.6rem;
+  font-weight: $regular;
+  color: $color-detail;
+  @include flex(row, flex-start);
+
+
+  img {
+    height: 8px;
+    margin-right: 0.3rem
+  }
+}
+
+.NoUsers {
+  width: 100%;
+  flex-grow: 1;
+  @include flex;
+
+  img {
+    height: 9rem;
+    opacity: 0.1;
+    border-radius: 10rem;
+  }
+
+  .Title {
+    @include fontH3;
+    margin: 1rem 0;
+  }
+}

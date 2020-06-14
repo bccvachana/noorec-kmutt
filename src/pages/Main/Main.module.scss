@@ -2,13 +2,8 @@
 
 .Page {
   width: 100%;
-  padding: 2.5rem 0;
   flex-grow: 1;
-  @include flex($align: flex-start);
-
-  @include tablet-desktop {
-    padding: 3rem 0;
-  }
+  @include flex($justify: flex-start, $align: flex-start);
 
   >* {
     margin: 0.5rem 0;
@@ -99,7 +94,7 @@
 
   .ResultLink {
     margin-top: 1rem;
-    padding: 0.1rem 1.5rem;
+    padding: 0.25rem 1.5rem;
     @include fontBody($bold);
     color: white;
     background-color: $color-accent2;

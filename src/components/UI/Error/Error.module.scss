@@ -1,0 +1,40 @@
+@import "../../../var";
+
+.Title {
+  @include fontH3;
+  margin-top: 1rem
+}
+
+.Detail {
+  >div {
+    display: inline-block;
+  }
+}
+
+.Img {
+  height: 11rem;
+  margin-bottom: 0.7rem;
+  animation: imgScale 400ms ease-out 350ms 1 forwards;
+}
+
+@keyframes imgScale {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.Link {
+  margin-top: 1rem;
+  color: $color-accent1;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

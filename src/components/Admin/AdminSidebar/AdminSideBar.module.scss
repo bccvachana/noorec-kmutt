@@ -3,14 +3,27 @@
 .SideBar {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -12rem;
   width: 12rem;
   height: 100%;
-  padding: 3.5rem 1.5rem;
+  padding: 5.5rem 1rem 0;
   background-color: white;
   @include shadow;
   @include flex($justify: flex-start);
-  z-index: 100;
+  z-index: 101;
+  transition: all ease-in-out 250ms;
+
+  @include tablet {
+    padding-top: 6.5rem;
+  }
+
+  @include desktop {
+    padding-top: 3.5rem;
+  }
+
+  &.Active {
+    left: 0;
+  }
 }
 
 .Logo {
@@ -39,9 +52,68 @@
   color: rgba($color: $color-text, $alpha: 0.5);
   border-radius: 3rem;
   transition: all ease-out 100ms;
+
+  &:hover {
+    color: $color-text;
+  }
 }
 
 .SignOut {
-  margin-top: 10rem;
-  color: rgba($color: $color-text, $alpha: 0.1);
+  margin-top: 2rem;
+
+  img {
+    height: 1.5rem;
+  }
+}
+
+
+//Nav
+
+.Nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 3rem;
+  padding: 0 1rem;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.05);
+  @include flex(row, $wrap: nowrap);
+
+  @include tablet {
+    height: 3.5rem;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.LogoNav {
+  height: 21px;
+
+  @include tablet {
+    height: 27px;
+  }
+
+  img {
+    height: 100%;
+  }
+}
+
+.Hamburger {
+  position: fixed;
+  top: 0.85rem;
+  left: 1rem;
+  z-index: 101;
+
+  @include tablet {
+    top: 1.1rem
+  }
+
+  @include desktop {
+    display: none;
+  }
 }

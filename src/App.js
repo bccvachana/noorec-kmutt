@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { checkUser } from "./utils/firebase/auth";
-import { readUserData, snapshotArticle } from "./utils/firebase/firestore";
+import {
+  readUserData,
+  snapshotArticle,
+  readUsers,
+} from "./utils/firebase/firestore";
 import { getRecentRecord, getRecord } from "./utils/result/filter";
 
 import { ModalContainer } from "./components/Web/ModalContainer/ModalContainer";
@@ -11,7 +15,7 @@ import Routes from "./components/Web/Routes/Routes";
 import Footer from "./components/Web/Footer/Footer";
 import AdminSideBar from "./components/Admin/AdminSidebar/AdminSideBar";
 
-import { mockData1, mockData2, mockData3 } from "./mockData";
+import { mockData1, mockData2, mockData3, mockUsers } from "./mockData";
 
 import { defaults } from "react-chartjs-2";
 import "chartjs-plugin-datalabels";
@@ -32,6 +36,7 @@ const App = (props) => {
   const [recentRecord, setRecentRecord] = useState(null);
   const [record, setRecord] = useState(null);
   const [article, setArticle] = useState(null);
+  const [users, setUsers] = useState(null);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -49,8 +54,11 @@ const App = (props) => {
   useEffect(() => {
     if (user) {
       if (user.uid !== "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
-        readUserData(user.uid, setUserData);
-        //setUserData(mockData3);
+        //readUserData(user.uid, setUserData);
+        setUserData(mockData3);
+      } else {
+        //readUsers(setUsers);
+        setUsers(mockUsers);
       }
       snapshotArticle(setArticle);
     } else {
@@ -58,6 +66,7 @@ const App = (props) => {
       setProfileImg(null);
       setRecentRecord(null);
       setRecord(null);
+      setUsers(null);
     }
   }, [user]);
 
@@ -82,7 +91,9 @@ const App = (props) => {
           profileImg: profileImg,
           recentRecord: recentRecord,
           record: record,
+          setRecord: setRecord,
           article: article,
+          users: users,
         }}
       >
         {userState !== "admin" ? <NavBar /> : <AdminSideBar />}

@@ -96,3 +96,10 @@ $regular : 400;
     color: rgba($color: $color-text, $alpha: 0.5);
   }
 }
+
+@mixin box {
+  padding: 1rem;
+  background-color: white;
+  border-radius: $radius;
+  @include shadow;
+}
