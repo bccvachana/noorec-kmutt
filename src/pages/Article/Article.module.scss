@@ -1,1 +1,24 @@
 @import "../../var";
+
+.Article {
+  width: 100%;
+  flex-grow: 1;
+  @include flex($justify: flex-start)
+}
+
+.Title {
+  @include fontH3;
+  line-height: 1;
+  margin-bottom: 2.2rem;
+}
+
+.Container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+
+  @include tablet-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

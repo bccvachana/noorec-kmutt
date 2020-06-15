@@ -293,7 +293,6 @@ const quillImageHandler = (quill, setIsLoading) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result.data.url);
           setIsLoading(false);
           quillRef.insertEmbed(index, "image", result.data.url);
         });

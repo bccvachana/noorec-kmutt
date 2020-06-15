@@ -13,7 +13,7 @@ import { ResultSlideContext } from "../../ResultSlide";
 
 const OxygenCriteria = (props) => {
   const {
-    recentRecord: { oxygen },
+    userData: { oxygen },
   } = useContext(Context);
   const { isFromTop } = useContext(ResultContext);
   const { isSlideShow } = useContext(ResultSlideContext);

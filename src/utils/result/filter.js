@@ -5,26 +5,31 @@ const filterStatic = {
     filter: "weight",
     props: ["weight", "height", "bmi"],
     criteria: ["bmi"],
+    criteriaRef: "bmi",
   },
   temperature: {
     filter: "temperature",
     props: ["temperature"],
     criteria: ["temperature"],
+    criteriaRef: "temperature",
   },
   bloodPressure: {
     filter: "bloodPressureHigh",
     props: ["bloodPressureHigh", "bloodPressureLow"],
     criteria: ["bloodPressureHigh", "bloodPressureLow"],
+    criteriaRef: "bloodPressure",
   },
   rate: {
     filter: "rate",
     props: ["rate"],
     criteria: ["rate"],
+    criteriaRef: "rate",
   },
   oxygen: {
     filter: "oxygen",
     props: ["oxygen"],
     criteria: ["oxygen"],
+    criteriaRef: "oxygen",
   },
 };
 
@@ -36,40 +41,40 @@ const types = [
   "oxygen",
 ];
 
-export const RecentRecord = (record, type) => {
-  const { filter, props, criteria } = filterStatic[type];
-  let temp = record.filter((rec) => {
-    return rec[filter];
-  });
-  let result;
-  if (temp.length !== 0) {
-    let recent = temp[temp.length - 1];
-    props.map((prop) => {
-      result = { ...result, [prop]: recent[prop] };
-      return null;
-    });
-    result = {
-      ...result,
-      [`${type === "weightHeight" ? "bmi" : type}Criteria`]: criteriaCheck[
-        type
-      ](criteria.map((criteria) => recent[criteria])),
-    };
-  }
-  return result;
-};
+// export const RecentRecord = (record, type) => {
+//   const { filter, props, criteria } = filterStatic[type];
+//   let temp = record.filter((rec) => {
+//     return rec[filter];
+//   });
+//   let result;
+//   if (temp.length !== 0) {
+//     let recent = temp[temp.length - 1];
+//     props.map((prop) => {
+//       result = { ...result, [prop]: recent[prop] };
+//       return null;
+//     });
+//     result = {
+//       ...result,
+//       [`${type === "weightHeight" ? "bmi" : type}Criteria`]: criteriaCheck[
+//         type
+//       ](criteria.map((criteria) => recent[criteria])),
+//     };
+//   }
+//   return result;
+// };
 
-export const getRecentRecord = (record) => {
-  let result;
-  types.map((type) => {
-    result = { ...result, ...RecentRecord(record, type) };
-    return null;
-  });
+// export const getRecentRecord = (record) => {
+//   let result;
+//   types.map((type) => {
+//     result = { ...result, ...RecentRecord(record, type) };
+//     return null;
+//   });
 
-  return Object.keys(result).length !== 0 ? result : null;
-};
+//   return Object.keys(result).length !== 0 ? result : null;
+// };
 
 export const Record = (record, type) => {
-  const { filter, props, criteria } = filterStatic[type];
+  const { filter, props, criteria, criteriaRef } = filterStatic[type];
   let recordfilter = record.filter((rec) => {
     return rec[filter];
   });
@@ -86,7 +91,7 @@ export const Record = (record, type) => {
     result = {
       ...result,
       criteria: recordfilter.map((rec) => {
-        return criteriaCheck[type](criteria.map((criteria) => rec[criteria]));
+        return rec[`${criteriaRef}Criteria`];
       }),
     };
   }
@@ -100,6 +105,5 @@ export const getRecord = (record) => {
     if (temp) result = { ...result, [type]: temp };
     return null;
   });
-
   return result && Object.keys(result).length !== 0 ? result : null;
 };

@@ -65,7 +65,7 @@ export default Overview;
 
 const OverviewInfo = (props) => {
   const { type } = props;
-  const { recentRecord } = useContext(Context);
+  const { userData } = useContext(Context);
   const { title, unit } = infoStatic[type];
 
   return (
@@ -78,7 +78,7 @@ const OverviewInfo = (props) => {
       <div className={classes.ValueContainer}>
         {type !== "bloodPressure" ? (
           <div className={classes.Value}>
-            {recentRecord[type] ? recentRecord[type] : "--"}
+            {userData[type] ? userData[type] : "--"}
             {unit ? (
               <span className="InfoUnit">
                 &nbsp;&nbsp;
@@ -88,20 +88,18 @@ const OverviewInfo = (props) => {
           </div>
         ) : (
           <div className={classes.Value}>
-            {recentRecord["bloodPressureHigh"]
-              ? recentRecord["bloodPressureHigh"]
+            {userData["bloodPressureHigh"]
+              ? userData["bloodPressureHigh"]
               : "--"}
             <span className={classes.BloodPressureLine}> | </span>
-            {recentRecord["bloodPressureLow"]
-              ? recentRecord["bloodPressureLow"]
-              : "--"}
+            {userData["bloodPressureLow"] ? userData["bloodPressureLow"] : "--"}
             <span className="InfoUnit">&nbsp;&nbsp;{unit}</span>
           </div>
         )}
-        {recentRecord[`${type}Criteria`] ? (
+        {userData[`${type}Criteria`] ? (
           type !== "weight" && type !== "height" ? (
             <div className="InfoCriteria">
-              {criteriaStatic[type][recentRecord[`${type}Criteria`]].title}
+              {criteriaStatic[type][userData[`${type}Criteria`]].title}
             </div>
           ) : null
         ) : null}

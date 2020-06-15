@@ -40,7 +40,7 @@ const inputStatic = {
 };
 
 const FormInput = (props) => {
-  const { type, register, registerRef, autoComplete, error } = props;
+  const { type, register, registerRef, autoComplete, error, value } = props;
   const { inputType, placeholder, ref } = type ? inputStatic[type] : {};
 
   return (
@@ -48,6 +48,7 @@ const FormInput = (props) => {
       type={inputType}
       name={type}
       placeholder={placeholder}
+      defaultValue={value}
       autoComplete={autoComplete}
       ref={register({ ...ref, ...registerRef })}
       className={`${classes.FormInput} ${error ? classes.isError : ""}`}

@@ -13,7 +13,7 @@ import { ResultSlideContext } from "../../ResultSlide";
 const WeightHeightCriteria = (props) => {
   const { criteria } = props;
   const {
-    recentRecord: { weight, height, bmi },
+    userData: { weight, height, bmi },
   } = useContext(Context);
   const { bar, ratio } = weightHeightStatic[criteria];
   const { isFromTop } = useContext(ResultContext);

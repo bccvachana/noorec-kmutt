@@ -1,17 +1,23 @@
 import { firestore, db } from "./firebase";
 import { mockArticle } from "../../mockData";
 
-export const addUserData = async (uid, data, profileImgUrl) => {
+export const addUserData = async (uid, data, profileImgObject) => {
   const { firstName, lastName } = data;
-  await db.collection("users").doc(uid).set({
-    firstName: firstName,
-    lastName: lastName,
-    profileImgUrl: profileImgUrl,
-    record: [],
-    createdAt: firestore.Timestamp.now(),
-    updatedAt: firestore.Timestamp.now(),
-  });
-  console.log("Add user successfully !!!");
+  const { profileImgName, profileImgUrl } = profileImgObject
+    ? profileImgObject
+    : {};
+  await db
+    .collection("users")
+    .doc(uid)
+    .set({
+      firstName: firstName,
+      lastName: lastName,
+      profileImgName: profileImgName ? profileImgName : null,
+      profileImgUrl: profileImgUrl ? profileImgUrl : null,
+      record: [],
+      createdAt: firestore.Timestamp.now(),
+      updatedAt: firestore.Timestamp.now(),
+    });
 };
 
 export const readUserData = async (uid, setUserData) => {
@@ -68,38 +74,50 @@ export const readUsers = async (setUsers) => {
     };
     return null;
   });
-
-  console.log(users);
+  setUsers(users);
+  //console.log(users);
 };
 
 export const snapshotArticle = async (setArticle) => {
   let article;
-  // db.collection("articles").onSnapshot((doc) => {
-  //   doc.docs.map((doc) => {
-  //     const data = doc.data();
-  //     const { createdAt, updatedAt } = data;
-  //     const articleId = doc.id;
-  //     const content = JSON.parse(data.content);
-  //     const checkImg = content.ops.find((element) => element.insert.image);
-  //     const img = checkImg ? checkImg.insert.image : null;
-  //     article = {
-  //       ...article,
-  //       [articleId]: {
-  //         ...data,
-  //         content: content,
-  //         image: img,
-  //         createdAt: createdAt.seconds,
-  //         updatedAt: updatedAt.seconds,
-  //       },
-  //     };
-  //     return null;
-  //   });
-  //   console.log(article);
-  //   setArticle(article);
-  // });
-  setArticle(mockArticle);
+  db.collection("articles")
+    .orderBy("updatedAt", "desc")
+    .onSnapshot((doc) => {
+      doc.docs.map((doc) => {
+        const data = doc.data();
+        const { createdAt, updatedAt } = data;
+        const articleId = doc.id;
+        const content = JSON.parse(data.content);
+        const checkImg = content.ops.find((element) => element.insert.image);
+        const img = checkImg ? checkImg.insert.image : null;
+        article = {
+          ...article,
+          [articleId]: {
+            ...data,
+            content: content,
+            image: img,
+            createdAt: createdAt.seconds,
+            updatedAt: updatedAt.seconds,
+          },
+        };
+        return null;
+      });
+      setArticle(article);
+    });
+  //setArticle(mockArticle);
 };
 
 export const deleteArticle = async (articleId) => {
   await db.collection("articles").doc(articleId).delete();
+};
+
+export const updateUserData = async (uid, data, profileImgObject) => {
+  const tempData = profileImgObject ? { ...data, ...profileImgObject } : data;
+  await db
+    .collection("users")
+    .doc(uid)
+    .update({
+      ...tempData,
+      updatedAt: firestore.Timestamp.now(),
+    });
 };

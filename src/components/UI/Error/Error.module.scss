@@ -1,5 +1,11 @@
 @import "../../../var";
 
+.Container {
+  width: 100%;
+  flex-grow: 1;
+  @include flex;
+}
+
 .Title {
   @include fontH3;
   margin-top: 1rem

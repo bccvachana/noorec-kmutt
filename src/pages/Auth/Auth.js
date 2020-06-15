@@ -12,6 +12,7 @@ import {
   resendVerifyEmail,
   sendPasswordResetEmail,
   confirmResetPassword,
+  editProfile,
 } from "../../utils/firebase/auth";
 
 const Auth = (props) => {
@@ -88,6 +89,12 @@ const Auth = (props) => {
           delayPush(`/auth/success?mode=resetPassword&oobCode=${oobCode}`);
           break;
         }
+        case "editProfile": {
+          const { data, profileImg, profileImgName } = state ? state : {};
+          await editProfile(data, profileImg, profileImgName);
+          window.location.href = "/";
+          break;
+        }
         default: {
           delayPush("/");
           break;
@@ -105,6 +112,10 @@ const Auth = (props) => {
         case "confirmResetPassword":
           delayPush("/auth/error?mode=resetPassword");
           break;
+        case "editProfile": {
+          delayPush("/auth/error");
+          break;
+        }
         default:
           signOut();
           delayPush("/auth/error");

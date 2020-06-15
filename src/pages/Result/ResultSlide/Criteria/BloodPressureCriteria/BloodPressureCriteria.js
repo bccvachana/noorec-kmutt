@@ -9,7 +9,7 @@ import { Context } from "../../../../../App";
 
 const BloodPressureCriteria = (props) => {
   const {
-    recentRecord: { bloodPressureHigh, bloodPressureLow },
+    userData: { bloodPressureHigh, bloodPressureLow },
   } = useContext(Context);
 
   const [widthRef, setWidthRef] = useState(0);

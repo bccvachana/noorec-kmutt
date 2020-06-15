@@ -16,7 +16,7 @@ const AdminMain = (props) => {
   const [criteriaData, setCriteriaData] = useState(null);
 
   useEffect(() => {
-    if (users && article) {
+    if (users) {
       let data;
       criteriaRefStatic.map((type) => {
         let criteria;
@@ -55,7 +55,7 @@ const AdminMain = (props) => {
     if (criteriaData) props.delaySetIsLoadingFalse();
   }, [criteriaData]);
 
-  return users && article && criteriaData ? (
+  return users && criteriaData ? (
     <React.Fragment>
       <div className="AdminTopBar">
         <div className="AdminTitle">ภาพรวม</div>
@@ -67,13 +67,15 @@ const AdminMain = (props) => {
         </Link>
         <Link to="/admin/articles" className={classes.Overview}>
           <img src={articleIcon} alt="articleIcon" />
-          <div className={classes.Value}>{Object.keys(article).length}</div>
+          <div className={classes.Value}>
+            {article ? Object.keys(article).length : 0}
+          </div>
           บทความ
         </Link>
         {Object.keys(criteriaData).map((type) => {
           const { userRecorded, criteriaKey, data } = criteriaData[type];
           return (
-            <div className={classes.Chart}>
+            <div className={classes.Chart} key={type}>
               {resultSlideStatic[type].title}
               <Box
                 style={{ justifyContent: "flex-start", marginTop: "0.7rem" }}

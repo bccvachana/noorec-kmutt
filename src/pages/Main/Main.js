@@ -6,6 +6,8 @@ import heartSvg from "../../assets/web/Main/heart.svg";
 import infoStatic from "../Result/static/infoStatic";
 
 import { Context } from "../../App";
+import ArticleCard from "../../components/ArticleCard/ArticleCard";
+import { filterArticle } from "../../utils/article";
 
 const resultStatic = [
   "weight",
@@ -18,30 +20,27 @@ const resultStatic = [
 ];
 
 const Main = (props) => {
-  const { userData, recentRecord, article } = useContext(Context);
+  const { userData, article } = useContext(Context);
   const [mainArticle, setMainArticle] = useState(null);
 
   useEffect(() => {
-    setMainArticle(
-      article
-        ? Object.keys(article).map((key) => {
-            return article[key];
-          })
-        : null
-    );
-  }, [article]);
+    if (userData && article) {
+      setMainArticle(filterArticle(article, userData, 4));
+    }
+  }, [userData, article]);
 
-  return userData && recentRecord ? (
+  useEffect(() => {
+    if (mainArticle) props.delaySetIsLoadingFalse();
+  }, [mainArticle]);
+
+  return userData && mainArticle ? (
     <div className={classes.Page}>
       <div className={classes.Title}>
         <div className={classes.Hello}>สวัสดี,</div>
         <div className={classes.Name}>คุณ{userData.firstName}</div>
       </div>
       <Link to="/record" className={classes.RecordButton}>
-        {/* <img src={recordSvg} alt="recordSvg" /> */}
-        <div>
-          <img src={heartSvg} alt="heartSvg" />
-        </div>
+        <img src={heartSvg} alt="heartSvg" />
         ตรวจสุขภาพ
       </Link>
       <div className={classes.Result}>
@@ -53,11 +52,11 @@ const Main = (props) => {
               {title}
               <div>
                 {type !== "bloodPressure"
-                  ? recentRecord[type]
-                    ? recentRecord[type]
+                  ? userData[type]
+                    ? userData[type]
                     : "--"
-                  : recentRecord.bloodPressureHigh
-                  ? `${recentRecord.bloodPressureHigh} | ${recentRecord.bloodPressureLow}`
+                  : userData.bloodPressureHigh
+                  ? `${userData.bloodPressureHigh} | ${userData.bloodPressureLow}`
                   : "-- | --"}{" "}
                 <span>{unit}</span>
               </div>
@@ -70,15 +69,16 @@ const Main = (props) => {
           </Link>
         </div>
       </div>
-      <div className={classes.ArticleTitle}>บทความแนะนำสำหรับคุณ</div>
+      <div className={classes.ArticleTitle}>
+        บทความแนะนำสำหรับคุณ
+        <Link to="/article" className="Link">
+          ดูทั้งหมด
+        </Link>
+      </div>
       <div className={classes.Article}>
-        {mainArticle
-          ? mainArticle.map(({ title, image }) => (
-              <div key={title} style={{ backgroundImage: `url("${image}")` }}>
-                {title}
-              </div>
-            ))
-          : null}
+        {mainArticle.map((id) => (
+          <ArticleCard key={id} path="Main" id={id} />
+        ))}
       </div>
     </div>
   ) : null;

@@ -1,6 +1,6 @@
 import { auth } from "./firebase";
-import { uploadProfileImg } from "./storage";
-import { addUserData } from "./firestore";
+import { uploadProfileImg, deleteProfileImg } from "./storage";
+import { addUserData, updateUserData } from "./firestore";
 
 export const signUp = async (data, profileImg) => {
   const { email, password, firstName } = data;
@@ -9,11 +9,11 @@ export const signUp = async (data, profileImg) => {
   await user.updateProfile({
     displayName: firstName,
   });
-  let profileImgUrl = "";
+  let profileImgObject = null;
   if (profileImg) {
-    profileImgUrl = await uploadProfileImg(profileImg);
+    profileImgObject = await uploadProfileImg(profileImg);
   }
-  await addUserData(user.uid, data, profileImgUrl);
+  await addUserData(user.uid, data, profileImgObject);
   await user.sendEmailVerification();
   auth.signOut();
 };
@@ -54,16 +54,29 @@ export const checkUser = (setUser, setUserState) => {
 export const resendVerifyEmail = async () => {
   const user = auth.currentUser;
   await user.sendEmailVerification();
-  console.log("sent verification email");
   auth.signOut();
 };
 
 export const sendPasswordResetEmail = async (email) => {
   await auth.sendPasswordResetEmail(email);
-  console.log("sent reset password email");
 };
 
 export const confirmResetPassword = async (code, password) => {
   await auth.confirmPasswordReset(code, password);
-  console.log("reset password");
+};
+
+export const editProfile = async (data, profileImg, profileImgName) => {
+  const { firstName } = data;
+  const user = auth.currentUser;
+  await user.updateProfile({
+    displayName: firstName,
+  });
+  let profileImgObject = null;
+  if (profileImg) {
+    if (profileImg) {
+      profileImgObject = await uploadProfileImg(profileImg);
+      if (profileImgName) await deleteProfileImg(profileImgName);
+    }
+  }
+  await updateUserData(user.uid, data, profileImgObject);
 };

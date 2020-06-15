@@ -7,13 +7,13 @@ import criteriaStatic from "../static/criteriaStatic";
 
 const ResultCriteria = (props) => {
   const { Component } = props;
-  const { recentRecord } = useContext(Context);
+  const { userData } = useContext(Context);
   const { type } = useContext(ResultSlideContext);
 
   const criteria =
     type === "weightHeight"
-      ? recentRecord.bmiCriteria
-      : recentRecord[`${type}Criteria`];
+      ? userData.bmiCriteria
+      : userData[`${type}Criteria`];
   const { title, detail } =
     type === "weightHeight"
       ? criteriaStatic.bmi[criteria]

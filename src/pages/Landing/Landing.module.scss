@@ -12,9 +12,12 @@
 .SignInRegister {
   width: 100%;
   @include flex;
+  margin-bottom: 3.5rem;
 
   @include desktop {
     width: auto;
+    margin-bottom: 0;
+    flex-shrink: 0;
     margin-right: 2rem;
     min-width: 32rem;
     @include flex($align: flex-start);
@@ -47,7 +50,7 @@
   }
 
   .ButtonContainer {
-    margin: 1.4rem 0 2rem 0;
+    margin-top: 1.4rem;
     @include flex(row, $align: flex-start);
 
     >a {
@@ -65,18 +68,57 @@
   }
 }
 
-.Character {
+.CharacterContainer {
+  position: relative;
   width: 100%;
-  max-width: 30rem;
-  min-height: 20rem;
-  background-color: white;
+  max-width: 35rem;
   border-radius: $radius;
 
   @include desktop {
     flex-grow: 1;
-    max-width: none;
+  }
+
+  .CharacterRef {
+    width: 100%;
+    opacity: 0;
+  }
+
+  .Character {
+    position: absolute;
+    bottom: -2%;
+    left: 0;
+    width: 100%;
+  }
+
+  .Animation {
+    position: absolute;
+    left: 12.5%;
+    width: 75%;
+    animation: characterAnimation 3s ease-out infinite;
   }
 }
+
+@keyframes characterAnimation {
+  0% {
+    opacity: 0;
+    top: 58%;
+  }
+
+  80% {
+    opacity: 1;
+    top: -4%;
+  }
+
+  100% {
+    opacity: 0;
+    top: -4%;
+  }
+}
+
+
+
+
+
 
 .Feature {
   width: 100%;

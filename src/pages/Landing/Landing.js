@@ -3,6 +3,9 @@ import classes from "./Landing.module.scss";
 import { Link } from "react-router-dom";
 
 import feature1 from "../../assets/web/Landing/feature1.svg";
+import characterRef from "../../assets/web/Landing/ref.svg";
+import character from "../../assets/web/Landing/character.svg";
+import animation from "../../assets/web/Landing/animation.svg";
 
 const Landing = (props) => {
   return (
@@ -22,7 +25,15 @@ const Landing = (props) => {
             </Link>
           </div>
         </div>
-        <div className={classes.Character}></div>
+        <div className={classes.CharacterContainer}>
+          <img
+            className={classes.CharacterRef}
+            src={characterRef}
+            alt="characterRef"
+          />
+          <img className={classes.Animation} src={animation} alt="animation" />
+          <img className={classes.Character} src={character} alt="character" />
+        </div>
       </div>
       <div className={classes.Feature}>
         <div className={classes.Title}>หนูเรคทำอะไรได้บ้าง ?</div>

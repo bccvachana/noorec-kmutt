@@ -212,42 +212,103 @@ export const mockData2 = {
 };
 
 export const mockData3 = {
-  createdAt: {
-    seconds: 1591392074,
-    nanoseconds: 96000000,
-  },
-  lastName: "จงรุจิภิญโญ",
-  firstName: "วจนะ",
-  profileImgUrl:
-    "https://firebasestorage.googleapis.com/v0/b/noorec-kmutt.appspot.com/o/profileImg%2F5fbc3e96-2f82-4eea-8d75-71a9adfe179d?alt=media&token=dd3f4960-1995-4f6e-8ad2-ded12ecacb7a",
-  updatedAt: {
-    seconds: 1591392074,
-    nanoseconds: 96000000,
-  },
+  weight: "95.8",
+  createdAt: 1591392074,
+  bloodPressureHigh: "109",
   record: [
     {
-      bloodPressureHigh: "123",
       createdAt: {
-        seconds: 1589785780,
-        nanoseconds: 480000000,
+        seconds: 1591864242,
+        nanoseconds: 7000000,
       },
-      bloodPressureLow: "107",
+      bmiCriteria: "obase",
+      weight: "95.4",
+      height: "180",
+      bmi: "29.44",
     },
     {
-      oxygen: "100",
+      temperatureCriteria: "normal",
+      temperature: "37.0",
       createdAt: {
-        seconds: 1589787412,
-        nanoseconds: 681000000,
+        seconds: 1591868783,
+        nanoseconds: 538000000,
       },
-      height: "200",
-      bloodPressureHigh: "100",
-      temperature: "30.0",
-      weight: "100.0",
-      bloodPressureLow: "100",
-      rate: "100",
-      bmi: "30.00",
+    },
+    {
+      bloodPressureCriteria: "normal",
+      bloodPressureHigh: "109",
+      height: "173",
+      oxygen: "98",
+      rate: "112",
+      bloodPressureLow: "72",
+      bmi: "31.88",
+      oxygenCriteria: "normal",
+      createdAt: {
+        seconds: 1591869043,
+        nanoseconds: 592000000,
+      },
+      temperature: "36.9",
+      bmiCriteria: "extremeObase",
+      weight: "95.4",
+      rateCriteria: "high",
+      temperatureCriteria: "normal",
+    },
+    {
+      createdAt: {
+        seconds: 1591869261,
+        nanoseconds: 259000000,
+      },
+      weight: "95.5",
+      height: "181",
+      bmi: "29.15",
+      bmiCriteria: "obase",
+    },
+    {
+      oxygen: "90",
+      temperatureCriteria: "normal",
+      height: "174",
+      createdAt: {
+        seconds: 1591871509,
+        nanoseconds: 179000000,
+      },
+      rate: "93",
+      bmi: "31.64",
+      temperature: "37.1",
+      rateCriteria: "normal",
+      bloodPressureCriteria: "normal",
+      bloodPressureLow: "72",
+      weight: "95.8",
+      bmiCriteria: "extremeObase",
+      bloodPressureHigh: "109",
+      oxygenCriteria: "low",
+    },
+    {
+      createdAt: {
+        seconds: 1591871996,
+        nanoseconds: 333000000,
+      },
+      bmi: "60.34",
+      height: "126",
+      weight: "95.8",
+      bmiCriteria: "extremeObase",
     },
   ],
+  updatedAt: 1591871996,
+  bmiCriteria: "extremeObase",
+  firstName: "วจนะ",
+  height: "126",
+  profileImgUrl:
+    "https://firebasestorage.googleapis.com/v0/b/noorec-kmutt.appspot.com/o/profileImg%2F5fbc3e96-2f82-4eea-8d75-71a9adfe179d?alt=media&token=dd3f4960-1995-4f6e-8ad2-ded12ecacb7a",
+  bloodPressureCriteria: "normal",
+  oxygenCriteria: "low",
+  lastName: "จงรุจิภิญโญ",
+  bloodPressureLow: "72",
+  bmi: "60.34",
+  rate: "93",
+  rateCriteria: "normal",
+  temperature: "37.1",
+  oxygen: "90",
+  temperatureCriteria: "normal",
 };
 
 export const articles1 = [
@@ -772,6 +833,357 @@ export const articles2 = [
 
 export const mockArticle = {
   VYNbCTdKbDeD2WuNAG39: {
+    content: {
+      ops: [
+        {
+          insert: {
+            image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+          },
+        },
+        {
+          insert: "   ",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/wdBC42r/84d41d24e64b.jpg",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "“ไข่” มักมีความสัมพันธ์กับอาหารเช้าและให้โปรตีนแก่ร่างกาย ไข่ขนาดใหญ่หนึ่งฟอง มีวิตามินและแร่ธาตุที่จำเป็น 13 ชนิดและโปรตีนคุณภาพสูงทั้งหมด 70 แคลอรี่ นอกจากนี้การวิจัยทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "ชี้ให้เห็นว่า “ไข่” มีบทบาทในการควบคุมน้ำหนัก ความแข็งแรงของกล้ามเนื้อ การตั้งครรภ์ที่มีคุณภาพ การทำงานของสมอง ",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/",
+          },
+          insert: "สุขภาพ",
+        },
+        {
+          insert:
+            "ของดวงตาและอื่น ๆ อีกมากมาย ทั้งไข่ลวก ไข่คน ไข่ตุ๋น รวมไปถึงไข่ที่ต้มสุก ทั้งหมดล้วนแล้วแต่ส่งผลดีต่อร่างกาย แต่ก็ควรกินให้ถูกจึงจะได้ประโยชน์จากไข่อย่างเต็มที่",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ทำความเข้าใจเกี่ยวกับไข่",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "พญ. กัญจณี ธนะแพสย์ แพทย์ผู้เชี่ยวชาญด้าน อายุรศาสตร์ รพ. สมิติเวช สุขุมวิท ระบุว่า “ไข่” นั้นมีสารอาหาร 2 ชนิดที่สำคัญสำหรับสุขภาพสมอง ประกอบไปด้วย โคลีน และ ลูทีน โคลีนมีบทบาทในการพัฒนาสมองของทารกในช่วงแรกของการตั้งครรภ์ โดยเฉพาะอย่างยิ่งพื้นที่ในสมองที่ใช้สำหรับเป็นหน่วยความจำและสำหรับเรียนรู้ ในขณะเดียวกัน ลูทีนก็มีส่วนที่เกี่ยวข้องกับสุขภาพของดวงตาและมีบทบาทต่อการรับรู้ด้วยเช่นกัน อ้างอิงจากนักวิจัยของ University of Illinois แสดงให้เห็นว่าความสัมพันธ์ระหว่างลูทีนในสมองโดยวัดจากการทดสอบสายตาที่ เรียกว่า Macular Pigment Optical Density (MPOD) และการรับรู้ในเด็ก นักวิจัยพบว่า MPOD มีความสัมพันธ์เชิงบวกกับผลการเรียน",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ประโยชน์ของไข่ คนเรากินไข่ได้วันละกี่ฟอง",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "ไข่อาจมีปริมาณคลอเรสเตอรอลค่อนข้างสูง แต่ไม่มีผลกระทบต่อระดับคอเลสเตอรอลในร่างกาย ไข่เป็นแหล่งโปรตีนที่มีคุณค่าทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "สูง มีวิตามินและแร่ธาตุต่าง ๆ มากมายรวมไปถึง วิตามินเอ วิตามิน B และ B-12 วิตามินดี ไอโอดีน โฟเลต โอเมก้า – 3  อีกทั้ง “ไข่” ยังมีราคาไม่แพง หาซื้อง่าย และวิธีที่ดีที่สุดในการกินไข่คือการต้ม การรับประทานไข่วันละหนึ่งถึงสามฟอง มีประโยชน์ต่อสุขภาพหลายอย่าง แต่จะแตกต่างกันไปในแต่ละบุคคล",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    typeBloodPressure: ["low", "normal", "over", "high"],
+    createdAt: 1591908871,
+    title: "TestTest",
+    typeBmi: ["normal", "extremeObase"],
+    updatedAt: 1591908871,
+    image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+  },
+  VYNbCTdKbDeD2WuNAeeG39: {
+    content: {
+      ops: [
+        {
+          insert: {
+            image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+          },
+        },
+        {
+          insert: "   ",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/wdBC42r/84d41d24e64b.jpg",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "“ไข่” มักมีความสัมพันธ์กับอาหารเช้าและให้โปรตีนแก่ร่างกาย ไข่ขนาดใหญ่หนึ่งฟอง มีวิตามินและแร่ธาตุที่จำเป็น 13 ชนิดและโปรตีนคุณภาพสูงทั้งหมด 70 แคลอรี่ นอกจากนี้การวิจัยทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "ชี้ให้เห็นว่า “ไข่” มีบทบาทในการควบคุมน้ำหนัก ความแข็งแรงของกล้ามเนื้อ การตั้งครรภ์ที่มีคุณภาพ การทำงานของสมอง ",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/",
+          },
+          insert: "สุขภาพ",
+        },
+        {
+          insert:
+            "ของดวงตาและอื่น ๆ อีกมากมาย ทั้งไข่ลวก ไข่คน ไข่ตุ๋น รวมไปถึงไข่ที่ต้มสุก ทั้งหมดล้วนแล้วแต่ส่งผลดีต่อร่างกาย แต่ก็ควรกินให้ถูกจึงจะได้ประโยชน์จากไข่อย่างเต็มที่",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ทำความเข้าใจเกี่ยวกับไข่",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "พญ. กัญจณี ธนะแพสย์ แพทย์ผู้เชี่ยวชาญด้าน อายุรศาสตร์ รพ. สมิติเวช สุขุมวิท ระบุว่า “ไข่” นั้นมีสารอาหาร 2 ชนิดที่สำคัญสำหรับสุขภาพสมอง ประกอบไปด้วย โคลีน และ ลูทีน โคลีนมีบทบาทในการพัฒนาสมองของทารกในช่วงแรกของการตั้งครรภ์ โดยเฉพาะอย่างยิ่งพื้นที่ในสมองที่ใช้สำหรับเป็นหน่วยความจำและสำหรับเรียนรู้ ในขณะเดียวกัน ลูทีนก็มีส่วนที่เกี่ยวข้องกับสุขภาพของดวงตาและมีบทบาทต่อการรับรู้ด้วยเช่นกัน อ้างอิงจากนักวิจัยของ University of Illinois แสดงให้เห็นว่าความสัมพันธ์ระหว่างลูทีนในสมองโดยวัดจากการทดสอบสายตาที่ เรียกว่า Macular Pigment Optical Density (MPOD) และการรับรู้ในเด็ก นักวิจัยพบว่า MPOD มีความสัมพันธ์เชิงบวกกับผลการเรียน",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ประโยชน์ของไข่ คนเรากินไข่ได้วันละกี่ฟอง",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "ไข่อาจมีปริมาณคลอเรสเตอรอลค่อนข้างสูง แต่ไม่มีผลกระทบต่อระดับคอเลสเตอรอลในร่างกาย ไข่เป็นแหล่งโปรตีนที่มีคุณค่าทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "สูง มีวิตามินและแร่ธาตุต่าง ๆ มากมายรวมไปถึง วิตามินเอ วิตามิน B และ B-12 วิตามินดี ไอโอดีน โฟเลต โอเมก้า – 3  อีกทั้ง “ไข่” ยังมีราคาไม่แพง หาซื้อง่าย และวิธีที่ดีที่สุดในการกินไข่คือการต้ม การรับประทานไข่วันละหนึ่งถึงสามฟอง มีประโยชน์ต่อสุขภาพหลายอย่าง แต่จะแตกต่างกันไปในแต่ละบุคคล",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    typeBloodPressure: ["low", "normal", "over", "high"],
+    createdAt: 1591908871,
+    title: "TestTest",
+    typeBmi: ["normal", "extremeObase"],
+    updatedAt: 1591908871,
+    image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+  },
+  VYNbCTdKddbDeD2WuNAeeG39: {
+    content: {
+      ops: [
+        {
+          insert: {
+            image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+          },
+        },
+        {
+          insert: "   ",
+        },
+        {
+          insert: {
+            image: "https://i.ibb.co/wdBC42r/84d41d24e64b.jpg",
+          },
+        },
+        {
+          attributes: {
+            align: "center",
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "“ไข่” มักมีความสัมพันธ์กับอาหารเช้าและให้โปรตีนแก่ร่างกาย ไข่ขนาดใหญ่หนึ่งฟอง มีวิตามินและแร่ธาตุที่จำเป็น 13 ชนิดและโปรตีนคุณภาพสูงทั้งหมด 70 แคลอรี่ นอกจากนี้การวิจัยทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "ชี้ให้เห็นว่า “ไข่” มีบทบาทในการควบคุมน้ำหนัก ความแข็งแรงของกล้ามเนื้อ การตั้งครรภ์ที่มีคุณภาพ การทำงานของสมอง ",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/",
+          },
+          insert: "สุขภาพ",
+        },
+        {
+          insert:
+            "ของดวงตาและอื่น ๆ อีกมากมาย ทั้งไข่ลวก ไข่คน ไข่ตุ๋น รวมไปถึงไข่ที่ต้มสุก ทั้งหมดล้วนแล้วแต่ส่งผลดีต่อร่างกาย แต่ก็ควรกินให้ถูกจึงจะได้ประโยชน์จากไข่อย่างเต็มที่",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ทำความเข้าใจเกี่ยวกับไข่",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "พญ. กัญจณี ธนะแพสย์ แพทย์ผู้เชี่ยวชาญด้าน อายุรศาสตร์ รพ. สมิติเวช สุขุมวิท ระบุว่า “ไข่” นั้นมีสารอาหาร 2 ชนิดที่สำคัญสำหรับสุขภาพสมอง ประกอบไปด้วย โคลีน และ ลูทีน โคลีนมีบทบาทในการพัฒนาสมองของทารกในช่วงแรกของการตั้งครรภ์ โดยเฉพาะอย่างยิ่งพื้นที่ในสมองที่ใช้สำหรับเป็นหน่วยความจำและสำหรับเรียนรู้ ในขณะเดียวกัน ลูทีนก็มีส่วนที่เกี่ยวข้องกับสุขภาพของดวงตาและมีบทบาทต่อการรับรู้ด้วยเช่นกัน อ้างอิงจากนักวิจัยของ University of Illinois แสดงให้เห็นว่าความสัมพันธ์ระหว่างลูทีนในสมองโดยวัดจากการทดสอบสายตาที่ เรียกว่า Macular Pigment Optical Density (MPOD) และการรับรู้ในเด็ก นักวิจัยพบว่า MPOD มีความสัมพันธ์เชิงบวกกับผลการเรียน",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n\n",
+        },
+        {
+          attributes: {
+            bold: true,
+          },
+          insert: "ประโยชน์ของไข่ คนเรากินไข่ได้วันละกี่ฟอง",
+        },
+        {
+          attributes: {
+            align: "justify",
+            header: 3,
+          },
+          insert: "\n",
+        },
+        {
+          insert:
+            "ไข่อาจมีปริมาณคลอเรสเตอรอลค่อนข้างสูง แต่ไม่มีผลกระทบต่อระดับคอเลสเตอรอลในร่างกาย ไข่เป็นแหล่งโปรตีนที่มีคุณค่าทาง",
+        },
+        {
+          attributes: {
+            link: "https://www.sanook.com/health/tag/โภชนาการ/",
+          },
+          insert: "โภชนาการ",
+        },
+        {
+          insert:
+            "สูง มีวิตามินและแร่ธาตุต่าง ๆ มากมายรวมไปถึง วิตามินเอ วิตามิน B และ B-12 วิตามินดี ไอโอดีน โฟเลต โอเมก้า – 3  อีกทั้ง “ไข่” ยังมีราคาไม่แพง หาซื้อง่าย และวิธีที่ดีที่สุดในการกินไข่คือการต้ม การรับประทานไข่วันละหนึ่งถึงสามฟอง มีประโยชน์ต่อสุขภาพหลายอย่าง แต่จะแตกต่างกันไปในแต่ละบุคคล",
+        },
+        {
+          attributes: {
+            align: "justify",
+          },
+          insert: "\n",
+        },
+      ],
+    },
+    typeBloodPressure: ["low", "normal", "over", "high"],
+    createdAt: 1591908871,
+    title: "TestTest",
+    typeBmi: ["normal", "extremeObase"],
+    updatedAt: 1591908871,
+    image: "https://i.ibb.co/3hJgxkZ/80c9f2d4c2dc.jpg",
+  },
+  VYNbCTdKssddbDeD2WuNAeeG39: {
     content: {
       ops: [
         {

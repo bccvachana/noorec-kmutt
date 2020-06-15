@@ -61,6 +61,7 @@
       line-height: 1.6;
       font-weight: 400;
       color: $color-text !important;
+      background-color: transparent !important;
 
       >* {
         font-family: inherit;
@@ -81,8 +82,8 @@
   }
 
   img {
-    height: 20rem;
-    width: auto;
+    max-height: 20rem;
+    max-width: 80%;
     border-radius: $radius;
   }
 

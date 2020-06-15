@@ -33,7 +33,6 @@ const App = (props) => {
   );
   const [userData, setUserData] = useState(null);
   const [profileImg, setProfileImg] = useState(null);
-  const [recentRecord, setRecentRecord] = useState(null);
   const [record, setRecord] = useState(null);
   const [article, setArticle] = useState(null);
   const [users, setUsers] = useState(null);
@@ -54,17 +53,16 @@ const App = (props) => {
   useEffect(() => {
     if (user) {
       if (user.uid !== "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
-        //readUserData(user.uid, setUserData);
-        setUserData(mockData3);
+        readUserData(user.uid, setUserData);
+        //setUserData(mockData3);
       } else {
-        //readUsers(setUsers);
-        setUsers(mockUsers);
+        readUsers(setUsers);
+        //setUsers(mockUsers);
       }
       snapshotArticle(setArticle);
     } else {
       setUserData(null);
       setProfileImg(null);
-      setRecentRecord(null);
       setRecord(null);
       setUsers(null);
     }
@@ -74,7 +72,6 @@ const App = (props) => {
     if (userData) {
       const { profileImgUrl, record } = userData;
       setProfileImg(profileImgUrl ? profileImgUrl : null);
-      setRecentRecord(record.length !== 0 ? getRecentRecord(record) : {});
       setRecord(record.length !== 0 ? getRecord(record) : {});
     }
   }, [userData]);
@@ -89,7 +86,6 @@ const App = (props) => {
           userState: userState,
           userData: userData,
           profileImg: profileImg,
-          recentRecord: recentRecord,
           record: record,
           setRecord: setRecord,
           article: article,

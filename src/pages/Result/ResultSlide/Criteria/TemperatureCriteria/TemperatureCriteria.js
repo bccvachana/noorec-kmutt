@@ -8,7 +8,7 @@ import { Context } from "../../../../../App";
 
 const TemperatureCriteria = (props) => {
   const {
-    recentRecord: { temperature },
+    userData: { temperature },
   } = useContext(Context);
 
   return (

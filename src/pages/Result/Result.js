@@ -20,12 +20,12 @@ const types = [
 
 const Result = (props) => {
   const { setIsLoading } = props;
-  const { recentRecord, record } = useContext(Context);
+  const { record } = useContext(Context);
 
   const [swiper, setSwiper] = useState(null);
   const [index, setIndex] = useState(0);
   const [isFromTop, setIsFromTop] = useState(true);
-  const [isRecord, setIsRecord] = useState(false);
+  const [isRecord, setIsRecord] = useState(null);
 
   let pageIndex;
   if (record) {
@@ -35,17 +35,16 @@ const Result = (props) => {
   }
 
   useEffect(() => {
-    if (recentRecord && record) {
-      if (
-        Object.keys(recentRecord).length !== 0 &&
-        Object.keys(record).length
-      ) {
-        setIsRecord(true);
+    if (record) {
+      if (Object.keys(record).length > 0) {
+        setIsRecord("record");
+      } else {
+        setIsRecord("noRecord");
       }
-    } else setIsRecord(false);
-  }, [recentRecord, record]);
+    }
+  }, [record]);
 
-  return isRecord ? (
+  return isRecord === "record" ? (
     <ResultContext.Provider
       value={{
         index: index,
@@ -70,9 +69,9 @@ const Result = (props) => {
         )}
       </ResultSwiper>
     </ResultContext.Provider>
-  ) : (
+  ) : isRecord === "noRecord" ? (
     <ResultNotFound setIsLoading={setIsLoading} />
-  );
+  ) : null;
 };
 
 export default Result;

@@ -18,6 +18,8 @@ import Main from "../../../pages/Main/Main";
 import Record from "../../../pages/Record/Record";
 import Result from "../../../pages/Result/Result";
 import Article from "../../../pages/Article/Article";
+import ArticleView from "../../../pages/Article/ArticleView/ArticleView";
+import EditProfile from "../../../components/Form/EditProfile";
 
 import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
@@ -28,6 +30,7 @@ import AdminArticles from "../../../pages/Admin/AdminArticles/AdminArticles";
 import AdminArticlesEdit from "../../../pages/Admin/AdminArticles/AdminArticlesEdit";
 import AdminArticlesApi from "../../../pages/Admin/AdminArticles/AdminArticlesApi";
 import AdminArticle from "../../../pages/Admin/AdminArticle/AdminArticle";
+import ErrorRoute from "../../../pages/ErrorRoute/ErrorRoute";
 
 import { Context } from "../../../App";
 
@@ -46,10 +49,19 @@ const notSignInRoutes = [
 const notVerifiedRoutes = [{ path: "/", component: AuthVerifyEmail }];
 
 const verifiedRoutes = [
-  { path: "/", component: Main, withLoadingProps: { time: 700 } },
+  { path: "/", component: Main, withLoadingProps: { auto: false } },
   { path: "/record", component: Record, withLoadingProps: { time: 700 } },
   { path: "/result", component: Result, withLoadingProps: { auto: false } },
-  { path: "/article", component: Article },
+  { path: "/article", component: Article, withLoadingProps: { auto: false } },
+  {
+    path: "/article/:articleId",
+    component: ArticleView,
+    withLoadingProps: { auto: false },
+  },
+  {
+    path: "/editProfile",
+    component: EditProfile,
+  },
 ];
 
 const adminRoutes = [
@@ -95,6 +107,10 @@ const authRoute = [
   {
     path: "/auth",
     component: withLoading(Auth, { auto: false }),
+  },
+  {
+    path: "/error",
+    component: withLoading(ErrorRoute),
   },
 ];
 
@@ -153,7 +169,7 @@ const Routes = (props) => {
           {authRoute.map(({ path, component }) => (
             <Route key={path} exact path={path} component={component} />
           ))}
-          <Redirect to={userState === "admin" ? "/admin" : "/"} />
+          <Redirect to={userState === "notVerified" ? "/" : "/error"} />
         </Switch>
       ) : null}
     </div>

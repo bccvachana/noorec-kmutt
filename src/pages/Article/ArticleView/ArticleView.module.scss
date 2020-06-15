@@ -1,0 +1,8 @@
+@import "../../../var";
+
+.TopBar {
+  width: 100%;
+  margin-bottom: 1.6rem;
+
+  @include flex(row, flex-start, flex-start, $wrap: nowrap);
+}

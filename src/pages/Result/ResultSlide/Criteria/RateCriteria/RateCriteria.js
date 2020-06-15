@@ -9,7 +9,7 @@ import { Context } from "../../../../../App";
 
 const RateCriteria = (props) => {
   const {
-    recentRecord: { rate },
+    userData: { rate },
   } = useContext(Context);
 
   const [widthRef, setWidthRef] = useState(0);

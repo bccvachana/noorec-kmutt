@@ -168,7 +168,7 @@ const DropDownMobile = (props) => {
           >
             {userData ? `${userData.firstName} ${userData.lastName}` : ""}
           </div>
-          <NavLink to="/" className={`Link ${classes.EditLink}`}>
+          <NavLink to="/editProfile" className={`Link ${classes.EditLink}`}>
             <img src={edit} alt="edit" />
             แก้ไขข้อมูล
           </NavLink>
@@ -205,7 +205,7 @@ const DropDownDesktop = (props) => {
         <div style={{ backgroundColor: userData ? "transparent" : "#F1F2F3" }}>
           {userData ? `${userData.firstName} ${userData.lastName}` : ""}
         </div>
-        <NavLink to="/" className={`Link ${classes.EditLink}`}>
+        <NavLink to="/editProfile" className={`Link ${classes.EditLink}`}>
           <img src={edit} alt="edit" />
           แก้ไขข้อมูล
         </NavLink>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import classes from "./Error.module.scss";
 import { Link } from "react-router-dom";
 import error from "../../../assets/error.svg";
@@ -6,7 +6,7 @@ import error from "../../../assets/error.svg";
 const Error = (props) => {
   const { title, children, to, linkLabel } = props;
   return (
-    <React.Fragment>
+    <div className={classes.Container}>
       <img className={classes.Img} src={error} alt="error" />
       <div className={classes.Title}>{title ? title : "เกิดข้อผิดพลาด"}</div>
       {children ? <div className={classes.Detail}>{children}</div> : null}
@@ -15,7 +15,7 @@ const Error = (props) => {
           {linkLabel}
         </Link>
       ) : null}
-    </React.Fragment>
+    </div>
   );
 };
 
