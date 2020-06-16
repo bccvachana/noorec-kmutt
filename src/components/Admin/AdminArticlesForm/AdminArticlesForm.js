@@ -161,7 +161,7 @@ const AdminArticlesForm = (props) => {
           </div>
         </div>
         <div>
-          <div className={classes.TypeTitle}>BMI :</div>
+          <div className={classes.TypeTitle}>น้ำหนัก | ส่วนสูง :</div>
           <div className={classes.Types}>
             {bmiStatic.map((bmi) => (
               <div

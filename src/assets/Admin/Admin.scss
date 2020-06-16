@@ -2,7 +2,7 @@
   width: 100%;
   margin-bottom: 2.2rem;
 
-  @include flex(row, space-between, flex-start, $wrap: nowrap);
+  @include flex(row, space-between, $wrap: nowrap);
 
   a {
     @include flex;
@@ -14,6 +14,10 @@
 
   >* {
     @include flex(row, $wrap: nowrap);
+  }
+
+  &.FlexStart {
+    align-items: flex-start;
   }
 }
 

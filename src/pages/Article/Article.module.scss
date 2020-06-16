@@ -3,7 +3,7 @@
 .Article {
   width: 100%;
   flex-grow: 1;
-  @include flex($justify: flex-start)
+  @include flex($justify: flex-start);
 }
 
 .Title {

@@ -22,7 +22,7 @@ const AdminUser = (props) => {
 
   return users && users[userId] ? (
     <React.Fragment>
-      <div className="AdminTopBar" style={{ marginBottom: "0rem" }}>
+      <div className="AdminTopBar FlexStart" style={{ marginBottom: "0rem" }}>
         <Link to="/admin/users" className="Link">
           <img src={backIcon} alt="backIcon" />
         </Link>

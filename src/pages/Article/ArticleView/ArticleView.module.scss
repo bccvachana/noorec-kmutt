@@ -1,5 +1,12 @@
 @import "../../../var";
 
+.ArticleView {
+  width: 100%;
+  flex-grow: 1;
+  @include flex($justify: flex-start);
+  text-align: left;
+}
+
 .TopBar {
   width: 100%;
   margin-bottom: 1.6rem;

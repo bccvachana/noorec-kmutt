@@ -304,3 +304,21 @@
     }
   }
 }
+
+.BackDrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: rgba($color: #3b4251, $alpha: 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out 250ms;
+
+  &.Active {
+    opacity: 1;
+    visibility: visible;
+  }
+}

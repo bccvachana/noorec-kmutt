@@ -71,6 +71,11 @@ const AdminSideBar = (props) => {
       <div className={`AdminSideBar ${classes.Hamburger}`}>
         <Hamburger isDropDown={isSidebar} setIsDropDown={setIsSideBar} />
       </div>
+      {device !== "Desktop" ? (
+        <div
+          className={`${classes.BackDrop} ${isSidebar ? classes.Active : ""}`}
+        />
+      ) : null}
     </React.Fragment>
   );
 };

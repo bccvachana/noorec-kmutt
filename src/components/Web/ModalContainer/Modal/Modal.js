@@ -27,7 +27,7 @@ const Modal = (props) => {
                   closeModal: closeModal,
                 })
               : null}
-            {modalType === "Result" ? (
+            {modalType === "Result" || modalType === "Filter" ? (
               <div className="ModalCloseButton" onClick={closeModal}>
                 <img src={closeButton} alt={closeButton} />
               </div>

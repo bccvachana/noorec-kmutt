@@ -12,7 +12,7 @@
 .SignInRegister {
   width: 100%;
   @include flex;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
 
   @include desktop {
     width: auto;
@@ -85,9 +85,9 @@
 
   .Character {
     position: absolute;
-    bottom: -2%;
-    left: 0;
-    width: 100%;
+    bottom: -5%;
+    left: -4%;
+    width: 108%;
   }
 
   .Animation {

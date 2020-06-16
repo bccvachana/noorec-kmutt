@@ -19,7 +19,7 @@ const AdminArticle = (props) => {
 
   return article ? (
     <React.Fragment>
-      <div className="AdminTopBar" style={{ marginBottom: "1.6rem" }}>
+      <div className="AdminTopBar FlexStart" style={{ marginBottom: "1.6rem" }}>
         <div className="AdminTitle">
           <div
             className="Back"

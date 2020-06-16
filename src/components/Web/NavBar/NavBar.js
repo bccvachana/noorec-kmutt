@@ -80,6 +80,12 @@ const NavBar = (props) => {
       </div>
 
       {isSignInNav && device === "Mobile" ? (
+        <div
+          className={`${classes.BackDrop} ${isDropDown ? classes.Active : ""}`}
+        />
+      ) : null}
+
+      {isSignInNav && device === "Mobile" ? (
         <DropDownMobile
           isDropDown={isDropDown}
           dropDownMobileRef={dropDownMobileRef}

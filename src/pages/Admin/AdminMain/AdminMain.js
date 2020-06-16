@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import Box from "../../../components/UI/Box/Box";
 import AdminMainChart from "../../../components/Admin/AdminMainChart/AdminMainChart";
 import { Context } from "../../../App";
-import { criteriaRefStatic } from "../../../utils/static/typeStatic";
-import criteriaStatic from "../../Result/static/criteriaStatic";
 import resultSlideStatic from "../../Result/static/resultSlideStatic";
+import { usersCritria } from "../../../utils/users";
 
 import userIcon from "../../../assets/Admin/profileWhite.svg";
 import articleIcon from "../../../assets/Admin/noArticleWhite.svg";
@@ -17,39 +16,9 @@ const AdminMain = (props) => {
 
   useEffect(() => {
     if (users) {
-      let data;
-      criteriaRefStatic.map((type) => {
-        let criteria;
-        Object.keys(criteriaStatic[type]).map((key) => {
-          criteria = { ...criteria, [key]: 0 };
-          return null;
-        });
-        const filterKey = Object.keys(users).filter((key) => {
-          return users[key][`${type}Criteria`];
-        });
-        filterKey.map((key) => {
-          criteria = {
-            ...criteria,
-            [users[key][`${type}Criteria`]]:
-              criteria[users[key][`${type}Criteria`]] + 1,
-          };
-          return null;
-        });
-        data = {
-          ...data,
-          [type !== "bmi" ? type : "weightHeight"]: {
-            userRecorded: filterKey.length,
-            criteriaKey: Object.keys(criteria).map(
-              (key) => criteriaStatic[type][key].title
-            ),
-            data: Object.keys(criteria).map((key) => criteria[key]),
-          },
-        };
-        return null;
-      });
-      setCriteriaData(data);
+      setCriteriaData(usersCritria(users));
     }
-  }, [users, article]);
+  }, [users]);
 
   useEffect(() => {
     if (criteriaData) props.delaySetIsLoadingFalse();

@@ -28,7 +28,7 @@ const ArticleView = (props) => {
     article && article[articleId] ? article[articleId] : {};
 
   return article && article[articleId] ? (
-    <React.Fragment>
+    <div className={classes.ArticleView}>
       <div className={classes.TopBar}>
         <div
           className="Back"
@@ -47,7 +47,7 @@ const ArticleView = (props) => {
         </div>
       </div>
       <ViewerQuill articleId={articleId} />
-    </React.Fragment>
+    </div>
   ) : null;
 };
 

@@ -1,0 +1,57 @@
+@import "../../../var";
+
+.FilterModal {
+  width: 100%;
+  height: 100%;
+  padding: 0.3rem;
+  overflow-y: auto;
+}
+
+.FilterModalContainer {
+  width: 100%;
+  margin-top: 1rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.SelectAllContainer {
+  width: 100%;
+  margin-top: 1rem;
+  @include flex(row);
+
+  div {
+    @include fontCaption;
+    color: $color-accent1;
+    cursor: pointer;
+  }
+}
+
+.FilterModalTitle {
+  @include fontBody($bold);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.FilterModalCriteriaContainer {
+  width: 100%;
+  margin-left: -0.5rem;
+  @include flex(row, flex-start);
+
+  >div {
+    margin: 0.25rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2rem;
+    border: 1px solid $color-accent1;
+    color: $color-accent1;
+    @include fontCaption;
+    cursor: pointer;
+  }
+
+  .Selected {
+    border-color: $color-accent1;
+    background-color: $color-accent1;
+    color: white;
+  }
+}
