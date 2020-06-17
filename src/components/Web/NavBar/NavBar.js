@@ -6,6 +6,7 @@ import Hamburger from "../Hamburger/Hamburger";
 import withDeviceDetect from "../../../hoc/withDeviceDetect";
 
 import logo from "../../../assets/logo.svg";
+import chatIcon from "../../../assets/chat.svg";
 import profileSvg from "../../../assets/profile.svg";
 import edit from "../../../assets/web/NavBar/edit.svg";
 
@@ -20,7 +21,7 @@ const signInNav = [
 
 const NavBar = (props) => {
   const { device } = props;
-  const { userState, isSignUp, profileImg } = useContext(Context);
+  const { userState, isSignUp, profileImg, userChat } = useContext(Context);
   const [isDropDown, setIsDropDown] = useState(false);
   const dropDownMobileRef = useRef();
   const dropDownDesktopRef = useRef();
@@ -49,32 +50,63 @@ const NavBar = (props) => {
           </NavLink>
           <div className={classes.LinkContainer}>
             <Nav />
+
             {isSignInNav ? (
-              <div
-                className={`NavDropdown ${classes.ProfileImg}`}
-                onClick={() => {
-                  setIsDropDown(!isDropDown);
-                }}
-              >
-                <img
-                  className="NavDropdown"
-                  src={profileSvg}
-                  alt="profileSvg"
-                />
-                {profileImg ? (
-                  <div className="NavDropdown">
-                    <img
-                      className="NavDropdown"
-                      src={profileImg}
-                      alt="profileSvg"
-                    />
-                  </div>
-                ) : null}
-              </div>
+              <React.Fragment>
+                <NavLink
+                  exact
+                  to="/chat"
+                  activeClassName="NavLinkActive"
+                  id="NavChatIcon"
+                >
+                  <img src={chatIcon} alt="chatIcon" />
+                  {userChat && !userChat.userRead ? (
+                    <div className="NavChatUnread">{userChat.userUnread}</div>
+                  ) : null}
+                </NavLink>
+                <div
+                  className={`NavDropdown ${classes.ProfileImg}`}
+                  onClick={() => {
+                    setIsDropDown(!isDropDown);
+                  }}
+                >
+                  <img
+                    className="NavDropdown"
+                    src={profileSvg}
+                    alt="profileSvg"
+                  />
+                  {profileImg ? (
+                    <div className="NavDropdown">
+                      <img
+                        className="NavDropdown"
+                        src={profileImg}
+                        alt="profileSvg"
+                      />
+                    </div>
+                  ) : null}
+                </div>
+              </React.Fragment>
             ) : null}
           </div>
           {isSignInNav && device === "Mobile" ? (
-            <Hamburger isDropDown={isDropDown} setIsDropDown={setIsDropDown} />
+            <div>
+              <NavLink
+                exact
+                to="/chat"
+                id="NavChatIcon"
+                className="NavChatMobile"
+                style={{ marginRight: "1.5rem" }}
+              >
+                <img src={chatIcon} alt="chatIcon" />
+                {userChat && !userChat.userRead ? (
+                  <div className="NavChatUnread">{userChat.userUnread}</div>
+                ) : null}
+              </NavLink>
+              <Hamburger
+                isDropDown={isDropDown}
+                setIsDropDown={setIsDropDown}
+              />
+            </div>
           ) : null}
         </div>
       </div>

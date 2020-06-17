@@ -6,8 +6,21 @@ import criteriaStatic from "../../../pages/Result/static/criteriaStatic";
 const AdminFilter = (props) => {
   const { filter, setFilter, criteriaData, closeModal } = props;
 
+  console.log(filter);
+
   return (
     <div className={classes.FilterModal}>
+      <div className={classes.SelectAllContainer}>
+        <div
+          className={!filter ? classes.Selected : null}
+          onClick={() => {
+            setFilter(null);
+            closeModal();
+          }}
+        >
+          เลือกทั้งหมด
+        </div>
+      </div>
       {Object.keys(criteriaData).map((type) => {
         const { criteriaKey, data } = criteriaData[type];
         return (
@@ -43,16 +56,6 @@ const AdminFilter = (props) => {
           </div>
         );
       })}
-      <div className={classes.SelectAllContainer}>
-        <div
-          onClick={() => {
-            setFilter(null);
-            closeModal();
-          }}
-        >
-          เลือกทั้งหมด
-        </div>
-      </div>
     </div>
   );
 };

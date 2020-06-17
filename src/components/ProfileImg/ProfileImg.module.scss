@@ -1,0 +1,19 @@
+@import "../../var";
+
+.Img {
+  position: relative;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    border: solid $color-accent2;
+
+    &:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

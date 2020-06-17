@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import classes from "./AdminUser.module.scss";
 import AdminResultChart from "./AdminUserChart/AdminResultChart";
 import { getRecord } from "../../../utils/result/filter";
@@ -11,10 +11,12 @@ import userIcon from "../../../assets/profile.svg";
 import update from "../../../assets/update.svg";
 import { fromNow } from "../../../utils/moment";
 import { typeStatic } from "../../../utils/static/typeStatic";
+import chatIcon from "../../../assets/chat.svg";
 
 const AdminUser = (props) => {
   const { userId } = useParams();
   const { users } = useContext(Context);
+  const { goBack } = useHistory();
 
   useEffect(() => {
     if (users) props.delaySetIsLoadingFalse();
@@ -23,7 +25,7 @@ const AdminUser = (props) => {
   return users && users[userId] ? (
     <React.Fragment>
       <div className="AdminTopBar FlexStart" style={{ marginBottom: "0rem" }}>
-        <Link to="/admin/users" className="Link">
+        <Link className="Link" onClick={() => goBack()}>
           <img src={backIcon} alt="backIcon" />
         </Link>
         <div className="ContentTitle" style={{ top: "-1.3rem" }}>
@@ -45,6 +47,12 @@ const AdminUser = (props) => {
                 {fromNow(users[userId].updatedAt)}
               </div>
             </div>
+            <Link
+              to={`/admin/chat?userId=${userId}`}
+              className={classes.ChatIcon}
+            >
+              <img src={chatIcon} alt="chatIcon" />
+            </Link>
           </div>
         </div>
       </div>

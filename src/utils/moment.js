@@ -22,3 +22,10 @@ export const fromNow = (time) => {
   } else
     return `${parseTime.format("D MMMM")} เวลา ${parseTime.format("H:mm น.")}`;
 };
+
+export const chatTime = (time) => {
+  const parseTime = moment.unix(time);
+  const dayDiff = moment().diff(parseTime, "days");
+  if (dayDiff === 0) return parseTime.format("LT");
+  else return parseTime.format("D MMM H:mm");
+};

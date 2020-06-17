@@ -1,0 +1,247 @@
+@import "../../../var";
+
+.Page {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  margin: -1.5rem 0;
+
+  @include tablet {
+    margin: -2rem 0;
+  }
+
+  @include desktop {
+    margin: 0;
+  }
+
+  >.Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @include flex(row, flex-start, $wrap: nowrap);
+    border-radius: $radius;
+    @include shadow;
+
+    .Contact {
+      margin-right: 0.2rem;
+      width: 7rem;
+
+      @include tablet-desktop {
+        width: calc(10 * (100% - 0.2rem) / 35);
+      }
+    }
+
+    .Chat {
+      width: calc(100% - 7.2rem);
+
+      @include tablet-desktop {
+        width: calc(25 * (100% - 0.2rem) / 35);
+      }
+    }
+
+    >* {
+      height: 100%;
+      padding: 0.5rem 1rem 0;
+      background-color: white;
+      @include flex($justify: flex-start, $wrap: nowrap);
+
+      >div {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.Contact {
+  .Title {
+    height: 3rem;
+    @include fontH3;
+    line-height: 1;
+    text-align: center;
+    @include flex;
+    border-bottom: 0.2rem solid #f7f7f7;
+    flex-shrink: 0;
+  }
+
+  .ContactContainer {
+    margin-top: 0.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .ContactList {
+    @include flex(row, flex-start, $wrap: nowrap);
+
+    @include tablet-desktop {
+      justify-content: space-between;
+    }
+
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: $radius;
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+
+    &.Selected {
+      background-color: #f7f7f7;
+    }
+
+    >div {
+      @include flex(row, flex-start, $wrap: nowrap);
+      overflow: hidden;
+    }
+
+    .UserDetail {
+      display: none;
+      margin-left: 0.5rem;
+
+      @include tablet-desktop {
+        display: block;
+      }
+    }
+
+    .UnreadNumber {
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+      padding: 0 0.3rem;
+      background-color: $color-accent2;
+      @include fontCaption($bold);
+      color: white;
+      border-radius: 2rem;
+    }
+  }
+}
+
+.UserDetail {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.Unread {
+  font-weight: $bold;
+}
+
+.Chat {
+  .TopBar {
+    height: 3rem;
+    @include flex(row, space-between, $wrap: nowrap);
+    @include fontBody($bold);
+    border-bottom: 0.2rem solid #f7f7f7;
+    flex-shrink: 0;
+
+    >div {
+      @include fontH4;
+    }
+  }
+
+  .ChatContainer {
+    flex-grow: 1;
+    margin-top: 0.5rem;
+    overflow-y: auto;
+
+    >div {
+      margin: 0.5rem 0;
+
+      @include flex(row, $align: flex-end, $wrap: nowrap);
+
+      >span {
+        max-width: 80%;
+        padding: 0.5rem;
+        border-radius: $radius;
+      }
+    }
+
+    .Sender {
+      justify-content: flex-start;
+
+      span {
+        background-color: #f7f7f7;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .Receiver {
+      justify-content: flex-end;
+
+      span {
+        background-color: $color-accent2;
+        color: white;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .Input {
+    padding: 1rem 0;
+    @include flex(row, $align: flex-end, $wrap: nowrap);
+  }
+
+  textarea {
+    flex-grow: 1;
+    height: 31px;
+    max-height: 72px;
+    background-color: #f7f7f7;
+    resize: none;
+    padding: 0.4rem 1rem 0;
+    line-height: 1.4;
+    border-radius: $radius;
+
+    &::placeholder {
+      color: $color-detail;
+    }
+
+    @include tablet-desktop {
+      height: 34px;
+    }
+  }
+
+  .SendIcon {
+    position: relative;
+    top: -6px;
+    height: 19px;
+    margin-left: 1rem;
+    cursor: pointer;
+
+    @include tablet-desktop {
+      height: 22px;
+    }
+  }
+}
+
+.ChatIcon {
+  width: 100%;
+  flex-grow: 1;
+  @include flex;
+  opacity: 0.1;
+
+  img {
+    height: 9rem;
+  }
+}
+
+.Time {
+  font-size: 0.6rem;
+  color: $color-detail;
+}
+
+.ResultButton {
+  @include flex;
+  height: 17px;
+  cursor: pointer;
+
+  @include tablet-desktop {
+    height: 20px
+  }
+
+  img {
+    height: 100%;
+  }
+}

@@ -10,21 +10,24 @@
 .FilterModalContainer {
   width: 100%;
   margin-top: 1rem;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }
 
 .SelectAllContainer {
   width: 100%;
-  margin-top: 1rem;
   @include flex(row);
 
   div {
     @include fontCaption;
     color: $color-accent1;
     cursor: pointer;
+    padding: 0.2rem 2rem;
+    border-radius: 2rem;
+    border: 2px solid $color-accent1;
+  }
+
+  >.Selected {
+    background-color: $color-accent1;
+    color: white;
   }
 }
 
@@ -41,16 +44,15 @@
 
   >div {
     margin: 0.25rem;
-    padding: 0.1rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 2rem;
-    border: 1px solid $color-accent1;
+    border: 2px solid $color-accent1;
     color: $color-accent1;
     @include fontCaption;
     cursor: pointer;
   }
 
   .Selected {
-    border-color: $color-accent1;
     background-color: $color-accent1;
     color: white;
   }

@@ -9,9 +9,10 @@
   padding: 5.5rem 1rem 0;
   background-color: white;
   @include shadow;
-  @include flex($justify: flex-start);
+  @include flex($justify: flex-start, $wrap: nowrap);
   z-index: 101;
   transition: all ease-in-out 250ms;
+  visibility: hidden;
 
   @include tablet {
     padding-top: 6.5rem;
@@ -23,6 +24,7 @@
 
   &.Active {
     left: 0;
+    visibility: visible;
   }
 }
 
@@ -133,5 +135,18 @@
   &.Active {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+.Chat {
+  @include flex(row, flex-start, $wrap:nowrap);
+
+  div {
+    margin-left: 0.5rem;
+    padding: 0 0.4rem;
+    border-radius: 3rem;
+    @include fontCaption($bold);
+    background-color: rgba($color: #3b4251, $alpha: 0.5);
+    color: white;
   }
 }

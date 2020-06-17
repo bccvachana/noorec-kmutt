@@ -20,6 +20,7 @@ import Result from "../../../pages/Result/Result";
 import Article from "../../../pages/Article/Article";
 import ArticleView from "../../../pages/Article/ArticleView/ArticleView";
 import EditProfile from "../../../components/Form/EditProfile";
+import Chat from "../../../pages/Chat/Chat";
 
 import AuthVerifyEmail from "../../../pages/Auth/AuthVerifyEmail";
 
@@ -30,6 +31,8 @@ import AdminArticles from "../../../pages/Admin/AdminArticles/AdminArticles";
 import AdminArticlesEdit from "../../../pages/Admin/AdminArticles/AdminArticlesEdit";
 import AdminArticlesApi from "../../../pages/Admin/AdminArticles/AdminArticlesApi";
 import AdminArticle from "../../../pages/Admin/AdminArticle/AdminArticle";
+import AdminChat from "../../../pages/Admin/AdminChat/AdminChat";
+
 import ErrorRoute from "../../../pages/ErrorRoute/ErrorRoute";
 
 import { Context } from "../../../App";
@@ -62,6 +65,10 @@ const verifiedRoutes = [
     path: "/editProfile",
     component: EditProfile,
   },
+  {
+    path: "/chat",
+    component: Chat,
+  },
 ];
 
 const adminRoutes = [
@@ -93,6 +100,11 @@ const adminRoutes = [
     withLoadingProps: { auto: false },
   },
   { path: "/admin/articles/:articleId", component: AdminArticle },
+  {
+    path: "/admin/chat",
+    component: AdminChat,
+    withLoadingProps: { auto: false },
+  },
 ];
 
 const authRoute = [
@@ -169,6 +181,7 @@ const Routes = (props) => {
           {authRoute.map(({ path, component }) => (
             <Route key={path} exact path={path} component={component} />
           ))}
+          {userState === "admin" ? <Redirect from="/" to="/admin" /> : null}
           <Redirect to={userState === "notVerified" ? "/" : "/error"} />
         </Switch>
       ) : null}

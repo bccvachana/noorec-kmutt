@@ -8,6 +8,7 @@ import {
   readUsers,
 } from "./utils/firebase/firestore";
 import { getRecentRecord, getRecord } from "./utils/result/filter";
+import { db } from "./utils/firebase/firebase";
 
 import { ModalContainer } from "./components/Web/ModalContainer/ModalContainer";
 import NavBar from "./components/Web/NavBar/NavBar";
@@ -34,8 +35,11 @@ const App = (props) => {
   const [userData, setUserData] = useState(null);
   const [profileImg, setProfileImg] = useState(null);
   const [record, setRecord] = useState(null);
-  const [article, setArticle] = useState(null);
   const [users, setUsers] = useState(null);
+
+  const [article, setArticle] = useState(null);
+  const [userChat, setUserChat] = useState(null);
+  const [chat, setChat] = useState(null);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -51,21 +55,86 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
+    let unsubscribeUserChat, unsubscribeChat, unsubscribeArticle;
     if (user) {
       if (user.uid !== "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
         readUserData(user.uid, setUserData);
         //setUserData(mockData3);
+        unsubscribeUserChat = db
+          .collection("chat")
+          .doc(user.uid)
+          .onSnapshot((doc) => {
+            setUserChat(doc.data());
+            console.log(doc.data());
+          });
       } else {
         readUsers(setUsers);
-        //setUsers(mockUsers);
+        let chat = {};
+        unsubscribeChat = db
+          .collection("chat")
+          .orderBy("updatedAt", "desc")
+          .onSnapshot((doc) => {
+            doc.docs.map((doc) => {
+              const data = doc.data();
+              if (data.message && data.message.length > 0) {
+                const userId = doc.id;
+                chat = {
+                  ...chat,
+                  [userId]: {
+                    ...data,
+                    createdAt: data.createdAt.seconds,
+                    updatedAt: data.updatedAt.seconds,
+                  },
+                };
+              }
+              return null;
+            });
+            console.log(chat);
+            setChat(chat);
+          });
       }
-      snapshotArticle(setArticle);
+      let article;
+      unsubscribeArticle = db
+        .collection("articles")
+        .orderBy("updatedAt", "desc")
+        .onSnapshot((doc) => {
+          doc.docs.map((doc) => {
+            const data = doc.data();
+            const { createdAt, updatedAt } = data;
+            const articleId = doc.id;
+            const content = JSON.parse(data.content);
+            const checkImg = content.ops.find(
+              (element) => element.insert.image
+            );
+            const img = checkImg ? checkImg.insert.image : null;
+            article = {
+              ...article,
+              [articleId]: {
+                ...data,
+                content: content,
+                image: img,
+                createdAt: createdAt.seconds,
+                updatedAt: updatedAt.seconds,
+              },
+            };
+            return null;
+          });
+          console.log(article);
+          setArticle(article);
+        });
     } else {
       setUserData(null);
       setProfileImg(null);
       setRecord(null);
       setUsers(null);
+      setUserChat(null);
+      setArticle(null);
     }
+    return () => {
+      if (unsubscribeUserChat) unsubscribeUserChat();
+      if (unsubscribeChat) unsubscribeChat();
+      if (unsubscribeArticle) unsubscribeArticle();
+    };
   }, [user]);
 
   useEffect(() => {
@@ -90,6 +159,8 @@ const App = (props) => {
           setRecord: setRecord,
           article: article,
           users: users,
+          userChat: userChat,
+          chat: chat,
         }}
       >
         {userState !== "admin" ? <NavBar /> : <AdminSideBar />}

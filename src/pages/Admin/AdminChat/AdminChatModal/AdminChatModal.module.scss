@@ -1,0 +1,38 @@
+@import "../../../../var";
+
+.Value {
+  width: 100%;
+  @include flex(row, space-between, $wrap: nowrap);
+}
+
+.Profile {
+  width: 100%;
+  @include flex(row, flex-start, $wrap:nowrap);
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .Title {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .Name {
+    @include fontH3;
+    line-height: 1.4;
+    margin-bottom: -0.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.Time {
+  @include fontCaption;
+  color: $color-detail;
+  @include flex(row, flex-start);
+
+  img {
+    height: 10px;
+    margin-right: 0.3rem
+  }
+}

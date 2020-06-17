@@ -20,6 +20,7 @@ import filterWhiteIcon from "../../../assets/Admin/filterWhite.svg";
 import { ModalContext } from "../../../components/Web/ModalContainer/ModalContainer";
 import { usersCritria } from "../../../utils/users";
 import AdminFilter from "../../../components/Admin/AdminFilter/AdminFilter";
+import chatIcon from "../../../assets/chat.svg";
 
 const AdminUsers = (props) => {
   const { users } = useContext(Context);
@@ -197,6 +198,12 @@ const AdminUsers = (props) => {
                         {fromNow(users[userId].updatedAt)}
                       </div>
                     </div>
+                    <Link
+                      to={`/admin/chat?userId=${userId}`}
+                      className={classes.ChatIcon}
+                    >
+                      <img src={chatIcon} alt="chatIcon" />
+                    </Link>
                   </div>
                   <div className={classes.Value}>
                     {valueStatic.map((type) => (
