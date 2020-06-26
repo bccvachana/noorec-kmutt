@@ -37,7 +37,9 @@ const Main = (props) => {
     <div className={classes.Page}>
       <div className={classes.Title}>
         <div className={classes.Hello}>สวัสดี,</div>
-        <div className={classes.Name}>คุณ{userData.firstName}</div>
+        <div className={classes.Name}>
+          คุณ <span style={{ color: "#fa5458" }}>{userData.firstName}</span>
+        </div>
       </div>
       <Link to="/record" className={classes.RecordButton}>
         <img src={heartSvg} alt="heartSvg" />

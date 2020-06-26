@@ -24,6 +24,10 @@ const RateCriteria = (props) => {
         setHeightRef(rateRef.clientHeight);
       }, 200);
     };
+    timer = setTimeout(() => {
+      setWidthRef(rateRef.clientWidth);
+      setHeightRef(rateRef.clientHeight);
+    }, 500);
     window.addEventListener("resize", () => {
       setWidthRef(rateRef.clientWidth);
       setHeightRef(rateRef.clientHeight);

@@ -26,7 +26,9 @@ const NavBar = (props) => {
   const dropDownMobileRef = useRef();
   const dropDownDesktopRef = useRef();
 
-  const isSignInNav = userState !== "notSignIn" && !isSignUp ? true : false;
+  const isSignInNav = !(!userState || userState === "notSignIn" || isSignUp)
+    ? true
+    : false;
 
   window.onclick = (event) => {
     if (dropDownMobileRef.current || dropDownDesktopRef.current) {
@@ -147,7 +149,7 @@ export default withDeviceDetect(NavBar);
 const Nav = (props) => {
   const { userState, isSignUp } = useContext(Context);
 
-  return !(userState !== "notSignIn" && !isSignUp) ? (
+  return !userState || userState === "notSignIn" || isSignUp ? (
     <React.Fragment>
       <NavLink
         exact

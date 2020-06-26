@@ -31,6 +31,10 @@ const OxygenCriteria = (props) => {
         setHeightRef(oxygenRef.clientHeight);
       }, 200);
     };
+    timer = setTimeout(() => {
+      setWidthRef(oxygenRef.clientWidth);
+      setHeightRef(oxygenRef.clientHeight);
+    }, 500);
     window.addEventListener("resize", () => {
       setWidthRef(oxygenRef.clientWidth);
       setHeightRef(oxygenRef.clientHeight);

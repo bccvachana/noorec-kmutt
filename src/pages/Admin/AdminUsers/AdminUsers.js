@@ -131,7 +131,7 @@ const AdminUsers = (props) => {
                   <div className={classes.Img}>
                     <img src={userIcon} alt="userIcon" />
                     {users[userId].profileImgUrl ? (
-                      <img src={users[userId].profileImgUrl} alt={userId} />
+                      <img src={users[userId].profileImgUrl} alt="" />
                     ) : null}
                   </div>
                   <div className={classes.Name}>
@@ -186,7 +186,7 @@ const AdminUsers = (props) => {
                     <div className={classes.Img}>
                       <img src={userIcon} alt="userIcon" />
                       {users[userId].profileImgUrl ? (
-                        <img src={users[userId].profileImgUrl} alt={userId} />
+                        <img src={users[userId].profileImgUrl} alt="" />
                       ) : null}
                     </div>
                     <div className={classes.Title}>

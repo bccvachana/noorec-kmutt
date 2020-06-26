@@ -182,7 +182,13 @@ const Routes = (props) => {
             <Route key={path} exact path={path} component={component} />
           ))}
           {userState === "admin" ? <Redirect from="/" to="/admin" /> : null}
-          <Redirect to={userState === "notVerified" ? "/" : "/error"} />
+          <Redirect
+            to={
+              userState === "notVerified" || userState === "notSignIn"
+                ? "/"
+                : "/error"
+            }
+          />
         </Switch>
       ) : null}
     </div>

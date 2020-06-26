@@ -25,16 +25,21 @@ const AdminUser = (props) => {
   return users && users[userId] ? (
     <React.Fragment>
       <div className="AdminTopBar FlexStart" style={{ marginBottom: "0rem" }}>
-        <Link className="Link" onClick={() => goBack()}>
+        <div
+          className="Back"
+          onClick={() => {
+            goBack();
+          }}
+        >
           <img src={backIcon} alt="backIcon" />
-        </Link>
+        </div>
         <div className="ContentTitle" style={{ top: "-1.3rem" }}>
           <div className={classes.Profile}>
             <div className={classes.Img}>
               <img src={userIcon} alt="userIcon" />
               {users[userId].profileImgUrl ? (
                 <div>
-                  <img src={users[userId].profileImgUrl} alt={userId} />
+                  <img src={users[userId].profileImgUrl} alt="" />
                 </div>
               ) : null}
             </div>

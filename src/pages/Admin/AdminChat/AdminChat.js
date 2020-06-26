@@ -219,9 +219,7 @@ const AdminChat = (props) => {
                         addChatByAdmin(
                           selectedUser,
                           textAreaValue,
-                          chat[selectedUser] && chat[selectedUser].adminUnread
-                            ? chat[selectedUser].adminUnread
-                            : 0
+                          chat[selectedUser]
                         );
                         setTextAreaValue("");
                         const timer = setTimeout(() => {

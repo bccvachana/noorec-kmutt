@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { checkUser } from "./utils/firebase/auth";
-import {
-  readUserData,
-  snapshotArticle,
-  readUsers,
-} from "./utils/firebase/firestore";
+import { readUserData, readUsers } from "./utils/firebase/firestore";
 import { getRecentRecord, getRecord } from "./utils/result/filter";
 import { db } from "./utils/firebase/firebase";
 
@@ -55,11 +51,20 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
-    let unsubscribeUserChat, unsubscribeChat, unsubscribeArticle;
+    let unsubscribeUserData,
+      unsubscribeUserChat,
+      unsubscribeChat,
+      unsubscribeArticle;
     if (user) {
       if (user.uid !== "nFe6SOGeOGXPWJKS2YPjVO7DApi1") {
-        readUserData(user.uid, setUserData);
+        //readUserData(user.uid, setUserData);
         //setUserData(mockData3);
+        unsubscribeUserData = db
+          .collection("users")
+          .doc(user.uid)
+          .onSnapshot((doc) => {
+            setUserData(doc.data());
+          });
         unsubscribeUserChat = db
           .collection("chat")
           .doc(user.uid)
@@ -131,6 +136,7 @@ const App = (props) => {
       setArticle(null);
     }
     return () => {
+      if (unsubscribeUserData) unsubscribeUserData();
       if (unsubscribeUserChat) unsubscribeUserChat();
       if (unsubscribeChat) unsubscribeChat();
       if (unsubscribeArticle) unsubscribeArticle();

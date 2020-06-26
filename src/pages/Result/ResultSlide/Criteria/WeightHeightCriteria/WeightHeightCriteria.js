@@ -51,6 +51,9 @@ const WeightHeightCriteria = (props) => {
         setSwiperWidth(weightHeightSwiperRef.clientWidth);
       }, 200);
     };
+    timer = setTimeout(() => {
+      setSwiperWidth(weightHeightSwiperRef.clientWidth);
+    }, 500);
     window.addEventListener("resize", () => {
       if (weightHeightSwiperRef) {
         setSwiperWidth(weightHeightSwiperRef.clientWidth);

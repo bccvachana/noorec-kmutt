@@ -94,7 +94,7 @@ const Chart = (props) => {
           data: dataData,
           valueIndex: valueIndex,
           fontSize: rem,
-          valuePadding: !isBloodPressure ? dataRange / 3 : dataRange / 5,
+          valuePadding: !isBloodPressure ? dataRange / 3 : dataRange / 4,
           toFixed: infoStatic[dataType].toFixed,
         },
         isScrollChart: isScrollChart,

@@ -18,15 +18,6 @@ export const addUserData = async (uid, data, profileImgObject) => {
       createdAt: firestore.Timestamp.now(),
       updatedAt: firestore.Timestamp.now(),
     });
-  await db.collection("chat").doc(uid).set({
-    message: [],
-    adminRead: false,
-    adminUnread: 0,
-    userRead: false,
-    userUnread: 0,
-    createdAt: firestore.Timestamp.now(),
-    updatedAt: firestore.Timestamp.now(),
-  });
 };
 
 export const readUserData = async (uid, setUserData) => {
@@ -90,37 +81,6 @@ export const readUsers = async (setUsers) => {
   //setUsers(mockUsers);
 };
 
-export const snapshotArticle = async (setArticle) => {
-  // let article;
-  // const unsubscribe = db
-  //   .collection("articles")
-  //   .orderBy("updatedAt", "desc")
-  //   .onSnapshot((doc) => {
-  //     doc.docs.map((doc) => {
-  //       const data = doc.data();
-  //       const { createdAt, updatedAt } = data;
-  //       const articleId = doc.id;
-  //       const content = JSON.parse(data.content);
-  //       const checkImg = content.ops.find((element) => element.insert.image);
-  //       const img = checkImg ? checkImg.insert.image : null;
-  //       article = {
-  //         ...article,
-  //         [articleId]: {
-  //           ...data,
-  //           content: content,
-  //           image: img,
-  //           createdAt: createdAt.seconds,
-  //           updatedAt: updatedAt.seconds,
-  //         },
-  //       };
-  //       return null;
-  //     });
-  //     console.log(article);
-  //     setArticle(article);
-  //   });
-  setArticle(mockArticle);
-};
-
 export const deleteArticle = async (articleId) => {
   await db.collection("articles").doc(articleId).delete();
 };
@@ -136,22 +96,43 @@ export const updateUserData = async (uid, data, profileImgObject) => {
     });
 };
 
-export const addChatByUser = async (userId, msg, adminUnread) => {
-  await db
-    .collection("chat")
-    .doc(userId)
-    .update({
-      message: firestore.FieldValue.arrayUnion({
-        sender: "user",
-        message: msg,
+export const addChatByUser = async (userId, msg, userChat) => {
+  if (!userChat) {
+    await db
+      .collection("chat")
+      .doc(userId)
+      .set({
+        message: [
+          {
+            sender: "user",
+            message: msg,
+            createdAt: firestore.Timestamp.now(),
+          },
+        ],
+        adminRead: false,
+        adminUnread: 1,
+        userRead: true,
+        userUnread: 0,
         createdAt: firestore.Timestamp.now(),
-      }),
-      adminRead: false,
-      adminUnread: adminUnread + 1,
-      userRead: true,
-      userUnread: 0,
-      updatedAt: firestore.Timestamp.now(),
-    });
+        updatedAt: firestore.Timestamp.now(),
+      });
+  } else {
+    await db
+      .collection("chat")
+      .doc(userId)
+      .update({
+        message: firestore.FieldValue.arrayUnion({
+          sender: "user",
+          message: msg,
+          createdAt: firestore.Timestamp.now(),
+        }),
+        adminRead: false,
+        adminUnread: userChat.adminUnread + 1,
+        userRead: true,
+        userUnread: 0,
+        updatedAt: firestore.Timestamp.now(),
+      });
+  }
 };
 
 export const readChatByUser = async (userId) => {
@@ -161,22 +142,43 @@ export const readChatByUser = async (userId) => {
   });
 };
 
-export const addChatByAdmin = async (userId, msg, userUnread) => {
-  await db
-    .collection("chat")
-    .doc(userId)
-    .update({
-      message: firestore.FieldValue.arrayUnion({
-        sender: "admin",
-        message: msg,
+export const addChatByAdmin = async (userId, msg, userChat) => {
+  if (!userChat) {
+    await db
+      .collection("chat")
+      .doc(userId)
+      .set({
+        message: [
+          {
+            sender: "admin",
+            message: msg,
+            createdAt: firestore.Timestamp.now(),
+          },
+        ],
+        adminRead: true,
+        adminUnread: 0,
+        userRead: false,
+        userUnread: 1,
         createdAt: firestore.Timestamp.now(),
-      }),
-      adminRead: true,
-      adminUnread: 0,
-      userRead: false,
-      userUnread: userUnread + 1,
-      updatedAt: firestore.Timestamp.now(),
-    });
+        updatedAt: firestore.Timestamp.now(),
+      });
+  } else {
+    await db
+      .collection("chat")
+      .doc(userId)
+      .update({
+        message: firestore.FieldValue.arrayUnion({
+          sender: "admin",
+          message: msg,
+          createdAt: firestore.Timestamp.now(),
+        }),
+        adminRead: true,
+        adminUnread: 0,
+        userRead: false,
+        userUnread: userChat.userUnread + 1,
+        updatedAt: firestore.Timestamp.now(),
+      });
+  }
 };
 
 export const readChatByAdmin = async (userId) => {

@@ -141,6 +141,7 @@ const ProfileImgEditor = (props) => {
           name="img"
           accept="image/*"
           onChange={handleUpload}
+          className={classes.UploadInput}
         />
       </div>
       <div className={classes.ButtonContainer}>

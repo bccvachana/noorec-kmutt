@@ -29,6 +29,11 @@ const BloodPressureCriteria = (props) => {
         setContainerHeightRef(bloodPressureContainerRef.clientHeight);
       }, 200);
     };
+    timer = setTimeout(() => {
+      setWidthRef(bloodPressureRef.clientWidth);
+      setHeightRef(bloodPressureRef.clientHeight);
+      setContainerHeightRef(bloodPressureContainerRef.clientHeight);
+    }, 500);
     window.addEventListener("resize", () => {
       setWidthRef(bloodPressureRef.clientWidth);
       setHeightRef(bloodPressureRef.clientHeight);

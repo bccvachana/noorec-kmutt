@@ -82,6 +82,13 @@
       opacity: 0;
       cursor: pointer;
     }
+
+    &.UploadInput {
+      height: 1.2rem;
+      background-color: transparent;
+      opacity: 0;
+      cursor: pointer;
+    }
   }
 
   >div {

@@ -41,9 +41,15 @@
   @include shadow;
   @include flex;
 
-  >img {
-    height: 85%;
-    border-radius: $radius;
+
+  >div {
+    height: 100%;
+    @include flex;
+
+    >img {
+      height: 85%;
+      border-radius: 0.5rem;
+    }
   }
 
   .Hand {

@@ -3,6 +3,8 @@ import classes from "./Landing.module.scss";
 import { Link } from "react-router-dom";
 
 import feature1 from "../../assets/web/Landing/feature1.svg";
+import feature2 from "../../assets/web/Landing/feature2.svg";
+import feature3 from "../../assets/web/Landing/feature3.svg";
 import characterRef from "../../assets/web/Landing/ref.svg";
 import character from "../../assets/web/Landing/character.svg";
 import animation from "../../assets/web/Landing/animation.svg";
@@ -50,7 +52,9 @@ const Landing = (props) => {
             และตรวจเช็คผลย้อนหลังได้
           </div>
           <div>
-            <div className={classes.FeatureImg}></div>
+            <div className={classes.FeatureImg}>
+              <img src={feature2} alt="feature2" />
+            </div>
             <div className={classes.FeatureTitle}>วิเคราะห์</div>
             วิเคราะห์ข้อมูลสุขภาพเบื้องต้นของคุณ
             <br />
@@ -59,7 +63,9 @@ const Landing = (props) => {
             ที่เข้าใจได้ง่าย
           </div>
           <div>
-            <div className={classes.FeatureImg}></div>
+            <div className={classes.FeatureImg}>
+              <img src={feature3} alt="feature3" />
+            </div>
             <div className={classes.FeatureTitle}>แนะนำ</div>
             แนะนำคอนเทนต์ดี ๆ เกี่ยวกับสุขภาพ
             <br />

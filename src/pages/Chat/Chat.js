@@ -72,11 +72,7 @@ const Chat = (props) => {
             onClick={() => {
               if (textAreaValue) {
                 try {
-                  addChatByUser(
-                    user.uid,
-                    textAreaValue,
-                    userChat && userChat.adminUnread ? userChat.adminUnread : 0
-                  );
+                  addChatByUser(user.uid, textAreaValue, userChat);
                   setTextAreaValue("");
                   const bottom = document.getElementById("UserChatBox")
                     .scrollHeight;

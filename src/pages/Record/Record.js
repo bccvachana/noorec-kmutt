@@ -10,6 +10,7 @@ const Record = (props) => {
   const { user, userData } = useContext(Context);
 
   const [widthRef, setWidthRef] = useState(0);
+  const [isQr, setIsQr] = useState(false);
 
   useEffect(() => {
     let timer;
@@ -26,7 +27,7 @@ const Record = (props) => {
   }, []);
 
   useEffect(() => {
-    if (user && userData) {
+    if (user && userData && !isQr) {
       const options = {
         width: 300,
         height: 300,
@@ -37,6 +38,7 @@ const Record = (props) => {
         PO: "#fa5458",
       };
       new QRCode(document.getElementById("qr"), options);
+      setIsQr(true);
     }
   }, [user, userData]);
 
@@ -49,11 +51,11 @@ const Record = (props) => {
         >
           <img id="RecordRef" src={record1} alt="record1" />
           <div
-            id="qr"
             className={classes.QrContainer}
             style={{ width: widthRef, height: widthRef }}
           >
             <img className={classes.Hand} src={record2} alt="record2" />
+            <div id="qr"></div>
           </div>
         </div>
         <div>
